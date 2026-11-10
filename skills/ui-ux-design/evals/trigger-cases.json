@@ -44,6 +44,14 @@
     "should_trigger": true
   },
   {
+    "query": "Our landing page feels like sterile AI slop with bento grids and neon blur circles. How can we redesign it with emotional warmth, authentic photography, and human-centered craft?",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you audit our web copy and UI layout to remove AI buzzwords and add visceral appeal following Don Norman's emotional design levels?",
+    "should_trigger": true
+  },
+  {
     "query": "Help us define our corporate brand strategy, company mission statement, and brand archetypes (The Sage vs The Outlaw).",
     "should_trigger": false
   },

@@ -54,5 +54,16 @@
       "Gesture-driven sheet dismissal with accessible fallback close button",
       "ARIA roles and live region announcements for dynamic route updates"
     ]
+  },
+  {
+    "suite_name": "Anti-Slop Craft & Emotional Design Audit",
+    "description": "Tests identification of generic AI slop patterns (neon blur glows, bento monoculture, buzzword soup) and replacement with human-crafted editorial UI patterns.",
+    "input_scenario": "Audit a landing page hero and feature section that uses purple gradient blur orbs, 3x3 identical bento boxes, and buzzword copy ('supercharge your next-gen workflow').",
+    "expected_deliverables": [
+      "Identification and remediation of AI slop clichés (removing neon blur circles, breaking bento grid symmetry)",
+      "Rewriting marketing copy using the concrete Noun-Action-Outcome formula without banned buzzwords",
+      "Recommendation of visceral editorial typography (medium-weight 500 display titles)",
+      "Integration of authentic human proof and contextual UI artifacts instead of naked Lucide icons"
+    ]
   }
 ]

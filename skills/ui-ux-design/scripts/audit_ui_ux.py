@@ -447,6 +447,49 @@ class UIUXAuditor:
             )
             score -= 5
 
+        # Check for generic AI slop buzzwords in copy
+        buzzword_matches = re.findall(
+            r"\b(supercharge|supercharging|unleash|unleashing|next-gen|next generation|cutting-edge|paradigm shift|seamlessly empower|revolutionize your|game-changer)\b",
+            self.content,
+            re.IGNORECASE,
+        )
+        if buzzword_matches:
+            unique_buzzwords = sorted({w.lower() for w in buzzword_matches})
+            self.findings.append(
+                AuditFinding(
+                    category="Usability Heuristics",
+                    rule_id="UX-SLOP-BUZZWORD",
+                    severity="WARNING",
+                    message=(
+                        f"Generic AI slop marketing buzzwords detected ({', '.join(repr(w) for w in unique_buzzwords[:3])}). "
+                        "Replace with concrete 'Noun-Action-Outcome' phrasing."
+                    ),
+                    deduction=3,
+                )
+            )
+            score -= 3
+
+        # Check for cliché neon radial blur glow orbs
+        neon_blur_match = re.search(
+            r'class(?:Name)?\s*=\s*["\'][^"\']*(?=.*\bbg-(?:purple|indigo|violet|cyan|pink|blue)-\d+/\d+\b)(?=.*\bblur-(?:xl|2xl|3xl)\b)(?=.*\b(?:absolute|fixed)\b)[^"\']*["\']',
+            self.content,
+            re.IGNORECASE,
+        )
+        if neon_blur_match:
+            self.findings.append(
+                AuditFinding(
+                    category="Usability Heuristics",
+                    rule_id="UX-SLOP-NEON-BLUR",
+                    severity="WARNING",
+                    message=(
+                        "Cliché AI neon blur orb detected in background. Prefer physical lighting, crisp whitespace, or authentic media."
+                    ),
+                    deduction=2,
+                    snippet=neon_blur_match.group(0)[:80],
+                )
+            )
+            score -= 2
+
         return max(0, score)
 
     def _generate_remediations(self) -> list[str]:
@@ -465,6 +508,8 @@ class UIUXAuditor:
             "IA-SKIPPED-HEADING": "Fix heading levels to advance sequentially without skipping levels (e.g., h1 -> h2 -> h3).",
             "IA-NO-MAIN-LANDMARK": "Enclose primary page content within a semantic `<main>` landmark element.",
             "UX-NO-CONFIRM-DESTRUCTIVE": "Gate destructive actions behind a 2-step confirmation modal or provide a 10-second Undo toast.",
+            "UX-SLOP-BUZZWORD": "Replace empty marketing buzzwords ('supercharge', 'next-gen', 'seamless') with concrete Noun-Action-Outcome phrasing.",
+            "UX-SLOP-NEON-BLUR": "Remove arbitrary neon blur orbs from backgrounds; use clean architectural whitespace, subtle textures, or real product photography.",
         }
         seen = set()
         for f in self.findings:
