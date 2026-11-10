@@ -244,6 +244,11 @@ class UIUXAuditor:
             ),
         ]
         for idx, line in enumerate(self.lines, 1):
+            # Skip purely decorative SVG or PascalCase icon components without interactive handlers
+            if re.search(
+                r"^\s*(?:return\s+)?<([A-Z][a-zA-Z0-9]*|svg|path|circle|polygon)\b", line
+            ) and not re.search(r"\b(onClick|href|role|tabIndex)\s*=", line):
+                continue
             for pat, msg in tiny_patterns:
                 if re.search(pat, line) and not re.search(r"(p-[2-6]|padding|min-h|min-w)", line):
                     self.findings.append(

@@ -56,6 +56,7 @@ _Deep dive_: [information-architecture-and-layout.md](references/information-arc
 
 1. **Motor Execution (Fitts's Law)**:
    - Enforce minimum touch target bounds: **$44 \times 44\text{ px}$** for mobile touch interfaces; **$24 \times 24\text{ px}$** for desktop pointer targets with surrounding clearance.
+   - **Secondary & Footer Links**: Never leave footer navigation links, legal links, or social media icons as unpadded $16\text{ px}$ text lines or tiny $< 36\text{ px}$ icons; enforce vertical touch clearance (`py-2` / `min-h-[44px]`) to prevent mobile misclicks.
    - Place high-frequency actions within the bottom-third thumb zone on mobile screens.
 2. **Decision Velocity (Hick's Law)**:
    - Reduce visual noise. Break multi-step forms ($> 5$ inputs) into stepped wizards or progressive disclosure sections.
@@ -89,11 +90,12 @@ _Deep dive_: [component-states-and-design-systems.md](references/component-state
    - Body Text ($< 18\text{ pt}$ / $24\text{ px}$): Minimum **$4.5:1$** against background.
    - Large Text ($\ge 18\text{ pt}$ or $\ge 14\text{ pt}$ bold): Minimum **$3.0:1$**.
    - UI Components & Graphical Icons: Minimum **$3.0:1$**.
+   - **Gradient Backgrounds**: For text over CSS gradients, verify contrast against the worst-case color stop (lightest stop for white text; darkest stop for dark text) and pair with a fallback solid `background-color`.
 2. **Keyboard Focus & Trapping**:
    - Never apply `outline: none` without a custom high-contrast focus indicator.
    - Trap focus inside active modal dialogs; close and restore focus on `Escape`.
 3. **Semantic HTML & Screen Reader Affordances**:
-   - Form inputs must be linked to `<label for="id">` or supply `aria-label`.
+   - Form inputs must be linked to `<label for="id">` or supply `aria-label` (especially on compact single-field inputs like footer newsletter fields or header search bars—`placeholder` is never a valid label substitute).
    - Images must have meaningful `alt` descriptions, or `alt=""` if purely decorative.
 
 _Deep dive_: [accessibility-and-wcag-standards.md](references/accessibility-and-wcag-standards.md).

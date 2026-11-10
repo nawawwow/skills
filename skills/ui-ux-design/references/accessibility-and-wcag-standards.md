@@ -49,6 +49,11 @@ Contrast measures the difference in perceived luminance between text/graphics an
 | **Focus Rings**                                                | **$\ge 3.0 : 1$** against background |     **$\ge 4.5 : 1$**     | `#2563eb` outline on `#ffffff` ($5.17:1$)     |
 | **Incidental / Disabled Elements**                             |                Exempt                |          Exempt           | Muted placeholder text or inactive buttons.   |
 
+### Gradient & Translucent Background Contrast Rules
+
+1. **Worst-Case Color Stop Verification**: CSS gradients (`linear-gradient`, `bg-gradient-to-r`) render via `background-image`, leaving `background-color` transparent (`rgba(0, 0, 0, 0)`). Always verify text contrast against the **lowest-contrast color stop** of the gradient (e.g., for `#ffffff` white text over `from-blue-600 to-indigo-600`, calculate contrast against the lighter stop `#2563eb` $\to 5.17:1$).
+2. **Solid Fallback Surface**: Always declare a solid fallback `background-color` alongside gradients (e.g., `bg-blue-600 bg-gradient-to-r from-blue-600 to-indigo-600`) so Windows High Contrast Mode, forced-colors mode, and automated DOM contrast scanners resolve an opaque surface.
+
 ---
 
 ## 3. Target Size & Pointer Ergonomics (WCAG 2.2 Criterion 2.5.8)
@@ -60,6 +65,7 @@ Small, cramped interactive targets lead to accidental clicks and motor frustrati
 1. **Minimum Size**: All pointer interactive elements (buttons, links, tab controls) must have an interactive touch target of at least **$24 \times 24\text{ px}$ CSS pixels**.
 2. **Spacing Exception**: If a target is smaller than $24 \times 24\text{ px}$, it passes ONLY if an imaginary $24\text{ px}$ diameter circle centered on the target does not intersect any adjacent target.
 3. **Mobile Touch Target Best Practice**: While WCAG AA sets $24\text{ px}$ as the legal baseline, production mobile applications must follow the **$44 \times 44\text{ px}$** (Apple iOS HIG) or **$48 \times 48\text{ dp}$** (Google Material 3) standard.
+4. **Footer & Secondary Link Blindspot**: Do not restrict $44 \times 44\text{ px}$ touch targets to primary hero buttons. Developers frequently leave footer navigation links as bare $16\text{ px}$ text lines and social media icon links at $32\text{ px} - 36\text{ px}$ (`w-8 h-8` or `w-9 h-9`). Always apply vertical touch padding (`py-2.5 inline-block`) to stacked footer links and `min-w-[44px] min-h-[44px]` to footer icon buttons and inline submit buttons.
 
 ```css
 /* Accessible Touch Target Padding */
@@ -113,12 +119,21 @@ Assistive technologies (screen readers like NVDA, VoiceOver, JAWS) depend on sem
    - `<main>`: Unique page content (only one per document).
    - `<aside>`: Contextual sidebars or secondary panels.
    - `<footer>`: Copyright, auxiliary links.
-2. **Form Label Association**: Form inputs must have an explicit programmatic label:
+2. **Form Label Association (Placeholder Is Never a Label)**: Every form input must have an explicit programmatic label. On compact single-field forms (such as footer newsletter inputs, header search bars, or table filter boxes) where a visible `<label>` element is omitted, `aria-label` is mandatory (WCAG 1.3.1 & 4.1.2):
 
    ```html
-   <!-- PASS: Explicit label connection -->
+   <!-- PASS: Explicit label connection for standard forms -->
    <label for="user-email">Work Email</label>
    <input id="user-email" type="email" name="email" required />
+
+   <!-- PASS: Mandatory aria-label on compact single-field inputs (e.g., Footer Newsletter) -->
+   <input
+     id="newsletter-email"
+     type="email"
+     aria-label="Email address for newsletter subscription"
+     placeholder="Enter your email..."
+     required
+   />
 
    <!-- PASS: aria-label for icon-only buttons -->
    <button type="button" aria-label="Close dialog">
