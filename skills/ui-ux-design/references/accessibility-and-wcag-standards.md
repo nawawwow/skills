@@ -41,13 +41,13 @@ Contrast measures the difference in perceived luminance between text/graphics an
 
 ### WCAG 2.2 Contrast Thresholds
 
-| Element Type                                                   |       WCAG Level AA (Baseline)       | WCAG Level AAA (Enhanced) | Example Passing Pair                         |
-| :------------------------------------------------------------- | :----------------------------------: | :-----------------------: | :------------------------------------------- |
-| **Normal Body Text** ($< 18\text{ pt}$ / $24\text{ px}$)       |          **$\ge 4.5 : 1$**           |     **$\ge 7.0 : 1$**     | `#4b5563` (Dark Gray) on `#ffffff` ($7.1:1$) |
-| **Large Text** ($\ge 18\text{ pt}$ or $\ge 14\text{ pt}$ bold) |          **$\ge 3.0 : 1$**           |     **$\ge 4.5 : 1$**     | `#6b7280` on `#ffffff` ($4.6:1$)             |
-| **UI Components & Icons** (Borders, checkboxes, icons)         |          **$\ge 3.0 : 1$**           |     **$\ge 4.5 : 1$**     | `#9ca3af` border on `#ffffff` ($3.1:1$)      |
-| **Focus Rings**                                                | **$\ge 3.0 : 1$** against background |     **$\ge 4.5 : 1$**     | `#2563eb` outline on `#ffffff` ($4.5:1$)     |
-| **Incidental / Disabled Elements**                             |                Exempt                |          Exempt           | Muted placeholder text or inactive buttons.  |
+| Element Type                                                   |       WCAG Level AA (Baseline)       | WCAG Level AAA (Enhanced) | Example Passing Pair                          |
+| :------------------------------------------------------------- | :----------------------------------: | :-----------------------: | :-------------------------------------------- |
+| **Normal Body Text** ($< 18\text{ pt}$ / $24\text{ px}$)       |          **$\ge 4.5 : 1$**           |     **$\ge 7.0 : 1$**     | `#4b5563` (Dark Gray) on `#ffffff` ($7.56:1$) |
+| **Large Text** ($\ge 18\text{ pt}$ or $\ge 14\text{ pt}$ bold) |          **$\ge 3.0 : 1$**           |     **$\ge 4.5 : 1$**     | `#6b7280` on `#ffffff` ($4.83:1$)             |
+| **UI Components & Icons** (Borders, checkboxes, icons)         |          **$\ge 3.0 : 1$**           |     **$\ge 4.5 : 1$**     | `#949494` border on `#ffffff` ($3.03:1$)      |
+| **Focus Rings**                                                | **$\ge 3.0 : 1$** against background |     **$\ge 4.5 : 1$**     | `#2563eb` outline on `#ffffff` ($5.17:1$)     |
+| **Incidental / Disabled Elements**                             |                Exempt                |          Exempt           | Muted placeholder text or inactive buttons.   |
 
 ---
 
@@ -64,11 +64,14 @@ Small, cramped interactive targets lead to accidental clicks and motor frustrati
 ```css
 /* Accessible Touch Target Padding */
 .mobile-icon-btn {
+  /* Explicit content-box ensures padding expands the click target beyond 20px */
+  box-sizing: content-box;
   width: 20px;
   height: 20px;
   /* Expands the clickable bounding box to 44x44px without altering visual layout */
   padding: 12px;
   margin: -12px;
+  border: none;
 }
 ```
 
