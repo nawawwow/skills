@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Build a mobile sign-in screen in FigCraft for an iPhone 16 Pro with vertical auto layout, Light and Dark theme variables, a reusable primary button component, and save it to C:/Users/Personal/Designs/signin.figcraft.",
+    "should_trigger": true
+  },
+  {
+    "query": "We have open reviewer comments on our current FigCraft document. Can you list all open threads, fix the spacing and color issues they mention, reply to each thread with what changed, and resolve them?",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a Button component set in FigCraft with Style=Primary/Secondary and State=Default/Hover/Disabled variants, expose a text property for Label and a slot for a trailing badge, and wire Code Connect to @/components/ui/Button.",
+    "should_trigger": true
+  },
+  {
+    "query": "Export our FigCraft design variables collection into a Tailwind CSS v4 @theme stylesheet and Dart constants for our Flutter mobile app.",
+    "should_trigger": true
+  },
+  {
+    "query": "Set up a clickable onboarding prototype in FigCraft across 3 screens where clicking the 'Next' button increments a step counter variable and uses a conditional block to navigate to the Dashboard on the 3rd tap with smartAnimate.",
+    "should_trigger": true
+  },
+  {
+    "query": "Open a new FigCraft branch called 'feat/pricing-cards', redesign the hero card to use a 3-column grid auto-layout, review the branch diff for conflicts, and merge it back into main.",
+    "should_trigger": true
+  },
+  {
+    "query": "Spin up a new FigCraft workshop board using the retrospective template, add 4 connected flowchart shapes underneath it, start a 5-minute countdown timer, and open a 3-vote dot-voting session on the stickies.",
+    "should_trigger": true
+  },
+  {
+    "query": "Use FigCraft's data.fill command on our social announcement frame to generate 10 campaign rows across square (1080x1080), portrait (1080x1350), and story (1080x1920) formats with auto-fitted headlines.",
+    "should_trigger": true
+  },
+  {
+    "query": "Switch our checkout frame to Ready for Dev in FigCraft, add an accessibility annotation pinning height and padding on the CTA button, and generate both React Tailwind v4 and Jetpack Compose code via Dev Mode.",
+    "should_trigger": true
+  },
+  {
+    "query": "Import C:/Downloads/legacy-icons.sketch into FigCraft, batch rename all icon layers to 'icon/$nn-$&', and export each icon as both SVG and Android Vector Drawable XML.",
+    "should_trigger": true
+  },
+  {
+    "query": "How do I connect Claude Code or another MCP assistant to a live running FigCraft desktop window using --control 7979 and --attach while restricting file writes with --automation-write-root?",
+    "should_trigger": true
+  },
+  {
+    "query": "Draw two overlapping circles in FigCraft and use the shapeBuilder.merge and bool.subtract commands to create a crescent vector icon, then flatten it and outline its stroke.",
+    "should_trigger": true
+  },
+  {
+    "query": "Audit our React Checkout.tsx file for WCAG 2.2 AA contrast ratio compliance, 44px touch targets, and Nielsen's 10 usability heuristics without opening any design tool.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a Mermaid.js sequence diagram and C4 architecture flowchart for our OAuth2 authentication microservice.",
+    "should_trigger": false
+  },
+  {
+    "query": "Use playwright-cli to open https://example.com/login, fill the email and password inputs, click submit, and take a browser screenshot.",
+    "should_trigger": false
+  },
+  {
+    "query": "Define our startup's brand archetype, verbal identity tone-of-voice matrix, and tagline options for a B2B cybersecurity platform.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a Python script using Pillow and CairoSVG to resize local PNG files in a folder to 512x512 thumbnails.",
+    "should_trigger": false
+  },
+  {
+    "query": "Stage all modified TypeScript files in git, audit git diff --cached for secrets, and create a Conventional Commit for our CSS grid fix.",
+    "should_trigger": false
+  },
+  {
+    "query": "How do I configure Tailwind CSS v4 @theme variables in a Next.js PostCSS project from scratch without any design files?",
+    "should_trigger": false
+  },
+  {
+    "query": "Open an Android emulator using android-cli, install app-debug.apk, and inspect the view hierarchy.",
+    "should_trigger": false
+  }
+]
