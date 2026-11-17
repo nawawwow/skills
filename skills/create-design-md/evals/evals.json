@@ -1,0 +1,54 @@
+{
+  "skill_name": "create-design-md",
+  "version": "1.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "name": "editorial-prestige-frontmatter-scaffold",
+      "prompt": "Generate a production-ready DESIGN.md for 'Chronicle Press' using the editorial-prestige archetype in YAML frontmatter mode, and verify it passes the 12-point audit gate.",
+      "expected_output": "A spec-compliant DESIGN.md with normative YAML frontmatter tokens, 8 canonical ## sections, specific reference prose, and a 100/100 audit report.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "assert-yaml-frontmatter",
+          "text": "Starts with YAML frontmatter defining version, name, colors, typography, rounded, spacing, and components",
+          "type": "contains_pattern"
+        },
+        {
+          "id": "assert-eight-canonical-sections",
+          "text": "Contains all 8 canonical ## sections in order (Overview, Colors, Typography, Layout, Elevation & Depth, Shapes, Components, Do's and Don'ts)",
+          "type": "contains_pattern"
+        },
+        {
+          "id": "assert-zero-broken-refs",
+          "text": "All {path.to.token} references resolve with 0 broken-ref errors",
+          "type": "contains_pattern"
+        },
+        {
+          "id": "assert-wcag-contrast",
+          "text": "All component backgroundColor and textColor pairs pass WCAG AA >= 4.5:1 contrast",
+          "type": "contains_pattern"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "interleaved-yaml-and-tailwind-v4-export",
+      "prompt": "Generate a DESIGN.md in interleaved YAML mode for 'Pulse Telemetry' (atmospheric-minimal archetype) and export its tokens to a Tailwind v4 @theme CSS block.",
+      "expected_output": "An interleaved DESIGN.md with fenced yaml blocks per section and a compiled @theme CSS block with --color-*, --font-*, --text-*, --radius-*, and --spacing-* custom properties.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "assert-interleaved-yaml-blocks",
+          "text": "Places fenced yaml blocks inside ## Colors, ## Typography, ## Layout, ## Shapes, and ## Components without duplicating top-level keys",
+          "type": "contains_pattern"
+        },
+        {
+          "id": "assert-tailwind-v4-theme",
+          "text": "Outputs valid @theme { ... } CSS custom properties block",
+          "type": "contains_pattern"
+        }
+      ]
+    }
+  ]
+}

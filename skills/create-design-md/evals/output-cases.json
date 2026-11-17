@@ -1,0 +1,95 @@
+[
+  {
+    "id": "output-01-editorial-prestige-frontmatter",
+    "title": "Editorial Prestige DESIGN.md in YAML Frontmatter Mode",
+    "prompt": "Generate a production-ready DESIGN.md for 'Chronicle Press' using the editorial-prestige archetype in YAML frontmatter mode. Ensure all 8 canonical sections are present, every color token is referenced, and all component foreground/background pairs pass WCAG AA contrast.",
+    "expected_elements": {
+      "frontmatter_keys": [
+        "version: \"alpha\"",
+        "name: \"Chronicle Press\"",
+        "colors",
+        "typography",
+        "rounded",
+        "spacing",
+        "components"
+      ],
+      "canonical_sections": [
+        "## Overview",
+        "## Colors",
+        "## Typography",
+        "## Layout",
+        "## Elevation & Depth",
+        "## Shapes",
+        "## Components",
+        "## Do's and Don'ts"
+      ],
+      "linter_compliance": "0 errors, 0 warnings, 100/100 score on audit_design_md.py"
+    }
+  },
+  {
+    "id": "output-02-atmospheric-minimal-interleaved",
+    "title": "Atmospheric Minimal Dark UI DESIGN.md in Interleaved YAML Mode",
+    "prompt": "Generate a DESIGN.md for 'Pulse Telemetry' using the atmospheric-minimal archetype with interleaved YAML code blocks inside each markdown section.",
+    "expected_elements": {
+      "frontmatter_metadata_only": [
+        "version: \"alpha\"",
+        "name: \"Pulse Telemetry\"",
+        "description"
+      ],
+      "interleaved_blocks": [
+        "colors: inside ## Colors",
+        "typography: inside ## Typography",
+        "spacing: inside ## Layout",
+        "rounded: inside ## Shapes",
+        "components: inside ## Components"
+      ],
+      "no_duplicate_top_keys": true,
+      "wcag_aa_contrast": ">= 4.5:1 on all dark mode components"
+    }
+  },
+  {
+    "id": "output-03-audit-broken-design-md",
+    "title": "Audit and Remediate Linter Errors in DESIGN.md",
+    "prompt": "Audit a DESIGN.md file that contains `colours:` instead of `colors:`, a broken `{colors.brand-accent}` reference, an orphaned color token, and a low-contrast button (`#9ca3af` on `#ffffff`). Report the exact @google/design.md lint rule IDs and fix them.",
+    "expected_elements": {
+      "detected_rules": [
+        "unknown-key (colours -> colors)",
+        "broken-ref ({colors.brand-accent})",
+        "orphaned-tokens",
+        "contrast-ratio (< 4.5:1)"
+      ],
+      "remediated_score": ">= 80/100 with 0 errors"
+    }
+  },
+  {
+    "id": "output-04-export-tailwind-v4-and-dtcg",
+    "title": "Export DESIGN.md Tokens to Tailwind v4 CSS and W3C DTCG JSON",
+    "prompt": "Compile our DESIGN.md tokens into a Tailwind v4 `@theme` CSS file and a W3C DTCG `tokens.json` file with all `{path.to.token}` references resolved.",
+    "expected_elements": {
+      "css_tailwind_namespaces": [
+        "@theme {",
+        "--color-primary:",
+        "--font-",
+        "--text-",
+        "--radius-",
+        "--spacing-"
+      ],
+      "dtcg_format": [
+        "\"$type\": \"color\"",
+        "\"$type\": \"dimension\"",
+        "\"$type\": \"typography\"",
+        "\"$value\""
+      ]
+    }
+  },
+  {
+    "id": "output-05-convert-stitch-prose-to-hybrid",
+    "title": "Upgrade Pure-Prose Google Stitch Export to Hybrid DESIGN.md",
+    "prompt": "Convert a narrative-only Google Stitch DESIGN.md export into a hybrid @google/design.md specification with normative YAML tokens and the 8 canonical sections.",
+    "expected_elements": {
+      "extracted_palette": "Hydrates primary, secondary, tertiary, neutral, and surface tokens from inline hex codes",
+      "canonical_section_mapping": "Maps Visual Theme & Atmosphere -> ## Overview, Color Palette & Roles -> ## Colors, Component Stylings -> ## Components",
+      "audit_gate": "Passes audit_design_md.py (>= 80/100, 0 errors)"
+    }
+  }
+]

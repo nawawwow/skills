@@ -1,0 +1,122 @@
+[
+  {
+    "id": "trigger-01-generate-design-md-from-scratch",
+    "prompt": "Create a DESIGN.md file for our web application following the Google Stitch / @google/design.md specification so AI coding agents stop inventing random colors.",
+    "should_trigger": true,
+    "category": "Scaffold New DESIGN.md"
+  },
+  {
+    "id": "trigger-02-audit-existing-design-md",
+    "prompt": "Audit our existing DESIGN.md against the 11 @google/design.md linter rules and check if any component color pairs fail WCAG AA contrast.",
+    "should_trigger": true,
+    "category": "Audit & Linter Rules"
+  },
+  {
+    "id": "trigger-03-interleaved-yaml-mode",
+    "prompt": "Generate a DESIGN.md using interleaved YAML code blocks inside each ## section instead of putting all tokens in YAML frontmatter.",
+    "should_trigger": true,
+    "category": "Interleaved Token Layout"
+  },
+  {
+    "id": "trigger-04-extract-from-tailwind-and-css",
+    "prompt": "Inspect our Tailwind v4 @theme CSS variables and tokens.json, and generate a synchronized DESIGN.md file at the project root.",
+    "should_trigger": true,
+    "category": "Codebase Token Extraction"
+  },
+  {
+    "id": "trigger-05-convert-stitch-prose-export",
+    "prompt": "I exported a narrative DESIGN.md from Google Stitch with Visual Theme & Atmosphere and Color Palette headings, but it has no YAML token blocks. Upgrade it to the hybrid @google/design.md format.",
+    "should_trigger": true,
+    "category": "Stitch Prose Migration"
+  },
+  {
+    "id": "trigger-06-export-to-tailwind-v4-and-dtcg",
+    "prompt": "Export the design tokens from our DESIGN.md file into a Tailwind v4 @theme CSS block and a W3C DTCG tokens.json file.",
+    "should_trigger": true,
+    "category": "Token Export"
+  },
+  {
+    "id": "trigger-07-diff-design-md-versions",
+    "prompt": "Compare DESIGN-v1.md and DESIGN-v2.md to see which color or typography tokens changed and whether any lint warnings regressed.",
+    "should_trigger": true,
+    "category": "Version Diffing"
+  },
+  {
+    "id": "trigger-08-editorial-prestige-archetype",
+    "prompt": "Draft a DESIGN.md with an Editorial Prestige aesthetic—warm limestone paper, deep broadsheet ink, Public Sans headlines, and Space Grotesk labels.",
+    "should_trigger": true,
+    "category": "Editorial Archetype"
+  },
+  {
+    "id": "trigger-09-atmospheric-minimal-dark-ui",
+    "prompt": "Write a DESIGN.md for our developer CLI/IDE dashboard using an atmospheric minimal dark theme inspired by Linear and Raycast.",
+    "should_trigger": true,
+    "category": "Atmospheric Minimal Archetype"
+  },
+  {
+    "id": "trigger-10-fix-broken-token-refs-and-orphans",
+    "prompt": "Our DESIGN.md is failing lint with broken-ref on {colors.brand} and orphaned-tokens warnings. Fix the token references and synchronize the prose.",
+    "should_trigger": true,
+    "category": "Linter Remediation"
+  },
+  {
+    "id": "trigger-11-anti-slop-prose-refinement",
+    "prompt": "Rewrite the Overview and Do's and Don'ts sections in our DESIGN.md to replace generic buzzwords like 'modern and clean' with a specific architectural reference.",
+    "should_trigger": true,
+    "category": "Prose Philosophy & Anti-Slop"
+  },
+  {
+    "id": "trigger-12-windows-designmd-cli-issue",
+    "prompt": "When I run npx @google/design.md lint DESIGN.md in Windows PowerShell, it opens DESIGN.md in VS Code instead of running the linter. How do I run it properly?",
+    "should_trigger": true,
+    "category": "Windows CLI Troubleshooting"
+  },
+  {
+    "id": "trigger-13-technical-handout-archetype",
+    "prompt": "Scaffold a DESIGN.md modeled after a 1970s university computer science lecture handout with xerox paper stock and vermilion diagram ink.",
+    "should_trigger": true,
+    "category": "Technical Handout Archetype"
+  },
+  {
+    "id": "trigger-14-negative-create-agents-md",
+    "prompt": "Create an AGENTS.md file documenting our pytest single-test commands, ruff linter gates, and Never Do git boundaries.",
+    "should_trigger": false,
+    "category": "Negative - AGENTS.md"
+  },
+  {
+    "id": "trigger-15-negative-create-readme",
+    "prompt": "Generate a README.md with Shields.io badges, a Mermaid architecture flowchart, and a 30-second quickstart guide.",
+    "should_trigger": false,
+    "category": "Negative - README.md"
+  },
+  {
+    "id": "trigger-16-negative-git-commit",
+    "prompt": "Stage my changes, scan for leaked API secrets, and commit using Conventional Commits 1.0.0.",
+    "should_trigger": false,
+    "category": "Negative - Git Commit"
+  },
+  {
+    "id": "trigger-17-negative-database-schema",
+    "prompt": "Design a PostgreSQL schema migration for user subscriptions and billing invoices.",
+    "should_trigger": false,
+    "category": "Negative - Backend Database"
+  },
+  {
+    "id": "trigger-18-negative-changelog-semver",
+    "prompt": "Calculate our next Semantic Version bump from git log and rotate the [Unreleased] section in CHANGELOG.md.",
+    "should_trigger": false,
+    "category": "Negative - Changelog"
+  },
+  {
+    "id": "trigger-19-negative-biblical-citation",
+    "prompt": "Compare John 1:1 across ESV, NASB, and the Koine Greek text using SBL citation format.",
+    "should_trigger": false,
+    "category": "Negative - Scripture"
+  },
+  {
+    "id": "trigger-20-negative-isolated-react-hook",
+    "prompt": "Fix the infinite re-render bug in useFetchOrders.ts caused by an unstable dependency array.",
+    "should_trigger": false,
+    "category": "Negative - Isolated Bugfix"
+  }
+]
