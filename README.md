@@ -25,7 +25,7 @@ flowchart LR
     D -->|Deep Research| H["researching-protocol"]
     D -->|Storytelling| I["novel-architect / novel-storytelling"]
     D -->|Theology & Exegesis| J["christianity / islamic / jewish"]
-    D -->|Brand & UI/UX Design| K["branding-process / ui-ux-design / figcraft-workflows"]
+    D -->|Brand & UI/UX Design| K["branding-process / create-design-md / ui-ux-design / figcraft-workflows"]
 ```
 
 ---
@@ -91,11 +91,12 @@ git clone https://github.com/ahmadmcer/skills.git .agents
 
 ### 🎨 Brand Strategy, UI/UX & Design Tooling
 
-| Skill                                                  | Focus                                                                                                                                                                | Documentation                                  | Tools Included                                 |
-| :----------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | :--------------------------------------------- |
-| **[`branding-process`](skills/branding-process/)**     | Brand strategy, positioning, archetype mapping, verbal voice & tone, accessible color palettes, responsive logos, and W3C/Tailwind design tokens.                    | [SKILL.md](skills/branding-process/SKILL.md)   | `generate_tokens.py`, `scaffold_svg_assets.py` |
-| **[`ui-ux-design`](skills/ui-ux-design/)**             | Full-lifecycle UI/UX engineering: cognitive UX laws, 8-state component lifecycle, 8pt spatial grid, WCAG 2.2 AA accessibility, anti-slop craft, and modern Agent UX. | [SKILL.md](skills/ui-ux-design/SKILL.md)       | `audit_ui_ux.py`, `generate_component_spec.py` |
-| **[`figcraft-workflows`](skills/figcraft-workflows/)** | End-to-end interface design, design systems, prototyping, Dev Mode handoff, and collaborative boards via FigCraft MCP server and `figcraft-cli`.                     | [SKILL.md](skills/figcraft-workflows/SKILL.md) | FigCraft MCP & `figcraft-cli`                  |
+| Skill                                                  | Focus                                                                                                                                                                | Documentation                                  | Tools Included                                                                                   |
+| :----------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | :----------------------------------------------------------------------------------------------- |
+| **[`branding-process`](skills/branding-process/)**     | Brand strategy, positioning, archetype mapping, verbal voice & tone, accessible color palettes, responsive logos, and W3C/Tailwind design tokens.                    | [SKILL.md](skills/branding-process/SKILL.md)   | `generate_tokens.py`, `scaffold_svg_assets.py`                                                   |
+| **[`create-design-md`](skills/create-design-md/)**     | Google Stitch / `@google/design.md` specification engineering: YAML tokens + 8 canonical sections, 11 linter rules, 12-point rubric, and Tailwind/DTCG export.       | [SKILL.md](skills/create-design-md/SKILL.md)   | `inspect_design_tokens.py`, `generate_design_md.py`, `audit_design_md.py`, `export_design_md.py` |
+| **[`ui-ux-design`](skills/ui-ux-design/)**             | Full-lifecycle UI/UX engineering: cognitive UX laws, 8-state component lifecycle, 8pt spatial grid, WCAG 2.2 AA accessibility, anti-slop craft, and modern Agent UX. | [SKILL.md](skills/ui-ux-design/SKILL.md)       | `audit_ui_ux.py`, `generate_component_spec.py`                                                   |
+| **[`figcraft-workflows`](skills/figcraft-workflows/)** | End-to-end interface design, design systems, prototyping, Dev Mode handoff, and collaborative boards via FigCraft MCP server and `figcraft-cli`.                     | [SKILL.md](skills/figcraft-workflows/SKILL.md) | FigCraft MCP & `figcraft-cli`                                                                    |
 
 ### 🖋 Creative Writing & Narrative Architecture
 
@@ -184,11 +185,12 @@ npx markdownlint-cli2 "**/*.md"
 ```text
 .
 ├── .github/                          # Issue templates, PR templates, and Copilot bridge
-├── skills/                           # 17 production Agent Skills
+├── skills/                           # 18 production Agent Skills
 │   ├── branding-process/             # Brand strategy & design tokens
 │   ├── changelog-versioning/         # SemVer 2.0.0 & Keep a Changelog 1.1.0
 │   ├── christianity-scriptural-references/ # Biblical exegesis & SBL citations
 │   ├── create-agents-md/             # AI coding agent AGENTS.md engineering & bridges
+│   ├── create-design-md/             # Google Stitch / @google/design.md engineering
 │   ├── create-readme/                # Codebase inspection & README generation
 │   ├── figcraft-workflows/           # FigCraft MCP & CLI design workflows
 │   ├── git-commit/                   # Conventional Commits 1.0.0 engine

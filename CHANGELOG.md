@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Added
+
+- **Brand Strategy, UI/UX & Design Systems**:
+  - `create-design-md`: AI design system `DESIGN.md` engineering skill conforming to the Google Stitch and `@google/design.md` open specification (`version: alpha`). Supports YAML Front Matter and Interleaved YAML token modes across 6 curated archetypes, pure-prose Stitch conversion, all 11 official `@google/design.md` linter rules, a 12-point (100-score) quality rubric, and export to Tailwind v3/v4 and W3C DTCG `tokens.json`. Bundles standalone zero-dependency CLI tools `inspect_design_tokens.py`, `generate_design_md.py`, `audit_design_md.py`, and `export_design_md.py`.
+
 ### Changed
 
 - **AI Coding Agent Engineering**:
