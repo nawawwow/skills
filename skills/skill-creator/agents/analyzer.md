@@ -186,15 +186,15 @@ Use these categories to organize improvement suggestions:
 
 ---
 
-# Analyzing Benchmark Results
+## Analyzing Benchmark Results
 
 When analyzing benchmark results, the analyzer's purpose is to **surface patterns and anomalies** across multiple runs, not suggest skill improvements.
 
-## Role
+### Role
 
 Review all benchmark run results and generate freeform notes that help the user understand skill performance. Focus on patterns that wouldn't be visible from aggregate metrics alone.
 
-## Inputs
+### Inputs
 
 You receive these parameters in your prompt:
 
@@ -202,15 +202,15 @@ You receive these parameters in your prompt:
 - **skill_path**: Path to the skill being benchmarked
 - **output_path**: Where to save the notes (as JSON array of strings)
 
-## Process
+### Process
 
-### Step 1: Read Benchmark Data
+#### Step 1: Read Benchmark Data
 
 1. Read the benchmark.json containing all run results
 2. Note the configurations tested (with_skill, without_skill)
 3. Understand the run_summary aggregates already calculated
 
-### Step 2: Analyze Per-Assertion Patterns
+#### Step 2: Analyze Per-Assertion Patterns
 
 For each expectation across all runs:
 
@@ -220,7 +220,7 @@ For each expectation across all runs:
 - Does it **always fail with skill but pass without**? (skill may be hurting)
 - Is it **highly variable**? (flaky expectation or non-deterministic behavior)
 
-### Step 3: Analyze Cross-Eval Patterns
+#### Step 3: Analyze Cross-Eval Patterns
 
 Look for patterns across evals:
 
@@ -228,7 +228,7 @@ Look for patterns across evals:
 - Do some evals show high variance while others are stable?
 - Are there surprising results that contradict expectations?
 
-### Step 4: Analyze Metrics Patterns
+#### Step 4: Analyze Metrics Patterns
 
 Look at time_seconds, tokens, tool_calls:
 
@@ -236,7 +236,7 @@ Look at time_seconds, tokens, tool_calls:
 - Is there high variance in resource usage?
 - Are there outlier runs that skew the aggregates?
 
-### Step 5: Generate Notes
+#### Step 5: Generate Notes
 
 Write freeform observations as a list of strings. Each note should:
 
@@ -253,7 +253,7 @@ Examples:
 - "Token usage is 80% higher with skill, primarily due to script output parsing"
 - "All 3 without-skill runs for eval 1 produced empty output"
 
-### Step 6: Write Notes
+#### Step 6: Write Notes
 
 Save notes to `{output_path}` as a JSON array of strings:
 
@@ -266,7 +266,7 @@ Save notes to `{output_path}` as a JSON array of strings:
 ]
 ```
 
-## Guidelines
+### Guidelines
 
 **DO:**
 

@@ -8,7 +8,7 @@ A comprehensive architectural reference for designing immersive speculative worl
 
 Brandon Sanderson formulated four fundamental laws for speculative worldbuilding and magic system design:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                      SANDERSON'S LAWS OF MAGIC                         │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -36,7 +36,7 @@ Brandon Sanderson formulated four fundamental laws for speculative worldbuilding
 
 Every magic or speculative technological system exists along a continuum:
 
-```
+```text
 SOFT MAGIC ◄─────────────────────────────────────────────► HARD MAGIC
 (Tolkien / Ghibli)                                     (Mistborn / Sci-Fi)
 - Wonder, awe, mystery                                 - Predictable rules, clear costs

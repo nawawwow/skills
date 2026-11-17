@@ -3,12 +3,14 @@
 Machine-readable operating instructions for AI coding assistants working in the `skills` repository.
 
 ## Project Overview & Tech Stack
+
 - **Archetype:** AI Agent Skills Collection
 - **Stack:** Python 3.10+, Antigravity Agent Skill Standard, PyYAML, JSON Schema, managed via `pyproject.toml` and `ruff`.
 - **Manifests:** `pyproject.toml`, `.skill-lock.json`, `.prettierrc.json`, `.markdownlint.json`.
 - **Human Documentation:** Refer to `README.md` for architecture and individual skill docs in `skills/<skill-name>/SKILL.md`.
 
 ## Operational Commands
+
 Always use these verified commands to build, test, format, and validate changes:
 
 - **Install dependencies:** `pip install -e .`
@@ -25,6 +27,7 @@ Always use these verified commands to build, test, format, and validate changes:
 - **Audit commit for secrets:** `python skills/git-commit/scripts/prepare_commit.py --dry-run`
 
 ## Code Style & Architectural Conventions
+
 - **Progressive Disclosure:** Keep `SKILL.md` under 500 lines. Offload deep reference material to `references/`, executable utilities to `scripts/`, and templates to `assets/`.
 - **Description Constraint:** Skill frontmatter `description` is a classifier prompt that must be at most 1024 characters. Include what the skill does and proactive trigger contexts.
 - **Deterministic Scripts:** Implement deterministic Python scripts in `scripts/` for repetitive execution rather than leaving tasks to ad-hoc bash scripting.
@@ -32,6 +35,7 @@ Always use these verified commands to build, test, format, and validate changes:
 - **Single Test Pattern:** When verifying script changes, run isolated test cases rather than executing entire benchmark suites.
 
 ## Boundaries & "Never Do" Rules
+
 - Never commit `.env` files, API keys, credentials, or private tokens into the repository.
 - Never edit internal agent system directories (`.gemini/`, `.git/`, `.agent-archive/`).
 - Never delete or rename existing skills without explicit user instruction.
@@ -40,6 +44,7 @@ Always use these verified commands to build, test, format, and validate changes:
 - Never leave unreplaced template markers or placeholder variables in production files.
 
 ## PR & Git Guidelines
+
 - Format commits following Conventional Commits 1.0.0: `<type>(<scope>): <subject>`.
   - Common scopes: `feat(skill-creator): ...`, `fix(git-commit): ...`, `docs(sdlc-process): ...`.
 - Run `ruff check .` and validate affected skills with `quick_validate.py` before presenting diffs.

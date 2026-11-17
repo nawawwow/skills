@@ -24,7 +24,7 @@ codifies an end-to-end engineering discipline from concept to production observa
 Follow this disciplined lifecycle for non-trivial software capabilities, refactors,
 or greenfield systems:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        THE 6-PHASE SDLC ENGINE                         │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -47,6 +47,7 @@ or greenfield systems:
    - Write executable acceptance criteria in Given/When/Then (Gherkin) syntax.
    - See [references/spec-driven-development-and-requirements.md](references/spec-driven-development-and-requirements.md).
 3. **Scaffold PRD Artifact**:
+
    ```bash
    python <skill_path>/scripts/scaffold_sdlc_artifact.py --type prd --title "FeatureName" --out-dir ./docs/prd
    ```
@@ -61,6 +62,7 @@ or greenfield systems:
 3. **Establish Non-Functional Requirements (NFRs)**:
    - Define concrete latency targets (e.g. p95 < 200ms), throughput, uptime tier (e.g. 99.9%), and recovery objectives (RTO / RPO).
 4. **Scaffold ADR Artifact**:
+
    ```bash
    python <skill_path>/scripts/scaffold_sdlc_artifact.py --type adr --title "Use-PostgreSQL-For-Persistence" --out-dir ./docs/adr
    ```
@@ -90,6 +92,7 @@ or greenfield systems:
    - Software Composition Analysis (SCA) for known CVEs.
    - Pre-commit secret scanning (high-entropy tokens, private keys).
 4. **Scaffold Threat Model Artifact**:
+
    ```bash
    python <skill_path>/scripts/scaffold_sdlc_artifact.py --type threat-model --title "AuthService" --out-dir ./docs/security
    ```
@@ -116,11 +119,14 @@ or greenfield systems:
 2. **Monitor DORA Delivery Metrics**:
    - Deployment Frequency (DF), Lead Time for Changes (LTTC), Change Failure Rate (CFR), and Failed Deployment Recovery Time (FDRT).
    - Track AI-era Rework Rate (code churn within 14 days).
+
    ```bash
    python <skill_path>/scripts/calculate_dora_metrics.py --dir . --days 30
    ```
+
 3. **Conduct Blameless Post-Mortems**:
    - For every production incident, run a root-cause 5 Whys analysis, timeline reconstruction, and generate preventative action items.
+
    ```bash
    python <skill_path>/scripts/scaffold_sdlc_artifact.py --type post-mortem --title "Incident-2026-09-Outage" --out-dir ./docs/incidents
    ```

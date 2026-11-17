@@ -48,11 +48,12 @@ Every repository utilizing environment variables must maintain a tracked `.env.e
 cp .env.example .env.local
 ```
 
-### Best Practices for `.env.example`:
+### Best Practices for `.env.example`
 
 1. **Include Sensible Local Defaults**: Provide working local credentials (e.g. `localhost:5432`).
 2. **Never Commit Production Secrets**: Use placeholder descriptors (e.g. `your-32-char-random-secret-here`).
 3. **Group by Service**: Organize variables logically into commented sections:
+
    ```env
    # ==============================================================================
    # Core Application Settings

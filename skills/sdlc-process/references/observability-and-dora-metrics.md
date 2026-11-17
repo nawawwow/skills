@@ -9,7 +9,7 @@ measuring DORA delivery performance, or conducting blameless incident post-morte
 
 True observability allows you to understand internal system states strictly through external outputs:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                      THE OBSERVABILITY TRIAD                           │
 ├─────────────────┬──────────────────┬───────────────────────────────────┤

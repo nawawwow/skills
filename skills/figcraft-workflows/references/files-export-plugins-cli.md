@@ -41,22 +41,23 @@ Comprehensive agent guide for opening and saving files, importing assets from ot
 
 FigCraft natively opens and imports external formats on a best-effort basis and reports unsupported features in a `warnings` array:
 
-| Source Format                                 | Open as New Tab (`open_file` / `file.open`) | Append/Merge into Current File (`file.import`) | Notes & Caveats                                                                                                                  |
-| :-------------------------------------------- | :------------------------------------------ | :--------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| **FigCraft (`.figcraft`)**                    | Yes (lossless native format)                | Yes (appends pages, variables, flows)          | Native format.                                                                                                                   |
-| **Figma (`.fig`) & FigJam (`.jam`)**          | Yes (best effort, returns `warnings`)       | Yes (appends pages, variables, flows)          | Always inspect `warnings` and verify visually via `screenshot`.                                                                  |
-| **Figma REST API JSON (`.json`)**             | Yes (`variables` auto-loaded or passed)     | Yes (`variables` auto-loaded or passed)        | Automatically looks for `<name>.variables.json` or `variables.json` next to the file, or pass `variables` path/JSON explicitly.  |
-| **Figma Clipboard HTML (`edit.pasteDesignLayers`)** | —                                     | Yes (`edit.pasteDesignLayers {html \| data}`)  | Pastes layers copied in Figma (`Ctrl+V`); returns `missingImages` if clipboard omitted image bytes.                              |
-| **Sketch 48+ (`.sketch`)**                    | Yes (best effort, returns `warnings`)       | Yes (appends pages, variables, flows)          | Supports Sketch 48 or newer archives.                                                                                            |
-| **Penpot (`.penpot`)**                        | Yes (best effort, returns `warnings`)       | Yes (appends pages, variables, flows)          | Can also export back to Penpot 2.x via `file.export {format: "penpot"}`.                                                         |
-| **SVG (`.svg`)**                              | Yes (editable vector hierarchy)             | Yes (`center: true`, `x`, `y`)                 | Imports shapes, text, gradients, masks, and effects as an editable frame.                                                        |
-| **Raster (`.png`, `.jpg`, `.webp`, `.gif`, `.tiff`)** | Yes (becomes an image layer)        | Yes (`file.placeImage` / `image.place`)        | Preserves embedded color profile (`imageProfile`).                                                                               |
+| Source Format                                         | Open as New Tab (`open_file` / `file.open`) | Append/Merge into Current File (`file.import`) | Notes & Caveats                                                                                                                 |
+| :---------------------------------------------------- | :------------------------------------------ | :--------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| **FigCraft (`.figcraft`)**                            | Yes (lossless native format)                | Yes (appends pages, variables, flows)          | Native format.                                                                                                                  |
+| **Figma (`.fig`) & FigJam (`.jam`)**                  | Yes (best effort, returns `warnings`)       | Yes (appends pages, variables, flows)          | Always inspect `warnings` and verify visually via `screenshot`.                                                                 |
+| **Figma REST API JSON (`.json`)**                     | Yes (`variables` auto-loaded or passed)     | Yes (`variables` auto-loaded or passed)        | Automatically looks for `<name>.variables.json` or `variables.json` next to the file, or pass `variables` path/JSON explicitly. |
+| **Figma Clipboard HTML (`edit.pasteDesignLayers`)**   | —                                           | Yes (`edit.pasteDesignLayers {html \| data}`)  | Pastes layers copied in Figma (`Ctrl+V`); returns `missingImages` if clipboard omitted image bytes.                             |
+| **Sketch 48+ (`.sketch`)**                            | Yes (best effort, returns `warnings`)       | Yes (appends pages, variables, flows)          | Supports Sketch 48 or newer archives.                                                                                           |
+| **Penpot (`.penpot`)**                                | Yes (best effort, returns `warnings`)       | Yes (appends pages, variables, flows)          | Can also export back to Penpot 2.x via `file.export {format: "penpot"}`.                                                        |
+| **SVG (`.svg`)**                                      | Yes (editable vector hierarchy)             | Yes (`center: true`, `x`, `y`)                 | Imports shapes, text, gradients, masks, and effects as an editable frame.                                                       |
+| **Raster (`.png`, `.jpg`, `.webp`, `.gif`, `.tiff`)** | Yes (becomes an image layer)                | Yes (`file.placeImage` / `image.place`)        | Preserves embedded color profile (`imageProfile`).                                                                              |
 
 ---
 
 ## 3. Images, Presets, Filters & Non-Destructive Cropping
 
 - **Place an Image on the Canvas or Inside an Existing Shape**:
+
   ```json
   {
     "command": "image.place",
@@ -67,7 +68,9 @@ FigCraft natively opens and imports external formats on a best-effort basis and 
     }
   }
   ```
+
   (`mode`: `"fill" | "fit" | "crop" | "tile"`).
+
 - **Replace Image While Keeping Crop & Adjustments**:
   `run_command {command: "image.replace", params: {ids: [heroCardId], path: "C:/path/to/new-photo.jpg"}}`.
 - **Photographic Adjustments & Presets (`image.adjust`)**:
@@ -87,14 +90,14 @@ FigCraft natively opens and imports external formats on a best-effort basis and 
 
 Use the native `export` MCP tool (or `run_command {command: "file.export"}`) to export specific `ids` (or the current selection / top-level frames):
 
-| Format     | Key Options & Capabilities                                                                                                                                            |
-| :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `png`, `jpg`, `webp` | `scale` (`1..64`, default `1`) or `size` (`"2x"`, `"512w"`, `"512h"`), `contentsOnly` (default `true` ignores overlapping layers), `includeBoundingBox`.      |
-| `svg`      | `svgOutlineText` (default `true`; set `false` to preserve `<text>` nodes), `svgIdAttribute` (layer names as `id`), `svgSimplifyStroke` (`stroke` attrs vs outlines). |
-| `pdf`      | Print-ready options: `bleed` (points or `"3mm"`, `"0.125in"`), `cropMarks: true`, `bleedMarks: true`, `cmyk: true` (CMYK color conversion).                           |
-| `xml`      | **Android Vector Drawable XML**: `vdCompat` (`"bestEffort"` approximates with warnings, `"exact"` omits unsupported with warnings, `"ignore"` writes without warnings), `svgIdAttribute` (`android:name`). |
-| `fig`      | Experimental whole-file `.fig` export (also works by passing a `.fig` path to `save_file`). Returns `warnings` for features left out.                                 |
-| `penpot`   | Whole-file Penpot 2.x archive export via `run_command {command: "file.export", params: {format: "penpot", path: "/abs/path/out.penpot"}}`.                            |
+| Format               | Key Options & Capabilities                                                                                                                                                                                 |
+| :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `png`, `jpg`, `webp` | `scale` (`1..64`, default `1`) or `size` (`"2x"`, `"512w"`, `"512h"`), `contentsOnly` (default `true` ignores overlapping layers), `includeBoundingBox`.                                                   |
+| `svg`                | `svgOutlineText` (default `true`; set `false` to preserve `<text>` nodes), `svgIdAttribute` (layer names as `id`), `svgSimplifyStroke` (`stroke` attrs vs outlines).                                       |
+| `pdf`                | Print-ready options: `bleed` (points or `"3mm"`, `"0.125in"`), `cropMarks: true`, `bleedMarks: true`, `cmyk: true` (CMYK color conversion).                                                                |
+| `xml`                | **Android Vector Drawable XML**: `vdCompat` (`"bestEffort"` approximates with warnings, `"exact"` omits unsupported with warnings, `"ignore"` writes without warnings), `svgIdAttribute` (`android:name`). |
+| `fig`                | Experimental whole-file `.fig` export (also works by passing a `.fig` path to `save_file`). Returns `warnings` for features left out.                                                                      |
+| `penpot`             | Whole-file Penpot 2.x archive export via `run_command {command: "file.export", params: {format: "penpot", path: "/abs/path/out.penpot"}}`.                                                                 |
 
 ### Persistent Layer Export Presets & Multi-Page PDF Deck Export
 

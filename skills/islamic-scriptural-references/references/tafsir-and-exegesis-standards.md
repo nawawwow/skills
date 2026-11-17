@@ -11,7 +11,7 @@ Read this guide when researching Qur'anic interpretation, querying classical com
 In Islamic hermeneutics codified by scholars such as Ibn Taymiyyah and Ibn Kathir, the valid
 hierarchy of interpretation is strictly ordered:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │                   THE TAFSIR HIERARCHY                 │
 ├────────────────────────────────────────────────────────┤
@@ -38,13 +38,13 @@ via `GET /api/tafsir/{tafsir}/surah/{surah}/ayah/{ayah}` (`--tafsir <edition> <s
 
 ### A. Live Queryable Tafsir Editions on UmmahAPI
 
-| Tafsir Work                       | UmmahAPI `--tafsir` Key | Language | Author & Era                                        | Distinctive Focus & Characteristics                                                                                                                                  |
-| :-------------------------------- | :---------------------- | :------- | :-------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Ibn Kathir (Abridged)**         | `ibn_kathir`            | English  | Hafiz Ibn Kathir (d. 774 AH)                        | The undisputed benchmark for _Tafsir bi-al-Ma'thur_ (transmission-based). Sifts hadith chains, focuses on authentic traditions, and cross-references related verses. |
-| **Ma'arif al-Qur'an**             | `maarif`                | English  | Mufti Muhammad Shafi (d. 1396 AH)                   | Comprehensive contemporary Urdu/English commentary addressing modern theological and legal questions while remaining anchored in classical scholarship.              |
-| **Tafsir al-Muyassar**            | `muyassar`              | Arabic   | King Fahd Complex / Ministry of Islamic Affairs     | Concise, authoritative Arabic lexical and exegetical summary following early Sunni orthodoxy (_Salaf_), ideal for rapid verification of primary verse meaning.       |
-| **Tafsir al-Qur'an al-'Azim**     | `ibn_kathir_ar`         | Arabic   | Hafiz Ibn Kathir (d. 774 AH)                        | Unabridged original Arabic text of Ibn Kathir, including complete _isnad_ discussions, poetic citations, and comparative reports from the Sahabah and Tabi'in.       |
-| **All 4 Tafasir Combined**        | `all`                   | EN + AR  | Ibn Kathir, Mufti Muhammad Shafi, King Fahd Complex | Returns all 4 commentaries in a single call for side-by-side Arabic and English exegetical synthesis.                                                                |
+| Tafsir Work                   | UmmahAPI `--tafsir` Key | Language | Author & Era                                        | Distinctive Focus & Characteristics                                                                                                                                  |
+| :---------------------------- | :---------------------- | :------- | :-------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Ibn Kathir (Abridged)**     | `ibn_kathir`            | English  | Hafiz Ibn Kathir (d. 774 AH)                        | The undisputed benchmark for _Tafsir bi-al-Ma'thur_ (transmission-based). Sifts hadith chains, focuses on authentic traditions, and cross-references related verses. |
+| **Ma'arif al-Qur'an**         | `maarif`                | English  | Mufti Muhammad Shafi (d. 1396 AH)                   | Comprehensive contemporary Urdu/English commentary addressing modern theological and legal questions while remaining anchored in classical scholarship.              |
+| **Tafsir al-Muyassar**        | `muyassar`              | Arabic   | King Fahd Complex / Ministry of Islamic Affairs     | Concise, authoritative Arabic lexical and exegetical summary following early Sunni orthodoxy (_Salaf_), ideal for rapid verification of primary verse meaning.       |
+| **Tafsir al-Qur'an al-'Azim** | `ibn_kathir_ar`         | Arabic   | Hafiz Ibn Kathir (d. 774 AH)                        | Unabridged original Arabic text of Ibn Kathir, including complete _isnad_ discussions, poetic citations, and comparative reports from the Sahabah and Tabi'in.       |
+| **All 4 Tafasir Combined**    | `all`                   | EN + AR  | Ibn Kathir, Mufti Muhammad Shafi, King Fahd Complex | Returns all 4 commentaries in a single call for side-by-side Arabic and English exegetical synthesis.                                                                |
 
 ```bash
 # Retrieve English Ibn Kathir commentary for Ayat al-Kursi

@@ -12,7 +12,7 @@ Many teams confuse Voice and Tone. They are fundamentally different dimensions:
 >
 > _Think of Voice as a person's underlying personality and values; Tone is how their vocal inflection, speed, and empathy change when celebrating a promotion versus comforting someone in a hospital._
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        BRAND VOICE (INVARIANT)                         │
 │   Underlying Personality • Core Values • Sentence Rhythm • Word Choice │
@@ -69,7 +69,7 @@ Tone must adjust based on the user's emotional state, cognitive load, and enviro
 
 A structured messaging hierarchy ensures brand consistency across every marketing and sales channel:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        TAGLINE / BRAND SLOGAN                          │
 │               3 to 5 words • Evocative • Memorable                     │
@@ -104,7 +104,7 @@ Each pillar must have three components:
 2. **Technical Enabler (The Mechanism)**: What architectural feature makes this possible?
 3. **Reason to Believe (RTB / Proof Point)**: Concrete metric, benchmark, or verifiable proof.
 
-#### Example Pillar Breakdown:
+#### Example Pillar Breakdown
 
 - **Pillar Name**: _Sub-millisecond Global Latency_
 - **Benefit**: Your end users experience instant page loads anywhere in the world without regional delays.

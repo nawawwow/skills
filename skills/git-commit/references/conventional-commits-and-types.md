@@ -68,6 +68,7 @@ The scope provides contextual noun phrasing indicating what module or subsystem 
 - Preceded by an empty line following the subject line.
 - Explains the **motivation** ("why") behind the change and contrasts it with previous behavior.
 - Uses bullet points for multi-part changes:
+
   ```text
   feat(storage): migrate object storage from S3 to Cloudflare R2
 
@@ -81,10 +82,13 @@ The scope provides contextual noun phrasing indicating what module or subsystem 
 A breaking change signals a **MAJOR** version bump. Indicate it in either of two ways:
 
 1. Append an exclamation point (`!`) right before the colon in the header:
+
    ```text
    feat(api)!: remove deprecated v1 user profile endpoint
    ```
+
 2. Include a `BREAKING CHANGE:` footer:
+
    ```text
    feat(api): update authentication scheme
 

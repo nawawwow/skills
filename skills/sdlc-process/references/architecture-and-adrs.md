@@ -10,7 +10,7 @@ authoring Technical RFCs, or documenting Architecture Decision Records (ADRs).
 To keep architectural intent clear across human engineers and AI coding agents, document
 system structures using the **C4 Model** (Context, Containers, Components, Code):
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │ Level 1: System Context                                │
 │ How the system interacts with users & external systems │

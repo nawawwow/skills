@@ -24,96 +24,96 @@ To avoid ambiguity between different rabbinic collections that share identical t
 
 ### Order 1: Seder Zera'im (Seeds) - 11 Tractates
 
-| Tractate Name | Hebrew Name     | SBL Abbreviation | Bavli Gemara? | Yerushalmi Gemara? |
-| :------------ | :-------------- | :--------------- | :------------ | :----------------- |
+| Tractate Name | Hebrew Name | SBL Abbreviation | Bavli Gemara? | Yerushalmi Gemara? |
+| :------------ | :---------- | :--------------- | :------------ | :----------------- |
 | Berakhot      | בְּרָכוֹת       | `Ber.`           | Yes (2a–64a)  | Yes                |
-| Pe'ah         | פֵּאָה          | `Pe'ah`          | No            | Yes                |
-| Demai         | דְּמַאי         | `Dem.`           | No            | Yes                |
-| Kil'ayim      | כִּלְאַיִם      | `Kil.`           | No            | Yes                |
+| Pe'ah         | פֵּאָה         | `Pe'ah`          | No            | Yes                |
+| Demai         | דְּמַאי        | `Dem.`           | No            | Yes                |
+| Kil'ayim      | כִּלְאַיִם       | `Kil.`           | No            | Yes                |
 | Shevi'it      | שְׁבִיעִית      | `Šeb.` / `Shev.` | No            | Yes                |
 | Terumot       | תְּרוּמוֹת      | `Ter.`           | No            | Yes                |
-| Ma'asrot      | מַעַשְׂרוֹת     | `Ma'aś.`         | No            | Yes                |
-| Ma'aser Sheni | מַעֲשֵׂר שֵׁנִי | `Ma'aś. Š.`      | No            | Yes                |
-| Challah       | חַלָּה          | `Ḥal.`           | No            | Yes                |
-| Orlah         | עָרְלָה         | `‘Orl.`          | No            | Yes                |
-| Bikkurim      | בִּכּוּרִים     | `Bik.`           | No            | Yes                |
+| Ma'asrot      | מַעַשְׂרוֹת      | `Ma'aś.`         | No            | Yes                |
+| Ma'aser Sheni | מַעֲשֵׂר שֵׁנִי    | `Ma'aś. Š.`      | No            | Yes                |
+| Challah       | חַלָּה         | `Ḥal.`           | No            | Yes                |
+| Orlah         | עָרְלָה        | `‘Orl.`          | No            | Yes                |
+| Bikkurim      | בִּכּוּרִים      | `Bik.`           | No            | Yes                |
 
 ### Order 2: Seder Mo'ed (Festivals) - 12 Tractates
 
-| Tractate Name | Hebrew Name     | SBL Abbreviation | Bavli Gemara?                 | Yerushalmi Gemara? |
-| :------------ | :-------------- | :--------------- | :---------------------------- | :----------------- |
+| Tractate Name | Hebrew Name | SBL Abbreviation | Bavli Gemara?                 | Yerushalmi Gemara? |
+| :------------ | :---------- | :--------------- | :---------------------------- | :----------------- |
 | Shabbat       | שַׁבָּת         | `Šabb.`          | Yes (2a–157b)                 | Yes                |
-| Eruvin        | עֵרוּבִין       | `‘Erub.`         | Yes (2a–105a)                 | Yes                |
+| Eruvin        | עֵרוּבִין      | `‘Erub.`         | Yes (2a–105a)                 | Yes                |
 | Pesachim      | פְּסָחִים       | `Pesaḥ.`         | Yes (2a–121b)                 | Yes                |
 | Shekalim      | שְׁקָלִים       | `Šeqal.`         | No (included in printed Shas) | Yes                |
-| Yoma          | יוֹמָא          | `Yoma`           | Yes (2a–88a)                  | Yes                |
-| Sukkah        | סֻכָּה          | `Sukk.`          | Yes (2a–56b)                  | Yes                |
-| Beitzah       | בֵּיצָה         | `Beṣah`          | Yes (2a–40b)                  | Yes                |
-| Rosh Hashanah | רֹאשׁ הַשָּׁנָה | `Roš Haš.`       | Yes (2a–35a)                  | Yes                |
+| Yoma          | יוֹמָא        | `Yoma`           | Yes (2a–88a)                  | Yes                |
+| Sukkah        | סֻכָּה         | `Sukk.`          | Yes (2a–56b)                  | Yes                |
+| Beitzah       | בֵּיצָה        | `Beṣah`          | Yes (2a–40b)                  | Yes                |
+| Rosh Hashanah | רֹאשׁ הַשָּׁנָה    | `Roš Haš.`       | Yes (2a–35a)                  | Yes                |
 | Ta'anit       | תַּעֲנִית       | `Ta‘an.`         | Yes (2a–31a)                  | Yes                |
 | Megillah      | מְגִלָּה        | `Meg.`           | Yes (2a–32a)                  | Yes                |
 | Mo'ed Katan   | מוֹעֵד קָטָן    | `Mo‘ed Qat.`     | Yes (2a–29a)                  | Yes                |
-| Chagigah      | חֲגִיגָה        | `Ḥag.`           | Yes (2a–27a)                  | Yes                |
+| Chagigah      | חֲגִיגָה       | `Ḥag.`           | Yes (2a–27a)                  | Yes                |
 
 ### Order 3: Seder Nashim (Women) - 7 Tractates
 
 | Tractate Name | Hebrew Name | SBL Abbreviation | Bavli Gemara? | Yerushalmi Gemara? |
 | :------------ | :---------- | :--------------- | :------------ | :----------------- |
-| Yevamot       | יְבָמוֹת    | `Yebam.`         | Yes (2a–122b) | Yes                |
-| Ketubot       | כְּתוּבּוֹת | `Ketub.`         | Yes (2a–112b) | Yes                |
-| Nedarim       | נְדָרִים    | `Ned.`           | Yes (2a–91b)  | Yes                |
-| Nazir         | נָזִיר      | `Naz.`           | Yes (2a–66b)  | Yes                |
-| Sotah         | סוֹטָה      | `Soṭah`          | Yes (2a–49b)  | Yes                |
-| Gittin        | גִּטִּין    | `Giṭ.`           | Yes (2a–90b)  | Yes                |
-| Kiddushin     | קִדּוּשִׁין | `Qidd.`          | Yes (2a–82b)  | Yes                |
+| Yevamot       | יְבָמוֹת       | `Yebam.`         | Yes (2a–122b) | Yes                |
+| Ketubot       | כְּתוּבּוֹת      | `Ketub.`         | Yes (2a–112b) | Yes                |
+| Nedarim       | נְדָרִים       | `Ned.`           | Yes (2a–91b)  | Yes                |
+| Nazir         | נָזִיר        | `Naz.`           | Yes (2a–66b)  | Yes                |
+| Sotah         | סוֹטָה        | `Soṭah`          | Yes (2a–49b)  | Yes                |
+| Gittin        | גִּטִּין        | `Giṭ.`           | Yes (2a–90b)  | Yes                |
+| Kiddushin     | קִדּוּשִׁין      | `Qidd.`          | Yes (2a–82b)  | Yes                |
 
 ### Order 4: Seder Nezikin (Damages) - 10 Tractates
 
-| Tractate Name      | Hebrew Name     | SBL Abbreviation       | Bavli Gemara? | Yerushalmi Gemara? |
-| :----------------- | :-------------- | :--------------------- | :------------ | :----------------- |
-| Bava Kamma         | בָּבָא קַמָּא   | `B. Qam.` / `B. Kam.`  | Yes (2a–119b) | Yes                |
-| Bava Metzia        | בָּבָא מְצִיעָא | `B. Meṣ.` / `B. Metz.` | Yes (2a–119a) | Yes                |
-| Bava Batra         | בָּבָא בַּתְרָא | `B. Bat.`              | Yes (2a–176b) | Yes                |
-| Sanhedrin          | סַנְהֶדְרִין    | `Sanh.`                | Yes (2a–113b) | Yes                |
-| Makkot             | מַכּוֹת         | `Mak.`                 | Yes (2a–24b)  | Yes                |
+| Tractate Name      | Hebrew Name | SBL Abbreviation       | Bavli Gemara? | Yerushalmi Gemara? |
+| :----------------- | :---------- | :--------------------- | :------------ | :----------------- |
+| Bava Kamma         | בָּבָא קַמָּא     | `B. Qam.` / `B. Kam.`  | Yes (2a–119b) | Yes                |
+| Bava Metzia        | בָּבָא מְצִיעָא   | `B. Meṣ.` / `B. Metz.` | Yes (2a–119a) | Yes                |
+| Bava Batra         | בָּבָא בַּתְרָא    | `B. Bat.`              | Yes (2a–176b) | Yes                |
+| Sanhedrin          | סַנְהֶדְרִין     | `Sanh.`                | Yes (2a–113b) | Yes                |
+| Makkot             | מַכּוֹת        | `Mak.`                 | Yes (2a–24b)  | Yes                |
 | Shevu'ot           | שְׁבוּעוֹת      | `Šebu.` / `Shevu.`     | Yes (2a–49b)  | Yes                |
 | Eduyot             | עֵדֻיּוֹת       | `‘Ed.`                 | No            | No                 |
-| Avodah Zarah       | עֲבוֹדָה זָרָה  | `‘Abod. Zar.`          | Yes (2a–76b)  | Yes                |
-| Avot (Pirkei Avot) | אָבוֹת          | `’Abot` / `Avot`       | No            | No                 |
-| Horayot            | הוֹרָיוֹת       | `Hor.`                 | Yes (2a–14a)  | Yes                |
+| Avodah Zarah       | עֲבוֹדָה זָרָה   | `‘Abod. Zar.`          | Yes (2a–76b)  | Yes                |
+| Avot (Pirkei Avot) | אָבוֹת        | `’Abot` / `Avot`       | No            | No                 |
+| Horayot            | הוֹרָיוֹת      | `Hor.`                 | Yes (2a–14a)  | Yes                |
 
 ### Order 5: Seder Kodashim (Holy Things) - 11 Tractates
 
 | Tractate Name | Hebrew Name | SBL Abbreviation | Bavli Gemara? | Yerushalmi Gemara? |
 | :------------ | :---------- | :--------------- | :------------ | :----------------- |
-| Zevachim      | זְבָחִים    | `Zebaḥ.`         | Yes (2a–120b) | No                 |
-| Menachot      | מְנָחוֹת    | `Menaḥ.`         | Yes (2a–110a) | No                 |
-| Chullin       | חֻלִּין     | `Ḥul.`           | Yes (2a–142a) | No                 |
-| Bekhorot      | בְּכוֹרוֹת  | `Bek.`           | Yes (2a–61a)  | No                 |
-| Arakhin       | עֲרָכִין    | `‘Arak.`         | Yes (2a–34a)  | No                 |
-| Temurah       | תְּמוּרָה   | `Tem.`           | Yes (2a–34a)  | No                 |
-| Keritot       | כְּרִיתוֹת  | `Ker.`           | Yes (2a–28b)  | No                 |
-| Me'ilah       | מְעִילָה    | `Me‘il.`         | Yes (2a–22a)  | No                 |
-| Tamid         | תָּמִיד     | `Tamid`          | Yes (25b–33b) | No                 |
-| Middot        | מִדּוֹת     | `Mid.`           | No            | No                 |
-| Kinnim        | קִנִּים     | `Qinnim`         | No            | No                 |
+| Zevachim      | זְבָחִים       | `Zebaḥ.`         | Yes (2a–120b) | No                 |
+| Menachot      | מְנָחוֹת       | `Menaḥ.`         | Yes (2a–110a) | No                 |
+| Chullin       | חֻלִּין        | `Ḥul.`           | Yes (2a–142a) | No                 |
+| Bekhorot      | בְּכוֹרוֹת      | `Bek.`           | Yes (2a–61a)  | No                 |
+| Arakhin       | עֲרָכִין       | `‘Arak.`         | Yes (2a–34a)  | No                 |
+| Temurah       | תְּמוּרָה       | `Tem.`           | Yes (2a–34a)  | No                 |
+| Keritot       | כְּרִיתוֹת      | `Ker.`           | Yes (2a–28b)  | No                 |
+| Me'ilah       | מְעִילָה       | `Me‘il.`         | Yes (2a–22a)  | No                 |
+| Tamid         | תָּמִיד        | `Tamid`          | Yes (25b–33b) | No                 |
+| Middot        | מִדּוֹת        | `Mid.`           | No            | No                 |
+| Kinnim        | קִנִּים        | `Qinnim`         | No            | No                 |
 
 ### Order 6: Seder Tahorot (Purities) - 12 Tractates
 
-| Tractate Name | Hebrew Name  | SBL Abbreviation | Bavli Gemara? | Yerushalmi Gemara? |
-| :------------ | :----------- | :--------------- | :------------ | :----------------- |
-| Keilim        | כֵּלִים      | `Kelim`          | No            | No                 |
-| Ohalot        | אָהֳלוֹת     | `’Ohol.`         | No            | No                 |
-| Nega'im       | נְגָעִים     | `Neg.`           | No            | No                 |
-| Parah         | פָּרָה       | `Parah`          | No            | No                 |
-| Tahorot       | טְהָרוֹת     | `Ṭohar.`         | No            | No                 |
-| Mikva'ot      | מִקְוָאוֹת   | `Miqw.`          | No            | No                 |
-| Niddah        | נִדָּה       | `Nid.`           | Yes (2a–73a)  | Yes                |
-| Makhshirin    | מַכְשִׁירִין | `Makš.`          | No            | No                 |
-| Zavim         | זָבִים       | `Zabim`          | No            | No                 |
-| Tevul Yom     | טְבוּל יוֹם  | `Ṭebul Yom`      | No            | No                 |
-| Yadayim       | יָדַיִם      | `Yad.`           | No            | No                 |
-| Uktzin        | עֻקְצִין     | `‘Uqs.`          | No            | No                 |
+| Tractate Name | Hebrew Name | SBL Abbreviation | Bavli Gemara? | Yerushalmi Gemara? |
+| :------------ | :---------- | :--------------- | :------------ | :----------------- |
+| Keilim        | כֵּלִים        | `Kelim`          | No            | No                 |
+| Ohalot        | אָהֳלוֹת       | `’Ohol.`         | No            | No                 |
+| Nega'im       | נְגָעִים       | `Neg.`           | No            | No                 |
+| Parah         | פָּרָה         | `Parah`          | No            | No                 |
+| Tahorot       | טְהָרוֹת       | `Ṭohar.`         | No            | No                 |
+| Mikva'ot      | מִקְוָאוֹת      | `Miqw.`          | No            | No                 |
+| Niddah        | נִדָּה         | `Nid.`           | Yes (2a–73a)  | Yes                |
+| Makhshirin    | מַכְשִׁירִין     | `Makš.`          | No            | No                 |
+| Zavim         | זָבִים        | `Zabim`          | No            | No                 |
+| Tevul Yom     | טְבוּל יוֹם    | `Ṭebul Yom`      | No            | No                 |
+| Yadayim       | יָדַיִם        | `Yad.`           | No            | No                 |
+| Uktzin        | עֻקְצִין       | `‘Uqs.`          | No            | No                 |
 
 ---
 

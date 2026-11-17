@@ -22,6 +22,7 @@ Comprehensive agent guide for wiring interactive prototypes (triggers, transitio
   - `run_command {command: "proto.flow.add", params: {start: homeFrameId, name: "Onboarding Flow"}}`
   - Rename or remove flows: `proto.flow.rename {start: homeFrameId, name: "Main Flow", description: "Happy path"}`, `proto.flow.remove {start: homeFrameId}`.
 - **Configure Prototype Device & Responsive Viewport**:
+
   ```json
   {
     "command": "proto.settings",
@@ -33,6 +34,7 @@ Comprehensive agent guide for wiring interactive prototypes (triggers, transitio
     }
   }
   ```
+
   - Custom viewport size: pass `width` and `height` (`1..10000`) to automatically select `"Custom size"`.
 
 ---
@@ -132,6 +134,7 @@ An interaction can execute a sequence of `actions` (e.g., increment a tap counte
 - Add or edit `else if` / `else` branches: `proto.conditional.addBlock`, `proto.conditional.setCondition`, `proto.conditional.removeBlock`.
 - **Dry-Run Expression Evaluation (`proto.evaluate`)**:
   Test any prototype expression against a layer's active variable modes without changing the document:
+
   ```json
   {
     "command": "proto.evaluate",
@@ -173,6 +176,7 @@ In the GUI, `Shift+D` (`view.devMode`) switches to read-only Dev Mode. Programma
 ```
 
 **Supported `language` Targets (10 Targets)**:
+
 1. `"css"`: Standard CSS layout, typography, variables, and visual properties.
 2. `"html"`: Full layer subtree rendered as semantic HTML + CSS.
 3. `"react"`: Full layer subtree as a React component (component properties become React props; instances pass prop values).
@@ -255,6 +259,7 @@ Test any combination of component properties, render a preview PNG, and retrieve
 - **Canvas Annotations & Categories (`annotation.*`)**:
   - Create custom categories (e.g., `"Accessibility"`, `"Motion"`): `run_command {command: "annotation.addCategory", params: {name: "Accessibility", color: "#10B981"}}`.
   - Pin a note and live property callouts to a layer:
+
     ```json
     {
       "command": "annotation.add",
@@ -266,6 +271,7 @@ Test any combination of component properties, render a preview PNG, and retrieve
       }
     }
     ```
+
 - **Developer Links (`devResource.*`)**:
   - Attach specification URLs, Storybook links, or Jira tickets to a layer or main component:
     `run_command {command: "devResource.add", params: {id: buttonSetId, name: "Storybook — Button", url: "https://storybook.example.com/?path=/docs/button"}}`.

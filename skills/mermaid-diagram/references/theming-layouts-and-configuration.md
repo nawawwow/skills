@@ -3,6 +3,7 @@
 Authoritative guide to configuring **Mermaid.js (v11.x – v12.2.0)** via YAML frontmatter, selecting layout engines (`elk`, `dagre`, `tidy-tree`, `cose-bilkent`), customizing themes (`redux-color`, `neo`, `handDrawn`, `base` + `themeVariables`), adding accessibility metadata, rendering KaTeX math, and automating exports with `@mermaid-js/mermaid-cli` (`mmdc`).
 
 ## Table of Contents
+
 1. [YAML Frontmatter Architecture (v10.5+ – v12.2+)](#1-yaml-frontmatter-architecture-v105--v122)
 2. [v12.0+ Per-Diagram Defaults & Config Keys](#2-v120-per-diagram-defaults--config-keys)
 3. [Layout Engines (`elk`, `dagre`, `tidy-tree`, `cose-bilkent`)](#3-layout-engines-elk-dagre-tidy-tree-cose-bilkent)
@@ -33,10 +34,11 @@ config:
     padding: 16
 ---
 flowchart LR
-    A["Ingress"] --> B["Payment Core"]
+A["Ingress"] --> B["Payment Core"]
 ```
 
 ### Configuration Precedence (Highest Wins)
+
 1. **Diagram YAML Frontmatter** (`config.<diagramKey>.<prop>` overrides `config.<prop>`)
 2. **Site-level `mermaid.initialize({...})`**
 3. **Per-Diagram v12 Default** (see table below)
@@ -48,22 +50,24 @@ flowchart LR
 
 Since **Mermaid v12.0.0**, 10 diagram types default to `theme: redux-color` and `look: neo` (and 7 of them default to `layout: elk`). Notice that the **config key** used inside `config:` is often shorter than the diagram declaration keyword:
 
-| Diagram Declaration Keyword | Frontmatter `config:` Key | v12 Default `theme` | v12 Default `look` | v12 Default `layout` |
-| :--- | :--- | :--- | :--- | :--- |
-| `flowchart` / `graph` | `flowchart` | `redux-color` | `neo` | `elk` |
-| `sequenceDiagram` | `sequence` | `redux-color` | `neo` | *(sequence renderer)* |
-| `classDiagram` | `class` | `redux-color` | `neo` | `elk` |
-| `stateDiagram-v2` | `state` | `redux-color` | `neo` | `elk` |
-| `erDiagram` | `er` | `redux-color` | `neo` | `elk` |
-| `requirementDiagram` | `requirement` | `redux-color` | `neo` | `elk` |
-| `swimlane-beta` | `swimlane` | `redux-color` | `neo` | `swimlane` |
-| `usecase-beta` | `usecase` | `redux-color` | `neo` | `elk` |
-| `agentflow-beta` | `agentflow` | `redux-color` | `neo` | `elk` |
-| `venn-beta` | `venn` | `redux-color` | `neo` | *(venn renderer)* |
-| *All other 22 diagram types* | *(e.g., `gantt`, `pie`, `c4`)* | `default` | `classic` | `dagre` *(or native D3)* |
+| Diagram Declaration Keyword  | Frontmatter `config:` Key      | v12 Default `theme` | v12 Default `look` | v12 Default `layout`     |
+| :--------------------------- | :----------------------------- | :------------------ | :----------------- | :----------------------- |
+| `flowchart` / `graph`        | `flowchart`                    | `redux-color`       | `neo`              | `elk`                    |
+| `sequenceDiagram`            | `sequence`                     | `redux-color`       | `neo`              | _(sequence renderer)_    |
+| `classDiagram`               | `class`                        | `redux-color`       | `neo`              | `elk`                    |
+| `stateDiagram-v2`            | `state`                        | `redux-color`       | `neo`              | `elk`                    |
+| `erDiagram`                  | `er`                           | `redux-color`       | `neo`              | `elk`                    |
+| `requirementDiagram`         | `requirement`                  | `redux-color`       | `neo`              | `elk`                    |
+| `swimlane-beta`              | `swimlane`                     | `redux-color`       | `neo`              | `swimlane`               |
+| `usecase-beta`               | `usecase`                      | `redux-color`       | `neo`              | `elk`                    |
+| `agentflow-beta`             | `agentflow`                    | `redux-color`       | `neo`              | `elk`                    |
+| `venn-beta`                  | `venn`                         | `redux-color`       | `neo`              | _(venn renderer)_        |
+| _All other 22 diagram types_ | _(e.g., `gantt`, `pie`, `c4`)_ | `default`           | `classic`          | `dagre` _(or native D3)_ |
 
 ### Restoring the Pre-v12 Classic Appearance
+
 If you need a diagram in Mermaid v12+ to match the traditional v10/v11 appearance and Dagre layout:
+
 ```yaml
 ---
 config:
@@ -77,26 +81,27 @@ config:
 
 ## 3. Layout Engines (`elk`, `dagre`, `tidy-tree`, `cose-bilkent`)
 
-| Layout Value | Engine Description | Best Use Cases |
-| :--- | :--- | :--- |
-| `elk` | **Eclipse Layout Kernel** (bundled in core `mermaid` from v12.0+). Orthogonal routing with superior edge-crossing minimization and nested subgraph handling. | Complex flowcharts ($\ge 10$ nodes), nested subgraphs, ER schemas, class hierarchies, state machines. |
-| `elk.mrtree` | ELK Multi-Root Tree algorithm. | Strictly hierarchical org charts and decision trees. |
-| `elk.stress` | ELK Stress-minimization algorithm. | Symmetric mesh networks and undirected graphs. |
-| `elk.force` | ELK Force-directed physical model. | Clustered topology discovery. |
-| `elk.box` / `elk.rectpacking` | ELK Box / Rectangle packing. | Grid-like container packing inside subgraphs or `agentflow-beta`. |
-| `dagre` | Classic layered directed graph engine. Fast and compact. | Simple linear flowcharts ($< 10$ nodes) or Tier 2/3 host parity. |
-| `tidy-tree` | Non-overlapping hierarchical tree layout. | `mindmap` diagrams where branches otherwise collide. |
-| `cose-bilkent` | Compound Spring Embedder layout. | Default radial layout for `mindmap`. |
+| Layout Value                  | Engine Description                                                                                                                                           | Best Use Cases                                                                                        |
+| :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------- |
+| `elk`                         | **Eclipse Layout Kernel** (bundled in core `mermaid` from v12.0+). Orthogonal routing with superior edge-crossing minimization and nested subgraph handling. | Complex flowcharts ($\ge 10$ nodes), nested subgraphs, ER schemas, class hierarchies, state machines. |
+| `elk.mrtree`                  | ELK Multi-Root Tree algorithm.                                                                                                                               | Strictly hierarchical org charts and decision trees.                                                  |
+| `elk.stress`                  | ELK Stress-minimization algorithm.                                                                                                                           | Symmetric mesh networks and undirected graphs.                                                        |
+| `elk.force`                   | ELK Force-directed physical model.                                                                                                                           | Clustered topology discovery.                                                                         |
+| `elk.box` / `elk.rectpacking` | ELK Box / Rectangle packing.                                                                                                                                 | Grid-like container packing inside subgraphs or `agentflow-beta`.                                     |
+| `dagre`                       | Classic layered directed graph engine. Fast and compact.                                                                                                     | Simple linear flowcharts ($< 10$ nodes) or Tier 2/3 host parity.                                      |
+| `tidy-tree`                   | Non-overlapping hierarchical tree layout.                                                                                                                    | `mindmap` diagrams where branches otherwise collide.                                                  |
+| `cose-bilkent`                | Compound Spring Embedder layout.                                                                                                                             | Default radial layout for `mindmap`.                                                                  |
 
 ### ELK Fine-Tuning Options (`config.elk`)
+
 ```yaml
 ---
 config:
   layout: elk
   elk:
     mergeEdges: true
-    nodePlacementStrategy: BRANDES_KOEPF   # SIMPLE | INTERACTIVE | LINEAR_SEGMENTS | BRANDES_KOEPF | NETWORK_SIMPLEX
-    cycleBreakingStrategy: GREEDY          # GREEDY | DEPTH_FIRST | INTERACTIVE | MODEL_ORDER | GREEDY_MODEL_ORDER
+    nodePlacementStrategy: BRANDES_KOEPF # SIMPLE | INTERACTIVE | LINEAR_SEGMENTS | BRANDES_KOEPF | NETWORK_SIMPLEX
+    cycleBreakingStrategy: GREEDY # GREEDY | DEPTH_FIRST | INTERACTIVE | MODEL_ORDER | GREEDY_MODEL_ORDER
 ---
 ```
 
@@ -108,26 +113,28 @@ config:
 - **`look: classic`**: Traditional Mermaid border and shape styling.
 - **`look: handDrawn`**: Rough.js sketch aesthetic ideal for whiteboard RFCs and early-stage design reviews.
   - Set `handDrawnSeed: 42` in `config:` for deterministic SVG output across CI builds (default `0` randomizes strokes on every render).
-  - *Note*: `look: handDrawn` is not supported on custom D3 canvas diagrams like `wardley-beta` and `cynefin-beta`.
+  - _Note_: `look: handDrawn` is not supported on custom D3 canvas diagrams like `wardley-beta` and `cynefin-beta`.
 
 ---
 
 ## 5. 11 Built-in Themes & Custom `themeVariables` Palettes
 
 ### The 11 Official Built-in Themes
-1. `redux-color` *(v12 default for core diagrams — categorical color cycling)*
-2. `redux-dark-color` *(dark mode counterpart of `redux-color`)*
-3. `redux` *(monochrome modern geometry — best when applying custom semantic `classDef` colors)*
-4. `redux-dark` *(monochrome dark mode)*
-5. `neo` *(soft modern light theme)*
-6. `neo-dark` *(soft modern dark theme)*
-7. `default` *(classic Mermaid blue/purple light theme)*
-8. `neutral` *(high-contrast grayscale — ideal for black-and-white print/PDFs)*
-9. `dark` *(classic dark mode theme)*
-10. `forest` *(shades of green)*
-11. `base` *(the **only** fully customizable theme for arbitrary `themeVariables`)*
+
+1. `redux-color` _(v12 default for core diagrams — categorical color cycling)_
+2. `redux-dark-color` _(dark mode counterpart of `redux-color`)_
+3. `redux` _(monochrome modern geometry — best when applying custom semantic `classDef` colors)_
+4. `redux-dark` _(monochrome dark mode)_
+5. `neo` _(soft modern light theme)_
+6. `neo-dark` _(soft modern dark theme)_
+7. `default` _(classic Mermaid blue/purple light theme)_
+8. `neutral` _(high-contrast grayscale — ideal for black-and-white print/PDFs)_
+9. `dark` _(classic dark mode theme)_
+10. `forest` _(shades of green)_
+11. `base` _(the **only** fully customizable theme for arbitrary `themeVariables`)_
 
 ### Custom Brand Theme Blueprint (`theme: base`)
+
 > [!WARNING]
 > When customizing `themeVariables`, you **must** set `theme: base` and use **6-digit hex color strings** (`"#1e40af"`). Named CSS colors (`"royalblue"`) are ignored by Mermaid's internal luminance calculator.
 
@@ -157,13 +164,18 @@ config:
 ## 6. Accessibility (`accTitle` & `accDescr`) & KaTeX Math (`$$...$$`)
 
 ### Screen-Reader Accessibility (`accTitle` & `accDescr`)
+
 Supported across diagram types to inject `<title>` (`aria-labelledby`) and `<desc>` (`aria-describedby`) into the root `<svg>`:
+
 - **Single-line**:
+
   ```text
   accTitle: Short Accessible Title
   accDescr: Concise summary of the diagram's nodes, flows, and key takeaway.
   ```
+
 - **Multi-line description**:
+
   ```text
   accDescr {
       Detailed multi-line description for assistive technologies.
@@ -172,7 +184,9 @@ Supported across diagram types to inject `<title>` (`aria-labelledby`) and `<des
   ```
 
 ### Mathematical Typesetting with KaTeX (`$$...$$`, v10.9+)
+
 Supported in `flowchart` and `sequenceDiagram`:
+
 ```mermaid
 flowchart LR
     Input["$$x(t) = A \sin(\omega t + \phi)$$"] -->|"$$\mathcal{F}\{x(t)\}$$"| Output["$$X(\omega)$$"]
@@ -185,11 +199,12 @@ flowchart LR
 In browser/ESM or `mmdc` environments, register any icon pack from [icones.js.org](https://icones.js.org/) (`@iconify-json/*`) to use in `flowchart` (`@{ icon: "logos:aws-s3" }`), `architecture-beta` (`service s3(logos:aws-s3)[Bucket]`), `usecase-beta`, and `treeView-beta`:
 
 ```javascript
-import mermaid from 'mermaid';
+import mermaid from "mermaid";
 mermaid.registerIconPacks([
   {
-    name: 'logos',
-    loader: () => fetch('https://unpkg.com/@iconify-json/logos@1/icons.json').then((res) => res.json()),
+    name: "logos",
+    loader: () =>
+      fetch("https://unpkg.com/@iconify-json/logos@1/icons.json").then((res) => res.json()),
   },
 ]);
 ```
@@ -199,7 +214,8 @@ mermaid.registerIconPacks([
 ## 8. Headless CLI Rendering (`@mermaid-js/mermaid-cli` / `mmdc`)
 
 ### Essential `mmdc` Commands
-```bash
+
+````bash
 # 1. Render a single .mmd file to crisp SVG with transparent background
 npx -p @mermaid-js/mermaid-cli mmdc -i architecture.mmd -o architecture.svg -b transparent
 
@@ -211,10 +227,12 @@ npx -p @mermaid-js/mermaid-cli mmdc -i README.md -o README.rendered.md -a ./docs
 
 # 4. Fast syntax/render validation via stdin/stdout (no temp files)
 cat diagram.mmd | npx -p @mermaid-js/mermaid-cli mmdc -i - -o - -e svg -q > /dev/null
-```
+````
 
 ### CI / Docker Headless Chromium Sandbox Config
+
 When running `mmdc` inside Docker or Linux CI containers, pass `-p puppeteer-config.json`:
+
 ```json
 {
   "args": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"]

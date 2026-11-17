@@ -9,6 +9,7 @@ Specialized operational workflows tailored to four major research disciplines: T
 Used when evaluating open-source frameworks, database engines, distributed systems, API migrations, and architectural RFCs.
 
 ### 1. Investigative Vectors
+
 - **Codebase Health**: Inspect GitHub commit velocity, PR merge latency, active maintainer count, and release cadence over the last 12 months.
 - **Dependency & Security Risk**: Query the National Vulnerability Database (`site:nvd.nist.gov`) and GitHub Security Advisories for active or unpatched CVEs.
 - **Production Battle-Testing**: Search for real-world failure modes:
@@ -16,13 +17,14 @@ Used when evaluating open-source frameworks, database engines, distributed syste
 - **Licensing Traps**: Audit `LICENSE` and `COPYING` files for restrictive clauses (AGPLv3, BSL, SSPL, Commons Clause).
 
 ### 2. Technical Evaluation Matrix Template
+
 ```markdown
-| Criteria | Framework A | Framework B | Production Implication |
-| :--- | :--- | :--- | :--- |
-| **Throughput / Latency** | p99 < 5ms (In-memory) | p99 < 45ms (LSM-tree disk) | Framework A required for real-time SLA |
-| **Consistency Model** | Strict Linearizability (Raft) | Eventual Consistency (CRDT) | Framework B allows multi-region writes |
-| **Maintainer Backing** | Foundation (Apache 2.0) | Single VC-backed startup | Framework B carries re-licensing risk |
-| **Operational Overhead** | Complex ZooKeeper quorum | Zero-dependency single binary | Framework B significantly lowers DevOps cost |
+| Criteria                 | Framework A                   | Framework B                   | Production Implication                       |
+| :----------------------- | :---------------------------- | :---------------------------- | :------------------------------------------- |
+| **Throughput / Latency** | p99 < 5ms (In-memory)         | p99 < 45ms (LSM-tree disk)    | Framework A required for real-time SLA       |
+| **Consistency Model**    | Strict Linearizability (Raft) | Eventual Consistency (CRDT)   | Framework B allows multi-region writes       |
+| **Maintainer Backing**   | Foundation (Apache 2.0)       | Single VC-backed startup      | Framework B carries re-licensing risk        |
+| **Operational Overhead** | Complex ZooKeeper quorum      | Zero-dependency single binary | Framework B significantly lowers DevOps cost |
 ```
 
 ---
@@ -32,6 +34,7 @@ Used when evaluating open-source frameworks, database engines, distributed syste
 Used when evaluating product landscapes, competitive moats, pricing structures, customer churn drivers, and technological disruption.
 
 ### 1. Investigative Vectors
+
 - **Pricing & Packaging Transparency**:
   - Search for hidden tier limitations: `"pricing" "<product>" "custom quote" OR "seats" OR "overage"`
   - Inspect public developer forums for surprise billing complaints.
@@ -48,6 +51,7 @@ Used when evaluating product landscapes, competitive moats, pricing structures, 
 Used when reviewing peer-reviewed papers, scientific trials, machine learning preprints, and algorithmic advances.
 
 ### 1. Investigative Vectors (The PRISMA Lens)
+
 - **Methodological Scrutiny**: Inspect sample sizes, control groups, ablation studies, baseline configurations, and dataset leakage.
 - **Preprint vs Peer-Review**: Treat arXiv/bioRxiv papers as unreviewed preprints; verify if the paper was subsequently accepted at a peer-reviewed conference (NeurIPS, ICML, Nature, ACL).
 - **Benchmark Faithfulness**: Search for independent reproduction attempts (`site:paperswithcode.com` or GitHub reproduction repos) to verify reported state-of-the-art (SOTA) claims.
@@ -59,6 +63,7 @@ Used when reviewing peer-reviewed papers, scientific trials, machine learning pr
 Used when verifying controversial factual claims, unmasking front organizations, corporate registry investigations, or timeline reconstruction.
 
 ### 1. Investigative Vectors
+
 - **Entity Resolution & Cross-Referencing**:
   - Connect individuals across business registers, LinkedIn profiles, corporate SEC disclosures, and domain registration records.
 - **Chronological Timeline Reconstruction**:

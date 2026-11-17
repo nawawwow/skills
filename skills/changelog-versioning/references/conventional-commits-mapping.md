@@ -27,6 +27,7 @@ A breaking change is signaled in Conventional Commits in one of two ways:
 
 1. An exclamation mark before the colon: `feat!: drop legacy authentication endpoint`.
 2. A `BREAKING CHANGE:` footer in the commit message body:
+
    ```text
    feat(auth): migrate to OAuth 2.1 PKCE
 
@@ -34,7 +35,7 @@ A breaking change is signaled in Conventional Commits in one of two ways:
    now use authorization code flow with PKCE.
    ```
 
-### Changelog Presentation Rule:
+### Changelog Presentation Rule
 
 Never bury breaking changes in a standard bullet. Format them prominently at the top of the version section or prefix with a bold warning tag:
 
@@ -66,7 +67,7 @@ Raw developer commit messages are frequently cryptic, overly technical, or focus
 #### Example 2: Developer Feature Shorthand
 
 - ❌ **Raw Git Commit**: `feat: add --csv flag to export cmd`
-- ✅ **Changelog Entry**: `Added `--csv`option to the`export` command for direct tabular data extraction ([#142](https://github.com/org/repo/pull/142)).`
+- ✅ **Changelog Entry**: ``Added `--csv` option to the `export` command for direct tabular data extraction ([#142](https://github.com/org/repo/pull/142)).``
 
 #### Example 3: Security Mitigation
 
@@ -79,7 +80,7 @@ Raw developer commit messages are frequently cryptic, overly technical, or focus
 
 A high-signal changelog strictly excludes mechanical maintenance commits:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │              COMMITS TO PURGE FROM CHANGELOG           │
 ├────────────────────────────────────────────────────────┤

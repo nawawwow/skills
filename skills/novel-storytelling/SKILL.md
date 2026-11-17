@@ -35,7 +35,7 @@ Every scene drafted or polished under this skill must adhere strictly to these s
 
 Follow this sequence when drafting, expanding, or revising any scene or chapter:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP STORYTELLING EXECUTION FLOW                   │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -126,6 +126,7 @@ Polish the prose at the sentence level to create musical cadence and remove amat
    - Convert abstract nouns back into muscular actions (_"He made an examination of the lock"_ $\to$ _"He picked the lock"_).
 4. **Automated Prose Audit**:
    - Run the bundled prose linter to measure filter word density, dialogue tag cleanliness, sentence rhythm score, and passive voice:
+
      ```bash
      python scripts/lint_prose.py --file 03_MANUSCRIPT/act1_chapter01.md
      ```

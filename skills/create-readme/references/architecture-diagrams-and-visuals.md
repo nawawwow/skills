@@ -95,7 +95,7 @@ flowchart LR
 
 When describing codebase architecture, a full directory dump overwhelms the reader. Curate an annotated ASCII tree that highlights domain boundaries:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        ASCII TREE RULES                                │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -105,9 +105,9 @@ When describing codebase architecture, a full directory dump overwhelms the read
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Example Annotated Tree:
+### Example Annotated Tree
 
-```
+```text
 my-platform/
 ├── apps/
 │   ├── web/                    # Next.js customer-facing portal
@@ -128,7 +128,7 @@ my-platform/
 
 ## 4. Media & Terminal Demos
 
-### Guidelines for Screenshots & Recordings:
+### Guidelines for Screenshots & Recordings
 
 1. **Compress Images**: Keep images under 200 KB. Use WebP or compressed PNG.
 2. **Terminal Recordings**: For CLI tools, use [VHS](https://github.com/charmbracelet/vhs) to generate crisp, deterministic terminal GIFs or SVGs.

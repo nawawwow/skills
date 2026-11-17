@@ -57,6 +57,7 @@ Use `run_command` with `frame.create` and a `preset` name (if `x`/`y` are omitte
 ```
 
 **Built-in `FRAME_PRESETS` (39 presets)**:
+
 - **Phone**: `iPhone 17` (`402×874`), `iPhone 17 Pro` (`402×874`), `iPhone 17 Pro Max` (`440×956`), `iPhone Air` (`420×912`), `iPhone 16` (`393×852`), `iPhone 16 Pro` (`402×874`), `iPhone 16 Pro Max` (`440×956`), `iPhone 16 Plus` (`430×932`), `iPhone SE` (`320×568`), `Android Compact` (`412×917`), `Android Medium` (`700×840`).
 - **Tablet**: `iPad mini 8.3` (`744×1133`), `iPad Pro 11"` (`834×1194`), `iPad Pro 12.9"` (`1024×1366`), `Surface Pro 8` (`1440×960`), `Android Expanded` (`1280×800`).
 - **Desktop**: `MacBook Air` (`1280×832`), `MacBook Pro 14"` (`1512×982`), `MacBook Pro 16"` (`1728×1117`), `Desktop` (`1440×1024`), `Wireframe` (`1440×1024`), `TV` (`1280×720`).
@@ -84,20 +85,20 @@ Auto Layout arranges a frame's, component's, or instance's children in a row, co
 
 ### Container Auto-Layout Properties (`set_properties` / `create_node.props`)
 
-| Property          | Accepted Values                                                                 | Purpose                                                                                      |
-| :---------------- | :------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------- |
-| `layout`          | `"horizontal"` \| `"vertical"` \| `"grid"` \| `null`                            | Sets or removes auto-layout mode (`Shift+A` / `layout.add`).                                 |
-| `gap`             | `number` (alias `columnGap`)                                                    | Primary axis spacing between children (or column gap in `grid`).                             |
-| `crossGap`        | `number` (alias `rowGap`)                                                       | Spacing between wrapped lines (`wrap: true`) or row gap in `grid`.                           |
-| `padding`         | `number` \| `[top, right, bottom, left]`                                        | Inner padding (or individual `paddingTop`, `paddingRight`, `paddingBottom`, `paddingLeft`).  |
-| `mainAlign`       | `"min"` \| `"center"` \| `"max"` \| `"spaceBetween"` \| `"spaceAround"` \| `"spaceEvenly"` | Distribution along the primary axis.                                                         |
-| `crossAlign`      | `"min"` \| `"center"` \| `"max"` \| `"baseline"`                                | Alignment across the counter axis (`"baseline"` aligns first text baselines in rows).        |
-| `wrap`            | `boolean`                                                                       | Wraps overflowing items into multiple rows (`horizontal`) or columns (`vertical`).           |
-| `contentAlign`    | `"auto"` \| `"spaceBetween"`                                                    | How wrapped lines pack along the cross axis.                                                 |
-| `sizingH` / `sizingV` | `"fixed"` \| `"hug"` \| `"fill"`                                            | Horizontal and vertical sizing behavior of the frame or child.                               |
-| `minWidth` / `maxWidth` / `minHeight` / `maxHeight` | `number` \| `null`                    | Responsive size clamps (`null` clears the limit).                                            |
-| `strokesIncluded` | `boolean`                                                                       | Include inside stroke weight in layout box calculations.                                     |
-| `reverseZ`        | `boolean`                                                                       | Canvas stacking order (`true` draws the first child on top, useful for overlapping avatars). |
+| Property                                            | Accepted Values                                                                            | Purpose                                                                                      |
+| :-------------------------------------------------- | :----------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------- |
+| `layout`                                            | `"horizontal"` \| `"vertical"` \| `"grid"` \| `null`                                       | Sets or removes auto-layout mode (`Shift+A` / `layout.add`).                                 |
+| `gap`                                               | `number` (alias `columnGap`)                                                               | Primary axis spacing between children (or column gap in `grid`).                             |
+| `crossGap`                                          | `number` (alias `rowGap`)                                                                  | Spacing between wrapped lines (`wrap: true`) or row gap in `grid`.                           |
+| `padding`                                           | `number` \| `[top, right, bottom, left]`                                                   | Inner padding (or individual `paddingTop`, `paddingRight`, `paddingBottom`, `paddingLeft`).  |
+| `mainAlign`                                         | `"min"` \| `"center"` \| `"max"` \| `"spaceBetween"` \| `"spaceAround"` \| `"spaceEvenly"` | Distribution along the primary axis.                                                         |
+| `crossAlign`                                        | `"min"` \| `"center"` \| `"max"` \| `"baseline"`                                           | Alignment across the counter axis (`"baseline"` aligns first text baselines in rows).        |
+| `wrap`                                              | `boolean`                                                                                  | Wraps overflowing items into multiple rows (`horizontal`) or columns (`vertical`).           |
+| `contentAlign`                                      | `"auto"` \| `"spaceBetween"`                                                               | How wrapped lines pack along the cross axis.                                                 |
+| `sizingH` / `sizingV`                               | `"fixed"` \| `"hug"` \| `"fill"`                                                           | Horizontal and vertical sizing behavior of the frame or child.                               |
+| `minWidth` / `maxWidth` / `minHeight` / `maxHeight` | `number` \| `null`                                                                         | Responsive size clamps (`null` clears the limit).                                            |
+| `strokesIncluded`                                   | `boolean`                                                                                  | Include inside stroke weight in layout box calculations.                                     |
+| `reverseZ`                                          | `boolean`                                                                                  | Canvas stacking order (`true` draws the first child on top, useful for overlapping avatars). |
 
 ### 2D Grid Auto Layout Properties (`layout: "grid"`)
 
@@ -139,7 +140,7 @@ If layers are already positioned manually, run `run_command {command: "layout.su
       "command": "node.create",
       "params": {
         "type": "text",
-        "parent": {"$ref": "card"},
+        "parent": { "$ref": "card" },
         "name": "Title",
         "text": "Instant Prototypes",
         "props": {
@@ -154,7 +155,7 @@ If layers are already positioned manually, run `run_command {command: "layout.su
       "command": "node.create",
       "params": {
         "type": "text",
-        "parent": {"$ref": "card"},
+        "parent": { "$ref": "card" },
         "name": "Body",
         "text": "Wire interactive flows with variables, conditions, and smart animations.",
         "props": {
@@ -174,6 +175,7 @@ If layers are already positioned manually, run `run_command {command: "layout.su
 ## 4. Constraints, Layout Grids & Guides
 
 For non-auto-layout frames (or `absolute: true` children inside auto-layout frames):
+
 - **Constraints**: `set_properties {ids: [id], props: {constraints: {horizontal: "min"|"max"|"center"|"stretch"|"scale", vertical: "min"|"max"|"center"|"stretch"|"scale"}}}`.
 - **Layout Grids**: Add column, row, or uniform square grids via `run_command {command: "grid.add", params: {ids: [frameId], grid: {kind: "columns", count: 12, gutter: 24, offset: 32}}}`. Toggle display with `view.layoutGrids` (`Shift+G`).
 - **Ruler Guides**: `guide.add {vertical: true, offset: 120, frame: frameId}`, `guide.move`, `guide.remove`, `guide.clear`.
@@ -185,6 +187,7 @@ For non-auto-layout frames (or `absolute: true` children inside auto-layout fram
 ### Primitive Layer Types
 
 Create with `create_node` (or `shape.*` via `run_command`):
+
 - `rectangle` (`cornerRadius`: `12` or `[tl, tr, br, bl]`, `cornerSmoothing`: `0..1`)
 - `ellipse` (`arcStart`, `arcSweep`, `arcInner` for donut charts and progress rings)
 - `polygon` (`pointCount`: `3..60`)
@@ -196,14 +199,15 @@ Create with `create_node` (or `shape.*` via `run_command`):
 
 - **Solid Colors**: `"#RRGGBB"`, `"#RRGGBBAA"`, or `{"type": "solid", "color": "#3B82F6", "opacity": 0.8}`. Remove fill/stroke with `fill: "none"` or `object.removeFill` / `object.removeStroke`.
 - **Gradients**: `linearGradient`, `radialGradient`, `angularGradient`, `diamondGradient`:
+
   ```json
   {
     "fills": [
       {
         "type": "linearGradient",
         "stops": [
-          {"position": 0, "color": "#6366F1"},
-          {"position": 1, "color": "#EC4899"}
+          { "position": 0, "color": "#6366F1" },
+          { "position": 1, "color": "#EC4899" }
         ],
         "from": [0, 0],
         "to": [1, 1]
@@ -211,12 +215,14 @@ Create with `create_node` (or `shape.*` via `run_command`):
     ]
   }
   ```
+
 - **Live Pattern Fills**: Tile any existing layer across a shape with `run_command {command: "fill.pattern", params: {ids: [targetId], source: iconNodeId, tile: "grid", scale: 1, spacing: [8, 8]}}`.
 - **Stroke Options**: `strokeWeight`, `strokeAlign` (`"inside" | "center" | "outside"`), individual sides `strokeSides: [t, r, b, l]` or `strokeBottomWeight: 1`, `strokeCap` / `startCap` / `endCap` (`"none" | "round" | "square" | "lineArrow" | "triangleArrow" | "reversedTriangle" | "circleFilled" | "diamondFilled"`), `strokeJoin` (`"miter" | "bevel" | "round"`), `dashes: [6, 4]`, `widthProfile` (`"uniform" | "wedge" | "taper" | "eye" | "rounded" | "pinch"`), and `brush` (`"taper" | "ink" | "ribbon" | "bristle" | "dots" | "stars" | "confetti" | "leaves"`).
 
 ### Effects
 
 Set via `set_properties {props: {effects: [...]}}` or `effect.add`:
+
 - `dropShadow` / `innerShadow`: `{"type": "dropShadow", "color": "#00000033", "offset": [0, 8], "radius": 24, "spread": 0}`
 - `layerBlur` / `backgroundBlur`: `{"type": "backgroundBlur", "radius": 16}`
 - `noise`, `texture`, `glass` (refraction, depth, dispersion, frost `radius`, `lightAngle`, `lightIntensity`, `splay`).
@@ -272,6 +278,7 @@ Pass SVG `path` data or a `points` array to `create_node {type: "vector"}` (alwa
 ### Non-Destructive Boolean Groups (`bool.*`)
 
 Combine shapes while keeping operands editable inside the boolean group:
+
 - `bool.union` (`Alt+Shift+U`), `bool.subtract` (`Alt+Shift+S`), `bool.intersect` (`Alt+Shift+I`), `bool.exclude` (`Alt+Shift+E`).
 - Convert to a single flat vector path with `bool.flatten` or `vector.flatten` (`Ctrl+E` / `Alt+Shift+F`).
 
@@ -305,6 +312,7 @@ Combine shapes while keeping operands editable inside the boolean group:
   - `edit.pasteOver` (`Ctrl+Shift+V`) and `edit.pasteReplace {ids: [oldId]}` (`Ctrl+Shift+R`).
 - **Pattern & Regex Batch Rename (`object.batchRename`)**:
   - Supports `$&` (current name/match), `$1..$9` (regex capture groups), `$n` (ascending `1, 2, 3`), `$N` (descending), and `$nnn` (zero-padded `001, 002, 003`):
+
     ```json
     {
       "command": "object.batchRename",
@@ -315,6 +323,7 @@ Combine shapes while keeping operands editable inside the boolean group:
       }
     }
     ```
+
 - **Alignment & Tidying**:
   - `align.left` (`Alt+A`), `align.hcenter` (`Alt+H`), `align.right` (`Alt+D`), `align.top` (`Alt+W`), `align.vcenter` (`Alt+V`), `align.bottom` (`Alt+S`).
   - `distribute.horizontal` (`Alt+Shift+H`), `distribute.vertical` (`Alt+Shift+V`), `arrange.tidy {ids, spacing: 24}` (`Ctrl+Alt+Shift+T`), `arrange.packH`, `arrange.packV`, `arrange.roundToPixels`.

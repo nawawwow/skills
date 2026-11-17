@@ -8,7 +8,7 @@ A brand audit is a diagnostic evaluation of a brand's strategic clarity, visual 
 
 Every audit inspects four interconnected layers:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ 1. STRATEGY & POSITIONING CLARITY                                     │
 │    Is the Onliness clear? Is differentiation defensible?                │

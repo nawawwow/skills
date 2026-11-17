@@ -18,7 +18,7 @@ In creative writing, "architects" (plotters) design stories through structural m
 
 Whenever developing, outlining, or diagnosing a novel, follow this standardized 5-step sequence:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP NOVEL ARCHITECTURE ENGINE                     │
 ├────────────────────────────────────────────────────────────────────────┤

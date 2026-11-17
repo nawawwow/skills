@@ -16,7 +16,7 @@ Mastering psychic distance prevents the two most common stylistic failures in mo
 
 In _The Art of Fiction_, John Gardner laid out five distinct levels of psychic distance using the example of a man stepping into a snowy street:
 
-```
+```text
 [Level 1: Panoramic]   → "It was winter of the year 1853. A large man stepped out of a doorway."
 [Level 2: Report]      → "Henry J. Warburton had never much cared for snow."
 [Level 3: Summary]     → "Henry hated snow; it made his joints ache and clouded his spectacles."
@@ -88,7 +88,7 @@ Free Indirect Discourse is the defining technique of modern close third-person n
 
 Filter words place an invisible sheet of glass between the reader and the sensory experience:
 
-```
+```text
 [WEAK / FILTERED]  →  She heard the thunder crash outside and felt the floor shake.
 [STRONG / DIRECT]  →  Thunder cracked overhead; the floorboards shuddered beneath her heels.
 ```
@@ -132,7 +132,7 @@ Head-hopping occurs when the narration penetrates the thoughts, sensory percepti
 
 Masterful storytellers do not stay at Level 4 every single second. They use psychic distance as a dynamic cinematic lens:
 
-```
+```text
 [SCENE START]  → Level 2/3 (Set the room, establish baseline, state ticking clock)
 [MIDDLE]       → Level 4 (Free Indirect Discourse, immediate sensory feed, dialogue)
 [CRISIS PEAK]  → Level 5 (Short visceral fragments, somatic panic or intense revelation)

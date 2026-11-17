@@ -8,7 +8,7 @@ A quantitative 12-point rubric for auditing, scoring (0–100), and certifying r
 
 The automated auditor (`scripts/audit_readme.py`) evaluates a `README.md` against 12 weighted criteria:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   12-POINT README QUALITY GATES                        │
 ├────────────────────────────────────────────────────────────────────────┤

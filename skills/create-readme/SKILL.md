@@ -18,7 +18,7 @@ A project's README is its digital front door. Friction points—such as vague va
 
 Whenever creating, updating, or auditing a repository's README, follow this standardized sequence:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                     5-STEP README ENGINEERING FLOW                     │
 ├────────────────────────────────────────────────────────────────────────┤

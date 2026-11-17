@@ -36,7 +36,7 @@ Every endpoint must have an unambiguous `operationId` written in camelCase or sn
 
 Never leave status codes undocumented, and never invent ad-hoc error formats (`{ "error": "failed" }`). Adhere to **RFC 9457 Problem Details for HTTP APIs**:
 
-### Standard Error Schema:
+### Standard Error Schema
 
 ```json
 {
@@ -96,7 +96,6 @@ curl -X POST "https://api.example.com/v1/organizations/org_123/keys" \
     "expires_in": 2592000
   }'
 ```
-````
 
 ### Responses
 
@@ -119,8 +118,7 @@ curl -X POST "https://api.example.com/v1/organizations/org_123/keys" \
   "expires_at": "2026-10-30T12:00:00Z"
 }
 ```
-
-```
+````
 
 ---
 
@@ -134,4 +132,3 @@ For software libraries and SDKs, code comments are the single source of truth fo
   Document `Args:`, `Returns:`, `Raises:`, and `Example:`.
 - **Rust (rustdoc)**:
   Use triple-slash `///` with `# Examples`, `# Panics`, and `# Errors` sections.
-```

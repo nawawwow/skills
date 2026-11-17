@@ -44,6 +44,7 @@ Changes within each version are grouped strictly under these six H3 subheadings.
 For new user-facing features, APIs, endpoints, CLI flags, or capabilities.
 
 - _Example_:
+
   ```markdown
   ### Added
 
@@ -56,6 +57,7 @@ For new user-facing features, APIs, endpoints, CLI flags, or capabilities.
 For changes in existing functionality, performance enhancements, UI adjustments, or non-breaking architectural updates.
 
 - _Example_:
+
   ```markdown
   ### Changed
 
@@ -68,6 +70,7 @@ For changes in existing functionality, performance enhancements, UI adjustments,
 For features, methods, or configurations that will be removed in upcoming releases. Always specify the planned removal milestone and provide migration alternatives.
 
 - _Example_:
+
   ```markdown
   ### Deprecated
 
@@ -79,6 +82,7 @@ For features, methods, or configurations that will be removed in upcoming releas
 For features, APIs, or legacy configurations deleted in this release. In stable versions (`>= 1.0.0`), removals represent breaking changes and require a `MAJOR` version bump.
 
 - _Example_:
+
   ```markdown
   ### Removed
 
@@ -91,6 +95,7 @@ For features, APIs, or legacy configurations deleted in this release. In stable 
 For bug fixes, defect remediation, memory leaks, and regression fixes.
 
 - _Example_:
+
   ```markdown
   ### Fixed
 
@@ -103,6 +108,7 @@ For bug fixes, defect remediation, memory leaks, and regression fixes.
 For vulnerability mitigations, dependency security patches, CVE remediations, or security advisory disclosures. Always include CVE identifiers when assigned.
 
 - _Example_:
+
   ```markdown
   ### Security
 
@@ -116,7 +122,7 @@ For vulnerability mitigations, dependency security patches, CVE remediations, or
 
 The `## [Unreleased]` section lives at the top of the version list. It serves as a continuous staging area for merged PRs before a formal version tag is cut.
 
-### Workflow:
+### Workflow
 
 1. **During Development**: When a pull request merges into `main`, append its user-facing bullet under the appropriate category in `## [Unreleased]`.
 2. **At Release Time**:

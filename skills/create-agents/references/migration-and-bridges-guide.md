@@ -3,6 +3,7 @@
 ## 1. The Multi-Tool Ecosystem Challenge
 
 In diverse engineering teams, developers often use different AI coding environments simultaneously:
+
 - Developer A uses **Cursor IDE**
 - Developer B uses **Claude Code CLI**
 - Developer C uses **GitHub Copilot** in VS Code
@@ -16,7 +17,7 @@ Maintaining separate configuration files for each tool (`.cursorrules`, `CLAUDE.
 
 To eliminate drift while ensuring 100% compatibility across all tools, the industry standard pattern is **Dual Consolidation and Bridging**:
 
-```
+```text
                        ┌──────────────────────────────┐
                        │          AGENTS.md           │
                        │ (Single Source of Truth)     │
@@ -53,7 +54,8 @@ python skills/create-agents/scripts/migrate_agents.py . --bridge
 python skills/create-agents/scripts/migrate_agents.py . --bridge --archive
 ```
 
-### What `migrate_agents.py` Does:
+### What `migrate_agents.py` Does
+
 1. **Scans & Parses:** Automatically finds `.cursorrules`, `.cursor/rules/*.mdc`, `CLAUDE.md`, `.github/copilot-instructions.md`, and `.windsurfrules`.
 2. **Extracts High-Signal Content:** Isolates verified CLI commands, architectural bullet points, and negative boundary rules ("Never do...").
 3. **Deduplicates:** Combines overlapping instructions from multiple tools into a unified list.
@@ -65,21 +67,29 @@ python skills/create-agents/scripts/migrate_agents.py . --bridge --archive
 ## 4. Bridge Formats Reference
 
 ### Claude Code Bridge (`CLAUDE.md`)
+
 Claude Code natively supports referencing other markdown files using the `@` prefix:
+
 ```markdown
 @AGENTS.md
 ```
+
 When Claude Code launches in the terminal, it resolves `@AGENTS.md` and loads the master file into its system context.
 
 ### GitHub Copilot Bridge (`.github/copilot-instructions.md`)
+
 GitHub Copilot looks for instructions in `.github/copilot-instructions.md`:
+
 ```markdown
 <!-- GitHub Copilot Instructions Bridge -->
+
 Please adhere strictly to all project operational commands, conventions, and boundaries defined in the root `AGENTS.md` file.
 ```
 
 ### Cursor Rules Bridge (`.cursor/rules/agents.mdc`)
+
 Modern Cursor IDE supports scoped rule files in `.cursor/rules/` with frontmatter:
+
 ```markdown
 ---
 description: Universal project operating instructions synchronized from AGENTS.md
@@ -87,5 +97,6 @@ globs: *
 ---
 
 # Project Guidelines
+
 Adhere to the single source of truth defined in `AGENTS.md`.
 ```

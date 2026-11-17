@@ -18,7 +18,7 @@ Jewish sacred literature encompasses a multi-layered textual continuum spanning 
 
 Whenever answering inquiries requiring Jewish scripture, rabbinic passages, or commentaries, execute the following 5-step sequence:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP JEWISH CITATION ENGINE                        │
 ├────────────────────────────────────────────────────────────────────────┤

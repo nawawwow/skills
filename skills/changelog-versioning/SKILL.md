@@ -47,7 +47,7 @@ Every release and changelog managed under this skill must adhere strictly to the
 
 Follow this standardized workflow whenever preparing a release or updating release notes:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP RELEASE ENGINEERING FLOW                      │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -118,6 +118,7 @@ python scripts/update_changelog.py --repo-url "https://github.com/org/repo"
 
 1. **Rotate `[Unreleased]`**:
    - Move staged entries into a new release header with today's ISO 8601 date:
+
      ```markdown
      ## [1.3.0] - 2026-09-30
 
@@ -129,9 +130,11 @@ python scripts/update_changelog.py --repo-url "https://github.com/org/repo"
 
      - Memory leak during batch PDF export.
      ```
+
    - Reset the `## [Unreleased]` section at the top.
 2. **Update Reference Compare Links**:
    - Update `[Unreleased]` to compare from the new tag to `HEAD`:
+
      ```markdown
      [Unreleased]: https://github.com/org/repo/compare/v1.3.0...HEAD
      [1.3.0]: https://github.com/org/repo/compare/v1.2.0...v1.3.0

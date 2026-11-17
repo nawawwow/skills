@@ -25,7 +25,7 @@ Apply the STRIDE model across every trust boundary, API endpoint, and data store
 
 Security checks must be automated at every stage of the development pipeline:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                      SHIFT-LEFT SECURITY GATES                         │
 ├─────────────────┬──────────────────┬─────────────────┬─────────────────┤

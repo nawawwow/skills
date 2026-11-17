@@ -12,7 +12,7 @@ The Mishnah is organized into **6 Orders** (_Shisha Sidrei Mishnah_, colloquiall
 
 ### The Six Orders (_Sedarim_)
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        THE 6 ORDERS OF THE MISHNAH                     │
 ├────────────────────────────────────────────────────────────────────────┤

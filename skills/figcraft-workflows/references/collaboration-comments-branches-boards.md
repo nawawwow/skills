@@ -28,7 +28,8 @@ When asked to review or fix comments on a document:
 3. **Apply the Design Fix**:
    - Execute the required mutations via `set_properties`, `batch`, or `run_command`, then verify with `inspect_document` and `screenshot`.
 4. **Reply First, Then Resolve**:
-   - **CRITICAL INVARIANT**: Replying to a resolved comment thread **reopens** it. Always post your explanation via `comment.reply` *before* calling `comment.resolve`:
+   - **CRITICAL INVARIANT**: Replying to a resolved comment thread **reopens** it. Always post your explanation via `comment.reply` _before_ calling `comment.resolve`:
+
      ```json
      {
        "label": "Reply and Resolve Comment",
@@ -94,6 +95,7 @@ branch.create ──► Mutate on Branch Tab ──► branch.review ──► (
 ```
 
 1. **Create & Switch to a Branch**:
+
    ```json
    {
      "command": "branch.create",
@@ -102,7 +104,9 @@ branch.create ──► Mutate on Branch Tab ──► branch.review ──► (
      }
    }
    ```
+
    Returns `{id, name, index}` and switches to the new branch tab (`index`).
+
 2. **List or Reopen Existing Branches**:
    - `run_command {command: "branch.list"}` (`state: "active" | "merged" | "archived"`).
    - `run_command {command: "branch.open", params: {id: branchId}}`.
@@ -110,6 +114,7 @@ branch.create ──► Mutate on Branch Tab ──► branch.review ──► (
    - `run_command {command: "branch.review", params: {id: branchId}}` returns changes made on `branch` and `main` since the branch base, plus an array of `conflicts: [{key, id, name, property, branch, main, deletedBy}]` whenever the same property was modified on both sides or a layer was deleted on one side and edited on the other.
 4. **Sync Upstream Changes from Main (`branch.updateFromMain`)**:
    - If `main` changed while working on the branch, pull `main` into the branch first. If `branch.review` reported conflicts, every conflict key must be resolved explicitly (`"branch"` or `"main"`):
+
      ```json
      {
        "command": "branch.updateFromMain",
@@ -122,8 +127,10 @@ branch.create ──► Mutate on Branch Tab ──► branch.review ──► (
        }
      }
      ```
+
 5. **Merge into Main (`branch.merge`) or Archive (`branch.archive`)**:
    - Merge back as **one undo step** on `main` (automatically archiving the branch):
+
      ```json
      {
        "command": "branch.merge",
@@ -135,6 +142,7 @@ branch.create ──► Mutate on Branch Tab ──► branch.review ──► (
        }
      }
      ```
+
    - Or set aside without merging: `run_command {command: "branch.archive", params: {id: branchId}}`.
 
 ---
@@ -191,6 +199,7 @@ A Board (`file.newBoard`) is a dedicated collaborative whiteboard document with 
 - **Flowchart Shapes & Auto-Connected Diagrams (`board.shape` & `board.addConnected`)**:
   - Supported `shape` types (23 shapes): `"rectangle"`, `"roundedRectangle"`, `"ellipse"`, `"diamond"`, `"triangle"`, `"triangleDown"`, `"parallelogramRight"`, `"parallelogramLeft"`, `"trapezoid"`, `"pentagon"`, `"hexagon"`, `"octagon"`, `"star"`, `"plus"`, `"arrowLeft"`, `"arrowRight"`, `"chevron"`, `"speechBubble"`, `"database"`, `"document"`, `"predefinedProcess"`, `"manualInput"`, `"internalStorage"`.
   - Spawn the next connected flowchart step automatically on any side (`"right" | "below" | "left" | "above"`):
+
     ```json
     {
       "command": "board.addConnected",
@@ -200,6 +209,7 @@ A Board (`file.newBoard`) is a dedicated collaborative whiteboard document with 
       }
     }
     ```
+
   - Wire arbitrary layers with smart connectors (`"straight" | "elbow" | "curved"`):
     `run_command {command: "board.connector", params: {from: nodeA, to: nodeB, style: "elbow", label: "Yes"}}` (adjust with `board.reattach`, `board.reshape`, `board.label`).
 - **Tables, Stamps & Ink**:

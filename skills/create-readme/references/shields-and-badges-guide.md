@@ -8,7 +8,7 @@ A comprehensive guide to curating, styling, and integrating high-signal status b
 
 Badges serve as immediate operational indicators of project health, licensing, and stability. However, adding 10–15 badges clutters the viewport and dilutes signal.
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        CURATED BADGE MATRIX                            │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -107,7 +107,7 @@ Shields.io supports multiple aesthetic styles via the `style=` query parameter:
 - **`for-the-badge`**: Prominent, uppercase, blocky style suited for landing page headers.
   - `https://img.shields.io/badge/style-for--the--badge-green?style=for-the-badge`
 
-### Recommended Centered Header Layout:
+### Recommended Centered Header Layout
 
 ```markdown
 <div align="center">

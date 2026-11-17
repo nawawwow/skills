@@ -113,7 +113,7 @@ Reject sterile, repetitive "AI template slop" by applying Don Norman's 3 Levels 
    - **Break the Bento Monoculture**: Never force every section into a $3 \times 3$ identical card grid. Introduce asymmetric layouts (2/3 anchor + 1/3 rail), full-bleed callout statements, and horizontal rails.
    - **Replace the "Icon-in-a-Box" Trap**: Illustrate features with real UI artifacts, interactive controls, code snippets, or actual screenshots rather than isolated 24px Lucide icons in pastel boxes.
 3. **Reflective (Authentic Grounding & Copywriting)**:
-   - **Ban Banned Buzzwords**: Strictly purge marketing word salads (*"supercharge", "seamless", "next-gen", "cutting-edge", "empower", "revolutionize"*). Use the **Noun-Action-Outcome** formula.
+   - **Ban Banned Buzzwords**: Strictly purge marketing word salads (_"supercharge", "seamless", "next-gen", "cutting-edge", "empower", "revolutionize"_). Use the **Noun-Action-Outcome** formula.
    - **Grounded Social Proof**: Anchor testimonials and case studies with real human photos, verifiable names, locations, and concrete quantitative outcomes.
 
 _Deep dive_: [anti-slop-and-emotional-design.md](references/anti-slop-and-emotional-design.md).

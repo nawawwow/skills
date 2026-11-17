@@ -10,7 +10,7 @@ Digital teams waste hundreds of hours hunting for vector assets or deploying out
 
 ### Directory Structure
 
-```
+```text
 assets/brand/
 ├── logos/
 │   ├── primary/         # Horizontal lockups (SVG, PNG, EPS)
@@ -28,11 +28,11 @@ assets/brand/
 
 Every brand asset file must follow this strict naming formula:
 
-```
+```text
 [brand]_[element]_[variant]_[color/theme]_[resolution/state].[extension]
 ```
 
-#### Examples:
+#### Examples
 
 - `acme_logo_primary_dark_master.svg`
 - `acme_logo_stacked_light_1024w.png`
@@ -89,7 +89,7 @@ Brand governance should empower velocity, not create a bureaucratic bottleneck.
 
 ### The Lightweight Brand Review Workflow
 
-```
+```text
 [ Designer / Engineer / Marketer drafts new touchpoint ]
                            │
                            ▼

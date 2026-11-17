@@ -24,7 +24,7 @@ audit-ready, falsifiable intelligence dossiers.
 Follow this structured lifecycle for non-trivial investigations, architecture trade-offs,
 and empirical reviews:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                     THE 5-PHASE RESEARCH ENGINE                        │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -42,11 +42,11 @@ and empirical reviews:
 
 Select the operational depth tier based on task complexity and decision stakes:
 
-| Tier | Name | Target Budget | Core Mechanics | Deliverable Type |
-| :---: | :--- | :---: | :--- | :--- |
-| **Tier 1** | **Rapid Brief / Fact-Check** | 2–4 queries<br>1–2 min | Single-claim verification, lateral reading, primary origin trace | Concise Executive Memo |
-| **Tier 2** | **Standard Deep Dive** | 6–12 queries<br>3–6 min | STORM perspective expansion, trade-off matrix, counter-evidence audit | Deep Dive Dossier |
-| **Tier 3** | **Exhaustive Dossier** | 15+ queries<br>8–15 min | Full ACH hypothesis testing, multi-hop snowballing, longitudinal trends | Formal Intelligence Dossier |
+|    Tier    | Name                         |      Target Budget      | Core Mechanics                                                          | Deliverable Type            |
+| :--------: | :--------------------------- | :---------------------: | :---------------------------------------------------------------------- | :-------------------------- |
+| **Tier 1** | **Rapid Brief / Fact-Check** | 2–4 queries<br>1–2 min  | Single-claim verification, lateral reading, primary origin trace        | Concise Executive Memo      |
+| **Tier 2** | **Standard Deep Dive**       | 6–12 queries<br>3–6 min | STORM perspective expansion, trade-off matrix, counter-evidence audit   | Deep Dive Dossier           |
+| **Tier 3** | **Exhaustive Dossier**       | 15+ queries<br>8–15 min | Full ACH hypothesis testing, multi-hop snowballing, longitudinal trends | Formal Intelligence Dossier |
 
 ---
 
@@ -58,10 +58,11 @@ Select the operational depth tier based on task complexity and decision stakes:
    - Extract the core problem, primary stakeholders, and target decision.
    - Establish explicit **Non-Goals** to prevent tangential rabbit holes.
 2. **Decompose into Orthogonal Sub-Questions**:
-   - Break the broad topic into 3–5 sub-questions spanning: *Mechanism* (how it works), *Empirical Performance* (benchmarks/data), *Failure Modes* (outages/limitations), and *Governance/Economics* (licensing/cost).
+   - Break the broad topic into 3–5 sub-questions spanning: _Mechanism_ (how it works), _Empirical Performance_ (benchmarks/data), _Failure Modes_ (outages/limitations), and _Governance/Economics_ (licensing/cost).
 3. **Formulate Competing Hypotheses ($H_1, H_2, \dots$)**:
    - Identify mutually exclusive alternative explanations or technical options upfront to guard against confirmation bias.
 4. **Scaffold the Research Deliverable**:
+
    ```bash
    python <skill_path>/scripts/scaffold_research_dossier.py --tier 2 --domain technical --title "TopicName" --output-dir ./docs/research
    ```
@@ -69,7 +70,7 @@ Select the operational depth tier based on task complexity and decision stakes:
 ### Phase 2: Multi-Angle Query Strategy & STORM Perspective Expansion
 
 1. **Stanford STORM Perspective Brainstorming**:
-   - Query through distinct stakeholder personas: *The Security Auditor*, *The Systems Architect*, *The Operator/DevOps*, *The Economic/Legal Analyst*.
+   - Query through distinct stakeholder personas: _The Security Auditor_, _The Systems Architect_, _The Operator/DevOps_, _The Economic/Legal Analyst_.
    - See [references/search-strategies-and-query-syntax.md](references/search-strategies-and-query-syntax.md).
 2. **Deploy Search Operators & Domain Filtering ("Dorking")**:
    - Primary Specifications: `site:github.com inurl:rfc OR inurl:spec`
@@ -83,7 +84,7 @@ Select the operational depth tier based on task complexity and decision stakes:
 
 1. **Apply the 4 SIFT Moves**:
    - **S — Stop**: Pause when encountering sensational, convenient, or unverified claims.
-   - **I — Investigate the Source**: Practice *Lateral Reading*. Never rely on an "About Us" page; open a tab and search what outside experts say about the publisher.
+   - **I — Investigate the Source**: Practice _Lateral Reading_. Never rely on an "About Us" page; open a tab and search what outside experts say about the publisher.
    - **F — Find Better Coverage**: Seek out established consensus, peer-reviewed literature, and primary vendor documentation.
    - **T — Trace Claims to Origin**: Follow the link chain back to the original commit, transcript, or dataset.
    - See [references/source-evaluation-and-sift.md](references/source-evaluation-and-sift.md).
@@ -99,10 +100,11 @@ Select the operational depth tier based on task complexity and decision stakes:
    - Never accept an empirical fact without at least **two independent sources** originating from disjoint provenance chains.
 2. **Execute Heuer's ACH Matrix**:
    - Catalog all diagnostic evidence against competing hypotheses.
-   - **Reversal of Proof**: Evaluate which evidence *disproves* or *bounds* a hypothesis rather than seeking confirming data.
+   - **Reversal of Proof**: Evaluate which evidence _disproves_ or _bounds_ a hypothesis rather than seeking confirming data.
    - Discard non-diagnostic evidence (evidence consistent with all hypotheses has zero diagnostic value).
    - See [references/structured-analytic-techniques-and-ach.md](references/structured-analytic-techniques-and-ach.md).
 3. **Generate ACH Diagnostic Matrix**:
+
    ```bash
    python <skill_path>/scripts/generate_ach_matrix.py --input hypotheses_data.json --output ./docs/research/ach_matrix.md
    ```
@@ -111,14 +113,15 @@ Select the operational depth tier based on task complexity and decision stakes:
 
 1. **Apply US Intelligence Community Directive 203 (ICD 203)**:
    - **Axis 1 (Likelihood)**: Use standardized Words of Estimative Probability (WEP):
-     *Almost Certain (>90%)*, *Likely (55–80%)*, *Roughly Even Chance (45–55%)*, *Unlikely (15–45%)*, *Remote (<10%)*.
-   - **Axis 2 (Analytic Confidence)**: Rate confidence separately: *High*, *Moderate*, or *Low*.
-   - **Strict Separation Rule**: NEVER combine likelihood and confidence into a single phrase (e.g. prohibited: *"We are highly confident that X is likely"*).
+     _Almost Certain (>90%)_, _Likely (55–80%)_, _Roughly Even Chance (45–55%)_, _Unlikely (15–45%)_, _Remote (<10%)_.
+   - **Axis 2 (Analytic Confidence)**: Rate confidence separately: _High_, _Moderate_, or _Low_.
+   - **Strict Separation Rule**: NEVER combine likelihood and confidence into a single phrase (e.g. prohibited: _"We are highly confident that X is likely"_).
    - See [references/evidence-synthesis-and-icd203.md](references/evidence-synthesis-and-icd203.md).
 2. **Complete Source Provenance & Evidence Log**:
    - Every empirical assertion must include an inline citation (`[1]`, `[2]`).
    - Every citation must resolve to an entry in the Source Provenance table with Title, URL, Source Tier, and Verification Notes.
 3. **Verify Dossier Integrity**:
+
    ```bash
    python <skill_path>/scripts/verify_research_integrity.py ./docs/research/tier2-topicname.md
    ```

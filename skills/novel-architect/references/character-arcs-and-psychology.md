@@ -8,7 +8,7 @@ A deep reference guide to character arc engineering, internal psychodynamics, an
 
 Compelling characters are not static lists of traits; they are dynamic psychological systems undergoing pressure from external circumstances.
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   THE 4 PILLARS OF CHARACTER ARCS                      │
 ├────────────────────────────────────────────────────────────────────────┤

@@ -8,7 +8,7 @@ Brand strategy establishes the foundational truth, market differentiation, and p
 
 A brand identity must start from the inside out:
 
-```
+```text
            ┌─────────────────────────────┐
            │            WHAT             │  Products, Features, APIs,
            │     ┌─────────────────┐     │  Tech Stack
@@ -62,7 +62,7 @@ who [5. Acute need / catalytic occasion]
 in an era of [6. Prevailing category trend / pain point].
 ```
 
-#### Canonical SaaS / Tech Example:
+#### Canonical SaaS / Tech Example
 
 > _"Our brand is the **only** edge-native database engine **that** provides zero-latency distributed ACID transactions **for** full-stack TypeScript developers **in** global cloud computing **who** are building real-time multiplayer applications **in an era of** fragile caching layers and complex cloud billing."_
 
@@ -85,7 +85,7 @@ Test the positioning against these critical litmus tests:
 
 Brand equity is built systematically from foundational discovery up to emotional resonance:
 
-```
+```text
                       ┌──────────────────────┐
                       │    4. RESONANCE      │  Active Advocacy, Community,
                       │ (Relationship & Bond)│  Tribal Loyalty, Open-Source Pride

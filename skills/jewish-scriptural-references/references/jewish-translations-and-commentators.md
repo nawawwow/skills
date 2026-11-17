@@ -24,7 +24,7 @@ Unlike Christian Bible translations which often interpret Tanakh passages throug
 
 Jewish biblical study is traditionally practiced with _Mikraot Gedolot_ ("Rabbinic Bibles"), where the biblical text is surrounded by classical commentaries:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   THE ARCHITECTURE OF MIKRAOT GEDOLOT                  │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -79,7 +79,7 @@ Jewish biblical study is traditionally practiced with _Mikraot Gedolot_ ("Rabbin
 
 Originating in Rabbinic antiquity and codified in medieval Kabbalistic literature (_Zohar_), the **PaRDeS** (פַּרְדֵּס - meaning "orchard") acronym represents the four ascending levels of scriptural exegesis:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        THE 4 TIERS OF PaRDeS                           │
 ├────────────────────────────────────────────────────────────────────────┤

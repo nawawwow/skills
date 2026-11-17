@@ -51,6 +51,7 @@ Comprehensive agent guide for architecting scalable design systems in FigCraft: 
 
 1. **Combine Separate Components into Variants**:
    - Name components using `Property=Value` pairs (e.g., `"Style=Primary, State=Default"`, `"Style=Secondary, State=Default"`) or let FigCraft assign defaults, then run:
+
      ```json
      {
        "command": "component.combineVariants",
@@ -59,6 +60,7 @@ Comprehensive agent guide for architecting scalable design systems in FigCraft: 
        }
      }
      ```
+
 2. **Add a Variant to an Existing Component or Set**:
    - `run_command {command: "component.addVariant", params: {id: compOrSetId, property: "State", value: "Disabled"}}`.
 
@@ -66,13 +68,13 @@ Comprehensive agent guide for architecting scalable design systems in FigCraft: 
 
 Expose configurable props on a component or component set so instances can be customized cleanly (and so Dev Mode generates typed component props):
 
-| Property `type` | Bound Target (`layer` / `field`)          | Example `component.addProperty` Call                                                                                     |
-| :-------------- | :---------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| `boolean`       | Layer visibility (`field: "visible"`)     | `{"command": "component.addProperty", "params": {"id": setId, "name": "Show Icon", "type": "boolean", "layer": iconId}}` |
-| `text`          | Text content (`field: "characters"`)      | `{"command": "component.addProperty", "params": {"id": setId, "name": "Label", "type": "text", "layer": textNodeId}}`    |
-| `instanceSwap`  | Nested instance (`field: "mainComponent"`)| `{"command": "component.addProperty", "params": {"id": setId, "name": "Icon", "type": "instanceSwap", "layer": nestedInstId, "preferred": [iconA, iconB]}}` |
-| `variant`       | Component set variant axis                | `{"command": "component.addProperty", "params": {"id": setId, "name": "Size", "type": "variant", "default": "md"}}`      |
-| `slot`          | Child frame inside component (`field: "slot"`) | `{"command": "component.addProperty", "params": {"id": setId, "name": "Body", "type": "slot", "layer": slotFrameId}}` |
+| Property `type` | Bound Target (`layer` / `field`)               | Example `component.addProperty` Call                                                                                                                        |
+| :-------------- | :--------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `boolean`       | Layer visibility (`field: "visible"`)          | `{"command": "component.addProperty", "params": {"id": setId, "name": "Show Icon", "type": "boolean", "layer": iconId}}`                                    |
+| `text`          | Text content (`field: "characters"`)           | `{"command": "component.addProperty", "params": {"id": setId, "name": "Label", "type": "text", "layer": textNodeId}}`                                       |
+| `instanceSwap`  | Nested instance (`field: "mainComponent"`)     | `{"command": "component.addProperty", "params": {"id": setId, "name": "Icon", "type": "instanceSwap", "layer": nestedInstId, "preferred": [iconA, iconB]}}` |
+| `variant`       | Component set variant axis                     | `{"command": "component.addProperty", "params": {"id": setId, "name": "Size", "type": "variant", "default": "md"}}`                                         |
+| `slot`          | Child frame inside component (`field: "slot"`) | `{"command": "component.addProperty", "params": {"id": setId, "name": "Body", "type": "slot", "layer": slotFrameId}}`                                       |
 
 - Bind additional layers inside variants to an existing property via `component.bindProperty {layer: otherLayerId, property: "Label", field: "characters"}`.
 - Bubble up a nested instance's own properties onto the parent component via `component.exposeInstance {id: nestedInstanceId, exposed: true}`.
@@ -85,6 +87,7 @@ Expose configurable props on a component or component set so instances can be cu
 Slots let instances inject arbitrary custom children into a designated frame inside a component without detaching the instance:
 
 1. **Mark a Child Frame Inside a Main Component as a Slot**:
+
    ```json
    {
      "command": "component.makeSlot",
@@ -95,7 +98,9 @@ Slots let instances inject arbitrary custom children into a designated frame ins
      }
    }
    ```
+
 2. **Insert Content into an Instance's Slot**:
+
    ```json
    {
      "command": "instance.slotInsert",
@@ -107,6 +112,7 @@ Slots let instances inject arbitrary custom children into a designated frame ins
      }
    }
    ```
+
 3. **Reset a Slot Back to Main Component Default**:
    `run_command {command: "instance.resetSlot", params: {id: cardInstanceId, slot: "Card Content"}}`.
 
@@ -152,7 +158,7 @@ Build a complete Light/Dark token architecture in one `batch`:
       "command": "variable.create",
       "as": "bgSurface",
       "params": {
-        "collection": {"$ref": "theme"},
+        "collection": { "$ref": "theme" },
         "name": "color/bg/surface",
         "type": "color",
         "values": {
@@ -165,7 +171,7 @@ Build a complete Light/Dark token architecture in one `batch`:
       "command": "variable.create",
       "as": "textPrimary",
       "params": {
-        "collection": {"$ref": "theme"},
+        "collection": { "$ref": "theme" },
         "name": "color/text/primary",
         "type": "color",
         "values": {
@@ -177,7 +183,7 @@ Build a complete Light/Dark token architecture in one `batch`:
     {
       "command": "variable.create",
       "params": {
-        "collection": {"$ref": "theme"},
+        "collection": { "$ref": "theme" },
         "name": "radius/card",
         "type": "number",
         "values": {
@@ -193,6 +199,7 @@ Build a complete Light/Dark token architecture in one `batch`:
 ### Advanced Variable Values: Aliases, Alpha & Color Mixes
 
 In `variable.create` and `variable.set`, values can be dynamic references instead of literals:
+
 - **Alias**: `{"alias": "primitive/blue/600"}` (references another variable of the same type).
 - **Alpha Calculation** (`color` variables): `{"alpha": {"variable": "color/text/primary", "opacity": 0.6}}` (uses the referenced variable's color with its alpha replaced by `0.6`).
 - **Channel Mix Calculation** (`color` variables): `{"mix": {"from": {"variable": "color/bg/surface"}, "to": {"literal": "#3B82F6"}, "t": 0.12}}` (blends 12% brand tint into the active mode's surface color).
@@ -215,12 +222,12 @@ In `variable.create` and `variable.set`, values can be dynamic references instea
 
 Export variables directly to code or files using `variable.export`:
 
-| `format`     | Output Specification                                                                                                                    |
-| :----------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
-| `"json"`     | FigCraft / Figma-compatible local variables JSON (`variableCollections` and `variables`) ready for `variable.import`.                   |
-| `"css"`      | Standard CSS custom properties (`:root` for default mode, `[data-<collection>="<mode>"]` for alternate modes).                          |
+| `format`     | Output Specification                                                                                                                         |
+| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"json"`     | FigCraft / Figma-compatible local variables JSON (`variableCollections` and `variables`) ready for `variable.import`.                        |
+| `"css"`      | Standard CSS custom properties (`:root` for default mode, `[data-<collection>="<mode>"]` for alternate modes).                               |
 | `"tailwind"` | **Tailwind CSS v4** `@theme` block naming tokens `--color-*`, `--radius-*`, `--text-*`, `--spacing-*`, `--font-*` (matching `inspect.code`). |
-| `"dart"`     | Strongly typed **Flutter** Dart constant classes (`Color`, `double`, `String`, `bool`) per collection and mode.                         |
+| `"dart"`     | Strongly typed **Flutter** Dart constant classes (`Color`, `double`, `String`, `bool`) per collection and mode.                              |
 
 ```json
 {

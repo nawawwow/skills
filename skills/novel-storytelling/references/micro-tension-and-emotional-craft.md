@@ -13,7 +13,7 @@ Micro-tension is created when there is a mismatch, conflict, or unspoken pressur
 
 ### The Three Sources of Micro-Tension
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │               THREE SOURCES OF MICRO-TENSION           │
 ├────────────────────────────────────────────────────────┤
@@ -32,7 +32,7 @@ Real human emotions are rarely pure or monolithic. When a character feels only o
   - _Triumph_ tainted by _terror_ of the responsibilities now inherited.
   - _Fierce romantic attraction_ contaminated by _distrust_ of the lover's motives.
 
-#### Example:
+#### Example
 
 > _She looked at her son, now tall enough to look her in the eye, wearing his soldier's insignia. Her chest swelled with pride, but beneath the pride was a bitter, poisonous anger. He was smiling, eager to march off and die for an emperor who wouldn't remember his name._
 

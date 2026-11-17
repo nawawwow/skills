@@ -8,7 +8,7 @@ A comprehensive technical guide to micro-narrative structure, cause-and-effect c
 
 Stories lose momentum and become episodic when writers link events with _"and then"_. To create an unbroken chain of narrative propulsion, every chapter is built from two alternating psychological units: **The Scene** (proactive, physical action) and **The Sequel** (reactive, emotional processing).
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        THE CAUSALITY ENGINE                            │
 ├────────────────────────────────────────────────────────────────────────┤

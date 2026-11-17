@@ -53,7 +53,7 @@ Do NOT activate this skill for:
 
 ## Architecture & Directory Layout
 
-```
+```text
 create-readme/
 ├── SKILL.md              # Skill instructions, frontmatter, & 5-step flow
 ├── evals/

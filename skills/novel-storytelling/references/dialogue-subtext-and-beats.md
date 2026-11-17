@@ -15,7 +15,7 @@ In _Dialogue: The Art of Verbal Action for Stage, Page, and Screen_, Robert McKe
 
 Before writing or revising any line of dialogue, determine the **hidden action verb** driving the character. If you cannot assign a transitive psychological verb to the line, the dialogue is inert filler.
 
-#### Common Dialogue Tactical Verbs:
+#### Common Dialogue Tactical Verbs
 
 - _To provoke_ (forcing the other person to lose emotional control)
 - _To evade_ (deflecting attention from a hidden vulnerability)
@@ -52,7 +52,7 @@ Notice: Neither character ever says _"I know you stole the file"_ or _"I am thre
 
 The fatal flaw of novice dialogue is **"on-the-nose" writing**: characters saying exactly what they are thinking, feeling, and plotting.
 
-```
+```text
 [ON-THE-NOSE / AMATEUR]
 "I am furious that you betrayed our family for money, and I never want to see you again."
 
@@ -110,7 +110,7 @@ Real-world conversations are bloated with social lubricants: greetings, pleasant
 
 Cut the preamble and chop off the conclusion. Drop the reader directly into the moment of friction.
 
-#### Before (Flabby, Phatic Dialogue):
+#### Before (Flabby, Phatic Dialogue)
 
 > _"Good morning, Sarah."_  
 > _"Good morning, Detective. How are you today?"_  
@@ -119,7 +119,7 @@ Cut the preamble and chop off the conclusion. Drop the reader directly into the 
 > _"No, thank you. I'm actually here because I need to ask you about your brother's whereabouts on Friday."_  
 > _"Oh, I see. What about him?"_
 
-#### After (Lean, High-Tension Dialogue):
+#### After (Lean, High-Tension Dialogue)
 
 > _Sarah didn't look up from her ledgers. "Coffee's cold. Door's behind you."_  
 > _Detective Vance set an evidence bag on top of her receipts. "Where was David on Friday night?"_  

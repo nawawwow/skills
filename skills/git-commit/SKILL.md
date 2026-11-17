@@ -22,7 +22,7 @@ and prevents credential leaks in repository history.
 
 Follow this standardized sequence whenever committing changes:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        5-STEP GIT COMMIT FLOW                          │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -119,13 +119,17 @@ Structure the commit message using Conventional Commits 1.0.0 syntax:
 ### Step 5: Execution & Verification
 
 1. Execute the commit:
+
    ```bash
    git commit -m "<subject>" -m "<body>"
    ```
+
 2. Verify the committed state:
+
    ```bash
    git log -1 --stat
    ```
+
 3. Report the result concisely to the user with the commit hash, commit message, and clickable markdown links to modified files.
 
 ---
