@@ -4,6 +4,7 @@
 .skill-lock.json
 scratch/
 *.scratch.*
+.playwright-mcp/
 
 # ==============================================================================
 # Environment Variables & Secrets

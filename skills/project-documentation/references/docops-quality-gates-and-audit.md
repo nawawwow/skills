@@ -10,7 +10,7 @@
 
 Every documentation repository should enforce these automated gates on pull requests:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │               DOCOPS QUALITY PIPELINE                  │
 ├────────────────────────────────────────────────────────┤
@@ -39,7 +39,7 @@ An **orphaned file** is a markdown document present in the repository that is no
 
 ### 3. Untagged Code Blocks
 
-Every fenced code block (```) must declare its language tag (``bash`, ``python`, ````json`, ``yaml`, ``ts`). Untagged code blocks degrade accessibility, break syntax highlighters, and confuse copy-paste buttons.
+Every fenced code block (` ``` `) must declare its language tag (`bash`, `python`, `json`, `yaml`, `ts`). Untagged code blocks degrade accessibility, break syntax highlighters, and confuse copy-paste buttons.
 
 ---
 
@@ -82,7 +82,7 @@ This quantitative rubric (0–100 scale) is implemented in `scripts/audit_docs.p
 |  **10**   | **Realistic API Payloads**      |     5      | API references use concrete JSON examples rather than empty dummy strings.                          |
 | **Total** |                                 |  **100**   |                                                                                                     |
 
-### Score Interpretation:
+### Score Interpretation
 
 - **90 – 100 (Grade A)**: Production Gold Standard DocOps. Fully compliant with Diátaxis.
 - **80 – 89 (Grade B)**: Strong documentation portal; minor missing frontmatter or orphaned docs.

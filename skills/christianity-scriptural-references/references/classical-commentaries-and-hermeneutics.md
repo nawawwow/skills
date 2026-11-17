@@ -10,7 +10,7 @@ or referencing major commentary traditions across church history.
 The standard methodology in orthodox biblical scholarship seeks to understand the author's
 original intended meaning within its historical and literary context:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │         THE HISTORICAL-GRAMMATICAL HERMENEUTIC         │
 ├─────────────────┬──────────────────┬───────────────────┤

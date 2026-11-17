@@ -12,14 +12,25 @@ import os
 import re
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 
-def find_files_matching(root: Path, patterns: List[str], max_depth: int = 3) -> List[Path]:
+def find_files_matching(root: Path, patterns: list[str], max_depth: int = 3) -> list[Path]:
     """Find files matching relative glob patterns within depth limit, ignoring common noisy folders."""
     ignored_dirs = {
-        ".git", "node_modules", ".venv", "venv", "__pycache__", "dist",
-        "build", "out", "target", ".next", ".turbo", ".idea", ".vscode"
+        ".git",
+        "node_modules",
+        ".venv",
+        "venv",
+        "__pycache__",
+        "dist",
+        "build",
+        "out",
+        "target",
+        ".next",
+        ".turbo",
+        ".idea",
+        ".vscode",
     }
     matches = []
     root_level = len(root.parts)
@@ -39,7 +50,7 @@ def find_files_matching(root: Path, patterns: List[str], max_depth: int = 3) -> 
     return matches
 
 
-def detect_languages_and_runtimes(root: Path) -> Dict[str, Any]:
+def detect_languages_and_runtimes(root: Path) -> dict[str, Any]:
     """Detect primary languages, runtimes, and package managers."""
     runtimes = []
     package_managers = []
@@ -119,7 +130,11 @@ def detect_languages_and_runtimes(root: Path) -> Dict[str, Any]:
         package_managers.append("gradle")
 
     # Docker
-    if (root / "Dockerfile").exists() or (root / "docker-compose.yml").exists() or (root / "compose.yaml").exists():
+    if (
+        (root / "Dockerfile").exists()
+        or (root / "docker-compose.yml").exists()
+        or (root / "compose.yaml").exists()
+    ):
         runtimes.append("Docker")
 
     return {
@@ -129,14 +144,14 @@ def detect_languages_and_runtimes(root: Path) -> Dict[str, Any]:
     }
 
 
-def extract_manifest_scripts(root: Path, package_mgrs: List[str]) -> Dict[str, Any]:
+def extract_manifest_scripts(root: Path, package_mgrs: list[str]) -> dict[str, Any]:
     """Extract standard operational commands from manifests."""
-    scripts: Dict[str, str] = {}
-    test_commands: List[str] = []
-    single_test_commands: List[str] = []
-    build_commands: List[str] = []
-    lint_commands: List[str] = []
-    typecheck_commands: List[str] = []
+    scripts: dict[str, str] = {}
+    test_commands: list[str] = []
+    single_test_commands: list[str] = []
+    build_commands: list[str] = []
+    lint_commands: list[str] = []
+    typecheck_commands: list[str] = []
 
     pm = package_mgrs[0] if package_mgrs else "npm"
 
@@ -224,7 +239,7 @@ def extract_manifest_scripts(root: Path, package_mgrs: List[str]) -> Dict[str, A
     }
 
 
-def detect_monorepo_and_workspaces(root: Path) -> Dict[str, Any]:
+def detect_monorepo_and_workspaces(root: Path) -> dict[str, Any]:
     """Detect if workspace is a monorepo and list sub-packages."""
     is_monorepo = False
     system = None
@@ -259,7 +274,10 @@ def detect_monorepo_and_workspaces(root: Path) -> Dict[str, Any]:
             for child in dir_p.iterdir():
                 if child.is_dir() and not child.name.startswith("."):
                     # Check if it has a manifest
-                    if any((child / m).exists() for m in ["package.json", "pyproject.toml", "Cargo.toml", "go.mod"]):
+                    if any(
+                        (child / m).exists()
+                        for m in ["package.json", "pyproject.toml", "Cargo.toml", "go.mod"]
+                    ):
                         packages.append(str(child.relative_to(root)).replace("\\", "/"))
 
     if packages and not is_monorepo:
@@ -273,9 +291,9 @@ def detect_monorepo_and_workspaces(root: Path) -> Dict[str, Any]:
     }
 
 
-def detect_existing_agent_configs(root: Path) -> Dict[str, Any]:
+def detect_existing_agent_configs(root: Path) -> dict[str, Any]:
     """Detect existing AGENTS.md, .cursorrules, CLAUDE.md, etc."""
-    detected = {}
+    detected: dict[str, Any] = {}
 
     agents_md = root / "AGENTS.md"
     if agents_md.exists():
@@ -306,16 +324,27 @@ def detect_existing_agent_configs(root: Path) -> Dict[str, Any]:
     return detected
 
 
-def detect_boundaries(root: Path) -> Dict[str, List[str]]:
+def detect_boundaries(root: Path) -> dict[str, list[str]]:
     """Detect folders and files that agents should never touch."""
     restricted_dirs = []
     restricted_files = []
 
     # Standard generated folders
     common_dirs = [
-        "dist", "build", "out", "target", ".next", ".turbo",
-        "node_modules", ".venv", "venv", "__pycache__", "coverage",
-        ".docusaurus", ".astro", ".output"
+        "dist",
+        "build",
+        "out",
+        "target",
+        ".next",
+        ".turbo",
+        "node_modules",
+        ".venv",
+        "venv",
+        "__pycache__",
+        "coverage",
+        ".docusaurus",
+        ".astro",
+        ".output",
     ]
     for d in common_dirs:
         if (root / d).exists():
@@ -339,7 +368,9 @@ def detect_boundaries(root: Path) -> Dict[str, List[str]]:
     }
 
 
-def determine_recommended_archetype(root: Path, runtimes: List[str], monorepo_info: Dict[str, Any]) -> str:
+def determine_recommended_archetype(
+    root: Path, runtimes: list[str], monorepo_info: dict[str, Any]
+) -> str:
     """Recommend the optimal AGENTS.md archetype based on codebase indicators."""
     # 1. Antigravity Skill or MCP
     if (root / "SKILL.md").exists() or (root / "mcp.json").exists():
@@ -354,14 +385,34 @@ def determine_recommended_archetype(root: Path, runtimes: List[str], monorepo_in
     if pkg_json.exists():
         try:
             content = pkg_json.read_text(encoding="utf-8")
-            web_frameworks = ["next", "react", "vue", "nuxt", "svelte", "@angular", "remix", "astro", "vite"]
+            web_frameworks = [
+                "next",
+                "react",
+                "vue",
+                "nuxt",
+                "svelte",
+                "@angular",
+                "remix",
+                "astro",
+                "vite",
+            ]
             if any(f'"{fw}"' in content for fw in web_frameworks):
                 return "webapp"
         except Exception:
             pass
 
     # 4. Backend API
-    api_indicators = ["fastapi", "express", "flask", "django", "gin-gonic", "nest", "actix-web", "axum", "spring-boot"]
+    api_indicators = [
+        "fastapi",
+        "express",
+        "flask",
+        "django",
+        "gin-gonic",
+        "nest",
+        "actix-web",
+        "axum",
+        "spring-boot",
+    ]
     for manifest in ["package.json", "pyproject.toml", "Cargo.toml", "go.mod"]:
         mf_path = root / manifest
         if mf_path.exists():
@@ -388,7 +439,7 @@ def determine_recommended_archetype(root: Path, runtimes: List[str], monorepo_in
     return "library"
 
 
-def inspect_repository(project_path: str = ".") -> Dict[str, Any]:
+def inspect_repository(project_path: str = ".") -> dict[str, Any]:
     """Perform comprehensive inspection of repository."""
     root = Path(project_path).resolve()
     if not root.exists():
@@ -399,7 +450,9 @@ def inspect_repository(project_path: str = ".") -> Dict[str, Any]:
     monorepo_info = detect_monorepo_and_workspaces(root)
     agent_configs = detect_existing_agent_configs(root)
     boundaries = detect_boundaries(root)
-    recommended_archetype = determine_recommended_archetype(root, lang_info["runtimes"], monorepo_info)
+    recommended_archetype = determine_recommended_archetype(
+        root, lang_info["runtimes"], monorepo_info
+    )
 
     return {
         "project_root": str(root),
@@ -421,13 +474,15 @@ def inspect_repository(project_path: str = ".") -> Dict[str, Any]:
     }
 
 
-def format_text_summary(data: Dict[str, Any]) -> str:
+def format_text_summary(data: dict[str, Any]) -> str:
     """Format discovery data into human/agent-readable summary."""
     lines = []
     lines.append(f"Codebase Inspection Summary: {data['project_name']}")
     lines.append("=" * 60)
     lines.append(f"Directory:             {data['project_root']}")
-    lines.append(f"Runtimes & Languages:  {', '.join(data['languages_and_runtimes']) or 'None detected'}")
+    lines.append(
+        f"Runtimes & Languages:  {', '.join(data['languages_and_runtimes']) or 'None detected'}"
+    )
     lines.append(f"Package Managers:      {', '.join(data['package_managers']) or 'None detected'}")
     lines.append(f"Manifests:             {', '.join(data['manifests']) or 'None'}")
     lines.append(f"Recommended Archetype: {data['recommended_archetype'].upper()}")
@@ -443,7 +498,9 @@ def format_text_summary(data: Dict[str, Any]) -> str:
     lines.append(f"  - Is Monorepo: {data['monorepo']['is_monorepo']}")
     if data["monorepo"]["is_monorepo"]:
         lines.append(f"  - System:      {data['monorepo']['system']}")
-        lines.append(f"  - Packages ({len(data['monorepo']['packages'])}): {', '.join(data['monorepo']['packages'][:6])}")
+        lines.append(
+            f"  - Packages ({len(data['monorepo']['packages'])}): {', '.join(data['monorepo']['packages'][:6])}"
+        )
     lines.append("")
 
     lines.append("Existing AI Agent Configs:")
@@ -465,8 +522,12 @@ def format_text_summary(data: Dict[str, Any]) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Inspect codebase to extract metadata for AGENTS.md generation.")
-    parser.add_argument("project_dir", nargs="?", default=".", help="Project directory to inspect (default: .)")
+    parser = argparse.ArgumentParser(
+        description="Inspect codebase to extract metadata for AGENTS.md generation."
+    )
+    parser.add_argument(
+        "project_dir", nargs="?", default=".", help="Project directory to inspect (default: .)"
+    )
     parser.add_argument("--json", action="store_true", help="Output results as JSON")
     parser.add_argument("--output", "-o", help="Write inspection output to file")
 

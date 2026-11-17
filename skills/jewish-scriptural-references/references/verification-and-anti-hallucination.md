@@ -8,7 +8,7 @@ Rigorous standards and verification protocols for auditing AI-generated Jewish s
 
 Due to the repetitive, dialectical structure and specialized pagination of rabbinic texts, Large Language Models suffer from distinct, recurring hallucinations:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   TOP 5 RABBINIC AI HALLUCINATIONS                     │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -38,7 +38,7 @@ In the standard **Vilna Shas** (the universal pagination system for the Babyloni
 
 One of the most frequently quoted passages in world literature is the teaching on the supreme value of human life:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │               MISHNAH SANHEDRIN 4:5 TEXTUAL VARIANTS                   │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -55,7 +55,7 @@ One of the most frequently quoted passages in world literature is the teaching o
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Analytical Guidelines:
+### Analytical Guidelines
 
 1. When asked to cite or analyze this passage, **explicitly present both textual traditions**.
 2. Explain the philological evidence:
@@ -70,12 +70,12 @@ Never conflate the generational strata of rabbinic authorities:
 
 | Generation Era        | Time Period          | Hebrew Term | Prominent Sages                                                                                   | Canonical Texts                       |
 | :-------------------- | :------------------- | :---------- | :------------------------------------------------------------------------------------------------ | :------------------------------------ |
-| **Zugot** (Pairs)     | c. 150 BCE – 10 CE   | זוּגוֹת     | Hillel and Shammai, Shemaya and Avtalyon                                                          | Early Mishnaic traditions             |
-| **Tannaim**           | c. 10 – 220 CE       | תַּנָּאִים  | Rabban Yochanan ben Zakkai, Rabbi Akiva, Rabbi Meir, Rabbi Shimon bar Yochai, Rabbi Yehuda HaNasi | Mishnah, Tosefta, Halakhic Midrashim  |
-| **Amoraim**           | c. 220 – 500 CE      | אָמוֹרָאִים | Rav, Shmuel, Rabbi Yochanan, Reish Lakish, Abaye, Rava, Rav Ashi                                  | Gemara (Talmud Bavli and Yerushalmi)  |
-| **Savoraim & Geonim** | c. 500 – 1038 CE     | גְּאוֹנִים  | Saadia Gaon, Sherira Gaon, Hai Gaon                                                               | Talmudic redaction, Halakhic responsa |
-| **Rishonim**          | c. 1038 – 1500 CE    | רִאשׁוֹנִים | Rashi, Tosafot, Rambam, Ramban, Ibn Ezra, Rosh, Tur                                               | Classical commentaries, early codes   |
-| **Acharonim**         | c. 1500 CE – Present | אַחֲרוֹנִים | Yosef Karo, Rema, Vilna Gaon, Chofetz Chaim, Rav Kook                                             | Shulchan Aruch, modern halakha        |
+| **Zugot** (Pairs)     | c. 150 BCE – 10 CE   | זוּגוֹת       | Hillel and Shammai, Shemaya and Avtalyon                                                          | Early Mishnaic traditions             |
+| **Tannaim**           | c. 10 – 220 CE       | תַּנָּאִים       | Rabban Yochanan ben Zakkai, Rabbi Akiva, Rabbi Meir, Rabbi Shimon bar Yochai, Rabbi Yehuda HaNasi | Mishnah, Tosefta, Halakhic Midrashim  |
+| **Amoraim**           | c. 220 – 500 CE      | אָמוֹרָאִים     | Rav, Shmuel, Rabbi Yochanan, Reish Lakish, Abaye, Rava, Rav Ashi                                  | Gemara (Talmud Bavli and Yerushalmi)  |
+| **Savoraim & Geonim** | c. 500 – 1038 CE     | גְּאוֹנִים      | Saadia Gaon, Sherira Gaon, Hai Gaon                                                               | Talmudic redaction, Halakhic responsa |
+| **Rishonim**          | c. 1038 – 1500 CE    | רִאשׁוֹנִים     | Rashi, Tosafot, Rambam, Ramban, Ibn Ezra, Rosh, Tur                                               | Classical commentaries, early codes   |
+| **Acharonim**         | c. 1500 CE – Present | אַחֲרוֹנִים     | Yosef Karo, Rema, Vilna Gaon, Chofetz Chaim, Rav Kook                                             | Shulchan Aruch, modern halakha        |
 
 > [!IMPORTANT]
 > If a quote begins with _"The Mishnah states..."_, verify that it appears in the 63 tractates of the Mishnah. If it is an Amoraic discussion or story (such as Hillel and the convert in Shabbat 31a, or the Oven of Akhnai in Bava Metzia 59b), cite it as the **Gemara** (_Talmud Bavli_), not the Mishnah.
@@ -94,7 +94,7 @@ Traditional Jewish law (_Halakha_) forbids erasing, destroying, or treating disr
 6. **Ehyeh Asher Ehyeh (אֶהְיֶה אֲשֶׁר אֶהְיֶה)**
 7. **Adonai (אֲדֹנָי)**
 
-### English Publication Customs:
+### English Publication Customs
 
 - In traditional Orthodox and observant Jewish English publications, the practice of writing **G-d** and **the L-rd** with a hyphen is maintained to prevent the name from being printed on paper that might later be discarded into the trash (rather than placed in a _Genizah_).
 - When producing content for Jewish educational or religious contexts, use **G-d**, **Hashem**, or standard academic terms (_the Holy One, Blessed be He_ - _HaKadosh Barukh Hu_) appropriately according to user tone.

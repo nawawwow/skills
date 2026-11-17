@@ -359,9 +359,7 @@ def format_hadith_citation(text: str) -> dict | None:
             m = re.search(r"(\d+(?:\.\d+)?)", remainder)
             if m:
                 num_str = m.group(1)
-                num_val: int | float | str = (
-                    int(num_str) if num_str.isdigit() else num_str
-                )
+                num_val: int | float | str = int(num_str) if num_str.isdigit() else num_str
                 return {
                     "type": "hadith",
                     "collection": official_name,

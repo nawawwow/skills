@@ -28,7 +28,7 @@ The craft of defamiliarization consists of stripping away the habitual label and
 
 Amateur fiction relies 90% on vision and 10% on sound. Professional fiction distributes sensory data across the full biological spectrum:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │              THE 6-SENSE IMMERSION REGISTER            │
 ├────────────────────────────────────────────────────────┤
@@ -99,12 +99,12 @@ To prevent scenes from turning into floating heads in an empty white room, enfor
 
 > **Rule**: Every paragraph of transition, action, or significant dialogue must contain at least **two distinct sensory modalities** (e.g., sound + tactile; smell + somatic).
 
-### Example Application:
+### Example Application
 
-#### Before (One-dimensional, visual-only):
+#### Before (One-dimensional, visual-only)
 
 > _Jack waited by the docks. A boat approached in the dark. A man stepped out and handed him an envelope._
 
-#### After (Multi-sensory grounding: olfactory + tactile + acoustic):
+#### After (Multi-sensory grounding: olfactory + tactile + acoustic)
 
 > _The harbor air smelled of dead eel and rotting creosote. Salt mist clung to Jack's woolen collar, soaking through to his skin. Through the black chop, an outboard motor sputtered to a dying hum. A silhouette vaulted onto the slippery pier boards, thrusting an oilskin packet into Jack's chest with enough force to knock the breath from his ribs._

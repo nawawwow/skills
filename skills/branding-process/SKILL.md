@@ -21,7 +21,7 @@ interactive touchpoint.
 
 Follow this sequence to build or evolve a digital brand from premise to production code:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                       THE 5-PHASE BRANDING FLOW                        │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -83,6 +83,7 @@ Follow this sequence to build or evolve a digital brand from premise to producti
    - Use a mathematical type scale (Major Third 1.25 ratio).
 4. **Compile Code-Ready Design Tokens**:
    - Run the bundled token script to generate synchronized W3C tokens, CSS variables, and Tailwind presets:
+
      ```bash
      python <skill_path>/scripts/generate_tokens.py --name "BrandName" --primary "#2563eb" --out-dir ./src/styles/brand
      ```
@@ -91,9 +92,11 @@ Follow this sequence to build or evolve a digital brand from premise to producti
 
 1. **Scaffold Digital Assets**:
    - Generate production-ready SVGs using the bundled scaffolding script:
+
      ```bash
      python <skill_path>/scripts/scaffold_svg_assets.py --name "BrandName" --tagline "Core tagline" --primary "#2563eb" --out-dir ./public/brand
      ```
+
    - Verify OpenGraph social share cards (1200x630), Favicons (32x32 SVG, 180x180 Apple touch icon), and App Icons (see `references/digital-touchpoints-and-tokens.md`).
 2. **Synthesize the Brand Guidelines (Brand Book)**:
    - Compile the 5-part Brand Portal document (Strategic Platform, Verbal Identity, Visual System, Digital Tokens, and Governance Rules; see `references/brand-governance.md`).

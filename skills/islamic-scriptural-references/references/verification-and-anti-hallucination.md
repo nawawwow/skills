@@ -35,7 +35,7 @@ The following sayings are widely circulated in popular culture but are **not aut
 
 Before including any scriptural reference in an answer, run it through these 4 gates:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────────┐
 │                        4-GATE VERIFICATION PROTOCOL                        │
 ├──────────────────┬──────────────────┬──────────────────┬───────────────────┤

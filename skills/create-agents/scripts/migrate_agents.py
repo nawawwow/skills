@@ -8,15 +8,13 @@ and generates lightweight bridge pointers to prevent rule drift across tools.
 """
 
 import argparse
-import os
 import re
 import shutil
-import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 
-def scan_legacy_files(project_dir: Path) -> Dict[str, Path]:
+def scan_legacy_files(project_dir: Path) -> dict[str, Path]:
     """Scan project for known tool-specific rule files."""
     candidates = {}
 
@@ -44,7 +42,7 @@ def scan_legacy_files(project_dir: Path) -> Dict[str, Path]:
     return candidates
 
 
-def extract_rules_from_file(file_path: Path) -> Dict[str, List[str]]:
+def extract_rules_from_file(file_path: Path) -> dict[str, list[str]]:
     """Extract sections, bullet points, and commands from an instruction file."""
     content = file_path.read_text(encoding="utf-8", errors="ignore")
     lines = content.splitlines()
@@ -62,11 +60,28 @@ def extract_rules_from_file(file_path: Path) -> Dict[str, List[str]]:
         if re.search(r"`(npm|pnpm|yarn|bun|pytest|cargo|go|make|ruff|mypy|tsc)\b[^`]*`", stripped):
             cmd_match = re.findall(r"`([^`]+)`", stripped)
             for c in cmd_match:
-                if any(c.startswith(kw) for kw in ["npm", "pnpm", "yarn", "bun", "pytest", "cargo", "go", "make", "ruff", "mypy", "tsc"]):
+                if any(
+                    c.startswith(kw)
+                    for kw in [
+                        "npm",
+                        "pnpm",
+                        "yarn",
+                        "bun",
+                        "pytest",
+                        "cargo",
+                        "go",
+                        "make",
+                        "ruff",
+                        "mypy",
+                        "tsc",
+                    ]
+                ):
                     commands.append(c)
 
         # Check for boundaries / never rules
-        if re.search(r"\b(never|do not|don't|forbidden|avoid|prohibited)\b", stripped, re.IGNORECASE):
+        if re.search(
+            r"\b(never|do not|don't|forbidden|avoid|prohibited)\b", stripped, re.IGNORECASE
+        ):
             if stripped.startswith(("-", "*", "•")):
                 boundaries.append(stripped.lstrip("-*• ").strip())
             elif len(stripped) < 160:
@@ -85,7 +100,7 @@ def extract_rules_from_file(file_path: Path) -> Dict[str, List[str]]:
     }
 
 
-def consolidate_rules(legacy_files: Dict[str, Path]) -> Dict[str, Any]:
+def consolidate_rules(legacy_files: dict[str, Path]) -> dict[str, Any]:
     """Extract and deduplicate rules across all found legacy files."""
     all_commands = set()
     all_conventions = set()
@@ -107,7 +122,7 @@ def consolidate_rules(legacy_files: Dict[str, Path]) -> Dict[str, Any]:
     }
 
 
-def create_bridge_files(project_dir: Path, dry_run: bool = False) -> List[str]:
+def create_bridge_files(project_dir: Path, dry_run: bool = False) -> list[str]:
     """Create lightweight bridge files pointing to AGENTS.md."""
     bridges_created = []
 
@@ -156,7 +171,9 @@ def create_bridge_files(project_dir: Path, dry_run: bool = False) -> List[str]:
     return bridges_created
 
 
-def archive_legacy_files(project_dir: Path, legacy_files: Dict[str, Path], dry_run: bool = False) -> List[str]:
+def archive_legacy_files(
+    project_dir: Path, legacy_files: dict[str, Path], dry_run: bool = False
+) -> list[str]:
     """Archive original legacy files into .agent-archive/ directory."""
     archive_dir = project_dir / ".agent-archive"
     archived = []
@@ -177,7 +194,9 @@ def archive_legacy_files(project_dir: Path, legacy_files: Dict[str, Path], dry_r
     return archived
 
 
-def format_migration_summary(consolidated: Dict[str, Any], bridges: List[str], archived: List[str]) -> str:
+def format_migration_summary(
+    consolidated: dict[str, Any], bridges: list[str], archived: list[str]
+) -> str:
     """Format migration results for CLI."""
     lines = []
     lines.append("AGENTS.md Migration & Bridging Summary")
@@ -205,11 +224,23 @@ def format_migration_summary(consolidated: Dict[str, Any], bridges: List[str], a
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Consolidate legacy agent configs into AGENTS.md and generate bridges.")
-    parser.add_argument("project_dir", nargs="?", default=".", help="Project directory (default: .)")
-    parser.add_argument("--bridge", action="store_true", help="Generate lightweight bridge files (CLAUDE.md, Copilot, Cursor)")
-    parser.add_argument("--archive", action="store_true", help="Move legacy files to .agent-archive/")
-    parser.add_argument("--dry-run", action="store_true", help="Simulate migration without modifying files")
+    parser = argparse.ArgumentParser(
+        description="Consolidate legacy agent configs into AGENTS.md and generate bridges."
+    )
+    parser.add_argument(
+        "project_dir", nargs="?", default=".", help="Project directory (default: .)"
+    )
+    parser.add_argument(
+        "--bridge",
+        action="store_true",
+        help="Generate lightweight bridge files (CLAUDE.md, Copilot, Cursor)",
+    )
+    parser.add_argument(
+        "--archive", action="store_true", help="Move legacy files to .agent-archive/"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Simulate migration without modifying files"
+    )
 
     args = parser.parse_args()
     project_p = Path(args.project_dir).resolve()

@@ -9,7 +9,7 @@ semantic versioning, progressive rollouts, feature flags, or zero-downtime datab
 
 Modern continuous delivery relies on **Trunk-Based Development** rather than long-lived feature branches:
 
-```
+```text
 main (trunk) ──●─────────●──────────────●──────────────● (always releasable)
                 \       /              /              /
     feat/auth-v1 ──●───●   fix/timeout───●   chore/deps───●
@@ -60,7 +60,7 @@ Decouple **deployment** (shipping code to production infrastructure) from **rele
 
 Never execute destructive database operations (dropping columns, renaming tables) in a single deployment. Use the 4-phase **Expand and Contract** pattern:
 
-```
+```text
 Phase 1 (Expand)    → Add new column `full_name` (nullable).
                       Deploy app writing to both `name` and `full_name`.
 Phase 2 (Backfill)  → Background worker backfills existing historical records.

@@ -39,7 +39,7 @@ Every documentation system engineered under this skill must adhere strictly to t
 
 Follow this standardized workflow when building, updating, or auditing a documentation system:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP PROJECT DOCUMENTATION FLOW                    │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -74,9 +74,9 @@ Initialize a clean, structured documentation directory tailored to the chosen St
 python scripts/scaffold_docs.py --generator vitepress --target-dir ./docs
 ```
 
-#### Standard Directory Hierarchy:
+#### Standard Directory Hierarchy
 
-```
+```text
 docs/
 ├── tutorials/               # Learning-oriented lessons (01-quickstart.md)
 ├── how-to/                  # Problem-oriented task recipes (deploy.md, auth.md)

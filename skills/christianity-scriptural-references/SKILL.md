@@ -23,7 +23,7 @@ biblical scholarship adapted for AI-assisted research and theological study.
 
 Follow this sequence whenever quoting, analyzing, or verifying biblical passages:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP BIBLICAL CITATION WORKFLOW                    │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -48,6 +48,7 @@ Follow this sequence whenever quoting, analyzing, or verifying biblical passages
 Never quote verses from memory:
 
 - Use the bundled lookup utility to retrieve verified texts across translations:
+
   ```bash
   # Lookup passage (KJV, WEB, etc.)
   python <skill_path>/scripts/lookup_scripture.py --passage "John 3:16" --translation kjv
@@ -55,6 +56,7 @@ Never quote verses from memory:
   # Lookup passage range
   python <skill_path>/scripts/lookup_scripture.py --passage "Psalm 23:1-6"
   ```
+
 - If analyzing original languages, cross-reference the Masoretic Text (Biblical Hebrew) or the Nestle-Aland / UBS5 Critical Greek Text.
 
 ### Step 3: Clarify Translation Philosophy

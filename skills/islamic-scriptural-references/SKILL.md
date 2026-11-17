@@ -23,7 +23,7 @@ of classical Islamic scholarship adapted for AI-assisted research and writing.
 
 Follow this sequence whenever quoting, analyzing, or verifying Islamic scriptural texts:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP SCRIPTURE CITATION WORKFLOW                   │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -143,18 +143,18 @@ Every deliverable must adhere to these non-negotiable principles:
 
 Both scripts require zero third-party packages. `lookup_scripture.py` works without an API key (up to 5,000 requests / 15 min) and automatically uses `UMMAH_API_KEY` (or `--api-key`) when set for unlimited access.
 
-| Script / Flag                                        | Purpose                                                                                             | Example Usage                                                              |
-| :--------------------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
-| `scripts/lookup_scripture.py --quran`                | Fetches verified Quran verse/range (12 translations, `uthmani`/`indopak`/`tajweed`/`all` scripts).  | `python scripts/lookup_scripture.py --quran 1:1-7 --translation pickthall` |
-| `scripts/lookup_scripture.py --words`                | Fetches word-by-word Arabic, transliteration, and English meaning for an ayah.                      | `python scripts/lookup_scripture.py --words 1:1`                           |
-| `scripts/lookup_scripture.py --mutashabihat`         | Fetches resembling/similar verses (*mutashabihat*) across the Quran to prevent verse conflation.    | `python scripts/lookup_scripture.py --mutashabihat 35:44`                  |
-| `scripts/lookup_scripture.py --hadith`               | Fetches Arabic + English Hadith and grading from 10 collections (including decimal numbering).      | `python scripts/lookup_scripture.py --hadith nawawi 1`                     |
-| `scripts/lookup_scripture.py --tafsir`               | Fetches classical Tafsir (`ibn_kathir`, `maarif`, `muyassar`, `ibn_kathir_ar`, `all`) per ayah.     | `python scripts/lookup_scripture.py --tafsir ibn_kathir 2:255`             |
-| `scripts/lookup_scripture.py --search-quran`         | Searches Quranic verses across translations and transliterations.                                   | `python scripts/lookup_scripture.py --search-quran "mercy" --limit 5`      |
-| `scripts/lookup_scripture.py --search-hadith`        | Searches Hadith narrations across all or a specific collection (`--collection`).                    | `python scripts/lookup_scripture.py --search-hadith "intention"`           |
-| `scripts/lookup_scripture.py --dua` / `--search-dua` | Fetches or searches 126 authentic Duas across 27 categories with primary sources.                   | `python scripts/lookup_scripture.py --dua morning`                         |
-| `scripts/lookup_scripture.py --asma` / `--search-asma`| Fetches or searches the 99 Names of Allah (*Asma ul Husna*) by number (`1-99`), `all`, or keyword. | `python scripts/lookup_scripture.py --asma 1`                              |
-| `scripts/format_islamic_citation.py`                 | Validates and standardizes Quran, Hadith, Tafsir, Dua, and Asma ul Husna citation strings.          | `python scripts/format_islamic_citation.py "Surat Al-Baqarah verse 255"`   |
+| Script / Flag                                          | Purpose                                                                                            | Example Usage                                                              |
+| :----------------------------------------------------- | :------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------- |
+| `scripts/lookup_scripture.py --quran`                  | Fetches verified Quran verse/range (12 translations, `uthmani`/`indopak`/`tajweed`/`all` scripts). | `python scripts/lookup_scripture.py --quran 1:1-7 --translation pickthall` |
+| `scripts/lookup_scripture.py --words`                  | Fetches word-by-word Arabic, transliteration, and English meaning for an ayah.                     | `python scripts/lookup_scripture.py --words 1:1`                           |
+| `scripts/lookup_scripture.py --mutashabihat`           | Fetches resembling/similar verses (_mutashabihat_) across the Quran to prevent verse conflation.   | `python scripts/lookup_scripture.py --mutashabihat 35:44`                  |
+| `scripts/lookup_scripture.py --hadith`                 | Fetches Arabic + English Hadith and grading from 10 collections (including decimal numbering).     | `python scripts/lookup_scripture.py --hadith nawawi 1`                     |
+| `scripts/lookup_scripture.py --tafsir`                 | Fetches classical Tafsir (`ibn_kathir`, `maarif`, `muyassar`, `ibn_kathir_ar`, `all`) per ayah.    | `python scripts/lookup_scripture.py --tafsir ibn_kathir 2:255`             |
+| `scripts/lookup_scripture.py --search-quran`           | Searches Quranic verses across translations and transliterations.                                  | `python scripts/lookup_scripture.py --search-quran "mercy" --limit 5`      |
+| `scripts/lookup_scripture.py --search-hadith`          | Searches Hadith narrations across all or a specific collection (`--collection`).                   | `python scripts/lookup_scripture.py --search-hadith "intention"`           |
+| `scripts/lookup_scripture.py --dua` / `--search-dua`   | Fetches or searches 126 authentic Duas across 27 categories with primary sources.                  | `python scripts/lookup_scripture.py --dua morning`                         |
+| `scripts/lookup_scripture.py --asma` / `--search-asma` | Fetches or searches the 99 Names of Allah (_Asma ul Husna_) by number (`1-99`), `all`, or keyword. | `python scripts/lookup_scripture.py --asma 1`                              |
+| `scripts/format_islamic_citation.py`                   | Validates and standardizes Quran, Hadith, Tafsir, Dua, and Asma ul Husna citation strings.         | `python scripts/format_islamic_citation.py "Surat Al-Baqarah verse 255"`   |
 
 ---
 
@@ -162,9 +162,9 @@ Both scripts require zero third-party packages. `lookup_scripture.py` works with
 
 Read the dedicated reference guides when handling specialized topics:
 
-- [Quranic Citation & Translations](references/quranic-citation-and-translations.md): Chapter/verse conventions, all 12 UmmahAPI translation keys, 3 Arabic scripts (`uthmani`, `indopak`, `tajweed`), Word-by-Word morphology, and *Mutashabihat* (similar verses).
-- [Hadith Collections & Grading](references/hadith-collections-and-grading.md): All 10 UmmahAPI Hadith collections (*Kutub al-Sittah*, *Muwatta Malik*, *Nawawi's 40*, *40 Hadith Qudsi*, *Shah Waliullah's 40*), *Mustalah al-Hadith*, *Isnad* evaluation, and grading criteria.
-- [Tafsir & Exegesis Standards](references/tafsir-and-exegesis-standards.md): Classical commentators, UmmahAPI Tafsir editions (`ibn_kathir`, `maarif`, `muyassar`, `ibn_kathir_ar`), and *Asbab al-Nuzul*.
-- [Duas & Asma ul Husna](references/duas-and-asma-ul-husna.md): Authentic Quranic/Prophetic supplications (*Adhkar* across 27 categories) and theological standards for the 99 Names of Allah (*Asma' Allah al-Husna*).
+- [Quranic Citation & Translations](references/quranic-citation-and-translations.md): Chapter/verse conventions, all 12 UmmahAPI translation keys, 3 Arabic scripts (`uthmani`, `indopak`, `tajweed`), Word-by-Word morphology, and _Mutashabihat_ (similar verses).
+- [Hadith Collections & Grading](references/hadith-collections-and-grading.md): All 10 UmmahAPI Hadith collections (_Kutub al-Sittah_, _Muwatta Malik_, _Nawawi's 40_, _40 Hadith Qudsi_, _Shah Waliullah's 40_), _Mustalah al-Hadith_, _Isnad_ evaluation, and grading criteria.
+- [Tafsir & Exegesis Standards](references/tafsir-and-exegesis-standards.md): Classical commentators, UmmahAPI Tafsir editions (`ibn_kathir`, `maarif`, `muyassar`, `ibn_kathir_ar`), and _Asbab al-Nuzul_.
+- [Duas & Asma ul Husna](references/duas-and-asma-ul-husna.md): Authentic Quranic/Prophetic supplications (_Adhkar_ across 27 categories) and theological standards for the 99 Names of Allah (_Asma' Allah al-Husna_).
 - [Transliteration & Honorifics](references/transliteration-and-honorifics.md): ALA-LC romanization, diacritics, honorifics, typography.
 - [Verification & Anti-Hallucination](references/verification-and-anti-hallucination.md): 4-Gate verification protocol using UmmahAPI search/mutashabihat, red flags, and verifying weak/fabricated narrations.

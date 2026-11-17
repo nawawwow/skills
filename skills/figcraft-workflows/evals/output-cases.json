@@ -1,0 +1,63 @@
+[
+  {
+    "suite_name": "Auto-Layout Screen, Multi-Mode Variables & Token Export",
+    "description": "Tests atomic batch creation of a device-preset screen with nested auto-layout containers, Light/Dark variable collection binding, mode switching, and Tailwind v4 / Flutter token export.",
+    "input_scenario": "Create an iPhone 16 Pro sign-in screen in FigCraft with a Theme variable collection (Light and Dark modes), bind surface and text color tokens, preview the frame in Dark mode, and export tokens as Tailwind v4 CSS.",
+    "expected_deliverables": [
+      "Variable collection 'Theme' created with 'Light' and 'Dark' modes via variable.createCollection and variable.create",
+      "Device frame created via frame.create {preset: 'iPhone 16 Pro'} with vertical auto-layout, padding, and gap",
+      "Atomic batch execution using 'as' and {'$ref': ...} for parent-child hierarchy construction",
+      "Variable bindings applied via {'$var': ...} or variable.bind and frame switched to Dark mode via variable.setMode",
+      "Tailwind CSS v4 @theme output generated via variable.export {format: 'tailwind'}",
+      "Dual verification performed via inspect_document and screenshot"
+    ]
+  },
+  {
+    "suite_name": "Component Variant Set, Slots, Code Connect & Dev Mode Handoff",
+    "description": "Tests reusable component engineering, variant combination, component property exposure, slot injection, Code Connect linking, and multi-framework Dev Mode code inspection.",
+    "input_scenario": "Build a Card component set with Default and Featured variants, expose a text property and a content slot, link it with Code Connect, mark the screen Ready for Dev with an annotation, and generate React/Tailwind and SwiftUI code.",
+    "expected_deliverables": [
+      "Main components combined into a variant set via component.combineVariants or component.addVariant",
+      "Component properties exposed via component.addProperty (boolean/text/variant) and slot created via component.makeSlot",
+      "Instance placed via instance.create and populated via instance.setProperties and instance.slotInsert",
+      "Code Connect configured via codeConnect.set with property placeholders",
+      "Frame marked devStatus: 'readyForDev' with annotation.add and devMode.addMeasurement",
+      "Production code retrieved via inspect.code for both 'tailwind' and 'swiftui'"
+    ]
+  },
+  {
+    "suite_name": "Stateful Interactive Prototype with Variable Expressions & Conditionals",
+    "description": "Tests wiring multi-screen prototype flows with triggers, variable mutations, conditional branching, smartAnimate transitions, and dry-run expression evaluation.",
+    "input_scenario": "Wire a 2-screen login flow where clicking 'Sign In' increments an 'attempts' number variable and uses a conditional block to navigate to an error overlay after 3 failed taps or to the home screen otherwise.",
+    "expected_deliverables": [
+      "Prototype flow starting point registered via proto.flow.add and device configured via proto.settings",
+      "Number variable 'attempts' created and initialized to 0",
+      "Interaction added via proto.interaction.add combining a setVariable action ('attempts + 1') and a conditional action block ('attempts >= 3')",
+      "smartAnimate transition and easing configured on navigation actions",
+      "Expression verified non-destructively via proto.evaluate"
+    ]
+  },
+  {
+    "suite_name": "Reactive Comment Resolution & Safe Design Branching",
+    "description": "Tests the comment inspection/reply/resolve invariant and full design branching lifecycle with conflict resolution.",
+    "input_scenario": "Create a design branch, resolve an open reviewer comment pinned to a header frame, review the branch diff against main, and merge the branch back into main as a single undo step.",
+    "expected_deliverables": [
+      "Isolated branch created and opened via branch.create",
+      "Open comments retrieved via comment.list {filter: 'open', page: 'all'}",
+      "Requested design adjustment applied to the anchored node and verified via get_node and screenshot",
+      "Reply posted via comment.reply strictly BEFORE calling comment.resolve {resolved: true}",
+      "Diff and conflict check executed via branch.review followed by atomic merge via branch.merge"
+    ]
+  },
+  {
+    "suite_name": "Collaborative Workshop Board & Batch Multi-Format Data Fill",
+    "description": "Tests whiteboard workshop automation (templates, stickies, connected shapes, timer, dot voting) and high-volume data-driven layout generation via data.fill.",
+    "input_scenario": "Create a sprint retrospective board from template with connected flowchart nodes, a 5-minute timer, and a sticky voting session; then use data.fill on a social template to generate 3 campaign variations across square and story sizes.",
+    "expected_deliverables": [
+      "Board initialized via file.newBoard and populated via board.template {name: 'retrospective'}",
+      "Sticky notes and auto-connected flowchart shapes added via board.sticky and board.addConnected",
+      "Workshop timer started via board.timer {action: 'start', minutes: 5} and voting run via board.vote {action: 'start', votes: 3, on: 'stickies'}",
+      "Batch variations generated in one undo step via data.fill with text.fit auto-scaling and multi-size formats array"
+    ]
+  }
+]

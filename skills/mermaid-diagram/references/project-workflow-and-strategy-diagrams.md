@@ -3,6 +3,7 @@
 Authoritative Mermaid.js (v11.x – v12.2.0) syntax, configuration options, and production templates for project management, organizational workflows, version control, and strategic sense-making: Gantt (`gantt`), Swimlanes (`swimlane-beta`), Kanban (`kanban`), Timeline (`timeline`), GitGraph (`gitGraph`), Mindmap (`mindmap`), TreeView (`treeView-beta`), User Journey (`journey`), Requirement (`requirementDiagram`), Event Modeling (`eventmodeling`), Wardley Maps (`wardley-beta`), Cynefin (`cynefin-beta`), and Ishikawa (`ishikawa-beta`).
 
 ## Table of Contents
+
 1. [Gantt Project Schedules (`gantt`)](#1-gantt-project-schedules-gantt)
 2. [Swimlane Process Diagrams (`swimlane-beta`, v11.16+)](#2-swimlane-process-diagrams-swimlane-beta-v1116)
 3. [Kanban Boards (`kanban`)](#3-kanban-boards-kanban)
@@ -21,6 +22,7 @@ Authoritative Mermaid.js (v11.x – v12.2.0) syntax, configuration options, and 
 ## 1. Gantt Project Schedules (`gantt`)
 
 ### Syntax Rules & Tag Ordering Law
+
 - **Directives**:
   - `dateFormat YYYY-MM-DD` (Day.js input format tokens)
   - `axisFormat %Y-%m-%d` (D3 `%` output format tokens)
@@ -33,6 +35,7 @@ Authoritative Mermaid.js (v11.x – v12.2.0) syntax, configuration options, and 
   - Task titles must **never** contain a literal `:` (which splits title from metadata).
 
 ### Production Gantt Template
+
 ```mermaid
 ---
 config:
@@ -68,6 +71,7 @@ gantt
 ## 2. Swimlane Process Diagrams (`swimlane-beta`, v11.16+)
 
 ### Syntax Rules & Tier 2/3 Fallback
+
 - **Tier 1 Keyword**: `swimlane-beta LR` (or `TB`) with `subgraph laneId [Lane Title] ... end` lanes.
 - **Tier 2/3 Fallback**: Replace `swimlane-beta LR` with `flowchart LR`—the exact same `subgraph` and node/edge body renders cleanly in GitHub and strict previewers!
 
@@ -102,6 +106,7 @@ swimlane-beta LR
 ## 3. Kanban Boards (`kanban`)
 
 ### Syntax Rules
+
 - **Declaration**: `kanban`
 - **2-Level Indentation**:
   - Level 1 (Columns): `colId[Column Title]`
@@ -131,6 +136,7 @@ kanban
 ## 4. Chronological Timelines (`timeline`)
 
 ### Syntax Rules (v11.14+ Direction Support)
+
 - **Declaration**: `timeline` (horizontal default) or `timeline TD` (top-down vertical, v11.14+).
 - **Syntax**: `{Time Period} : {Event 1} : {Event 2}` or continuation lines starting with `: {Event}`.
 - **Pitfall**: Never use a literal colon `:` inside a time period or event description (use `-` or `;` instead).
@@ -156,6 +162,7 @@ timeline
 ## 5. Git Branching Graphs (`gitGraph`)
 
 ### Syntax Rules
+
 - **Declaration**: `gitGraph LR:` (default), `gitGraph TB:`, or `gitGraph BT:` (include the trailing colon `:`).
 - **Statements**:
   - `commit id: "c1" type: NORMAL | REVERSE | HIGHLIGHT tag: "v1.0.0"`
@@ -190,6 +197,7 @@ gitGraph LR:
 ## 6. Hierarchical Mindmaps (`mindmap`)
 
 ### Syntax Rules (v12.2+ `colorBy: depth`)
+
 - **Single Root Rule**: Exactly **one** root node at the outermost indentation level.
 - **7 Node Shapes**:
   - `root((Circle))`
@@ -200,7 +208,7 @@ gitGraph LR:
   - `id{{Hexagon}}`
   - Bare text (default)
 - **Icons & Classes**: Must be placed on a **separate line immediately below the node** at the same indentation (`::icon(fa fa-book)` or `:::urgent`).
-- **Quoting Rule**: Wrap labels containing `()`, `[]`, or `{}` in `" `...` "` markdown strings so they aren't parsed as shape delimiters.
+- **Quoting Rule**: Wrap labels containing `()`, `[]`, or `{}` in ``"`...`"`` markdown strings so they aren't parsed as shape delimiters.
 
 ```mermaid
 ---
@@ -228,6 +236,7 @@ mindmap
 ## 7. Directory TreeViews (`treeView-beta`, v11.14+)
 
 ### Syntax Rules
+
 Supports either indentation or direct copy-pasted Unicode box-drawing (`├──`, `└──`, `│`). Append `:::highlight`, `icon(pack:name)`, and `## Italic description` inline after any entry.
 
 ```mermaid
@@ -254,6 +263,7 @@ treeView-beta
 ## 8. User Journey Maps (`journey`)
 
 ### Syntax Rules
+
 - `<Task Name>: <Score 1..5>: <Actor1>, <Actor2>`
 - Never put a colon `:` inside `<Task Name>`, and keep scores strictly integer `1` through `5`.
 
@@ -276,6 +286,7 @@ journey
 ## 9. SysML Requirement Diagrams (`requirementDiagram`)
 
 ### Syntax Rules
+
 - **6 Subtypes**: `requirement`, `functionalRequirement`, `interfaceRequirement`, `performanceRequirement`, `physicalRequirement`, `designConstraint`.
 - **Enums**:
   - `risk`: `Low` | `Medium` | `High`
@@ -314,6 +325,7 @@ requirementDiagram
 ## 10. CQRS Event Modeling (`eventmodeling`, v11.15+)
 
 ### Syntax Rules
+
 - `tf <num> <ui|pcr|cmd|rmo|evt> <Namespace.Name>` (Time frame — auto-links from previous frame)
 - `rf <num> <ui|pcr|cmd|rmo|evt> <Namespace.Name>` (Reset frame — breaks auto-link)
 - Explicit arrows: `->> <frameNum>`
@@ -339,6 +351,7 @@ eventmodeling
 ## 11. Wardley Value-Chain Maps (`wardley-beta`, v11.14+)
 
 ### Syntax Rules
+
 - **Coordinate Order (`[Visibility, Evolution]`)**: Uses `[Y, X]` order (`[0.0..1.0, 0.0..1.0]`), where the **first** float is vertical Visibility (`Y`) and the **second** float is horizontal Evolution (`X`).
 - **Statements**: `anchor "Name" [vis, evo]`, `component "Name" [vis, evo] (build|buy|outsource|inertia)`, `A -> B`, `evolve "Name" <targetEvo>`.
 
@@ -365,7 +378,9 @@ wardley-beta
 ## 12. Cynefin Sense-Making (`cynefin-beta`) & Ishikawa Fishbone (`ishikawa-beta`)
 
 ### Cynefin (`cynefin-beta`, v11.16+)
+
 Fixed domains: `clear`, `complicated`, `complex`, `chaotic`, `confusion`.
+
 ```mermaid
 cynefin-beta
     title Incident Triage & Response Framework
@@ -384,7 +399,9 @@ cynefin-beta
 ```
 
 ### Ishikawa Fishbone (`ishikawa-beta`, v11.12+)
+
 First indented line is the **Problem Head**; subsequent top-level indented lines are **Category Bones**; nested lines are **Root Causes**.
+
 ```mermaid
 ishikawa-beta
     Production Checkout 504 Outage

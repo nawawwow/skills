@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-17
+
+### Added
+
+- **Design Systems & FigCraft Automation**:
+  - `figcraft-workflows`: End-to-end interface design, design systems, multi-mode variables, interactive prototyping, Dev Mode handoff, and collaborative whiteboarding skill for FigCraft via its MCP server (18 native tools + 636 engine commands) and `figcraft-cli`. Includes 6 reference guides (`layout-and-nodes.md`, `components-styles-variables.md`, `prototyping-and-dev-mode.md`, `collaboration-comments-branches-boards.md`, `files-export-plugins-cli.md`, `command-catalog-cheatsheet.md`) and trigger/output evaluation suites.
+- **Anti-Slop Craft & Emotional Design (`ui-ux-design`)**:
+  - Added `references/anti-slop-and-emotional-design.md`, integrated Norman's 3 levels of emotional design into the 7-step workflow, added Invariant #5 (The Anti-Slop Invariant), and implemented automated detection for AI buzzwords and neon blur orbs in `audit_ui_ux.py`.
+- **Tooling & Configuration**:
+  - Added `[tool.mypy]` configuration to `pyproject.toml` targeting Python 3.10+ and ignored `.playwright-mcp/` in `.gitignore`.
+
+### Changed
+
+- **UI/UX Ergonomics & WCAG Hardening (`ui-ux-design`)**:
+  - Enforced 44x44px touch targets and vertical clearance on footer links/social icons, explicit `aria-label` requirements on compact single-field inputs, worst-case CSS gradient contrast checks, and corrected WCAG 2.2 contrast ratios and `mobile-icon-btn` CSS rules.
+- **Documentation & Catalog Synchronization**:
+  - Updated `README.md` catalog, architecture diagram, and directory tree to include `figcraft-workflows` (17 skills total) and aligned documented script names for `mermaid-diagram`, `researching-protocol`, and `sdlc-process`.
+
+### Fixed
+
+- **Skill Validation (`mermaid-diagram`)**:
+  - Shortened the `description` field in `skills/mermaid-diagram/SKILL.md` from 1043 to 1002 characters to comply with the 1024-character limit enforced by `validate_skill.py` and `quick_validate.py`.
+- **Python Lint, Formatting & Type Checking**:
+  - Resolved all 132 `ruff check` findings, reformatted all 50 Python scripts with `ruff format`, and fixed 22 `mypy` type errors across 10 skill scripts.
+- **Markdown Quality & Formatting**:
+  - Resolved all 575 `markdownlint-cli2` violations across 87 Markdown files (including nested code fences in `readme-archetypes-and-templates.md` and `api-documentation-and-openapi.md`, inline code spans, heading hierarchy in `analyzer.md`, and `text` language tags on 84 fenced blocks) and standardized formatting with Prettier.
+
 ## [0.2.0] - 2026-10-29
 
 ### Added
@@ -70,6 +97,7 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 - Built-in regex secret scanning in `git-commit` preventing accidental credential commits (API tokens, private keys, AWS secrets).
 - Invariant anti-hallucination protocols across theological reference skills ensuring verified source texts.
 
-[Unreleased]: https://github.com/ahmadmcer/skills/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/ahmadmcer/skills/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/ahmadmcer/skills/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/ahmadmcer/skills/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ahmadmcer/skills/releases/tag/v0.1.0

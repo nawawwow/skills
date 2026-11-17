@@ -10,7 +10,7 @@ metadata:
 
 Engineer, structure, audit, and migrate machine-readable `AGENTS.md` instructions that maximize AI coding agent accuracy, prevent destructive errors, and eliminate context bloat.
 
-`AGENTS.md` is an open standard stewarded by the **Agentic AI Foundation (AAIF)** under the **Linux Foundation**. It acts as a "README for AI agents", natively consumed by tools like GitHub Copilot, Cursor, OpenAI Codex, Claude Code, Google Gemini Code Assist, and Jules. 
+`AGENTS.md` is an open standard stewarded by the **Agentic AI Foundation (AAIF)** under the **Linux Foundation**. It acts as a "README for AI agents", natively consumed by tools like GitHub Copilot, Cursor, OpenAI Codex, Claude Code, Google Gemini Code Assist, and Jules.
 
 Unlike human documentation, an `AGENTS.md` file is loaded into the model's context window on every turn. Inefficient or bloated instructions increase reasoning latency and degrade model accuracy by 14–22%. This skill enforces a structured 5-step engineering process to inspect codebases, scaffold token-budgeted instructions, verify operational commands, and enforce an **80/100 quality gate**.
 
@@ -20,7 +20,7 @@ Unlike human documentation, an `AGENTS.md` file is loaded into the model's conte
 
 Whenever generating, updating, or auditing an `AGENTS.md` file, follow this standardized sequence:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   5-STEP AGENTS.md ENGINEERING FLOW                    │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -45,6 +45,7 @@ python skills/create-agents/scripts/inspect_project.py . --json
 ```
 
 The inspector discovers:
+
 - Languages and runtimes (Python, TypeScript, Node.js, Rust, Go, Java, Docker).
 - Package managers (`pnpm`, `bun`, `npm`, `yarn`, `poetry`, `uv`, `cargo`, `go`).
 - Operational scripts (build, test, single-test patterns, lint, typecheck).
@@ -81,6 +82,7 @@ python skills/create-agents/scripts/generate_agents.py packages/ui --nested --pa
 ```
 
 The generator ensures:
+
 1. Every command uses actual package managers detected in manifests.
 2. A dedicated **single-test command** is provided for fast test loops.
 3. No speculative placeholder tokens (`[TODO]`, `<your-repo>`) are generated.
@@ -88,6 +90,7 @@ The generator ensures:
 ### Step 4: Token Optimization & Guardrail Definition
 
 Refine the generated draft to uphold strict context economics:
+
 1. **Target Density**: Root files must remain between 50–150 lines (~500–1,500 tokens). Nested package files must stay under 80 lines.
 2. **Apply the Single-Test Rule**: Coding agents should never run entire test suites for minor changes. Provide explicit single test patterns (e.g., `pnpm test -- <path>` or `pytest <file>::<func>`).
 3. **Define Negative Boundaries**: Explicitly enumerate what the agent must **never** do (e.g., editing `dist/`, committing `.env`, altering DB migrations directly).
@@ -111,6 +114,7 @@ python skills/create-agents/scripts/audit_agents.py packages/ui/AGENTS.md --nest
 ```
 
 The auditor checks:
+
 - Manifest freshness: Do documented test/build/lint scripts exist in `package.json` or `pyproject.toml`?
 - Presence of single-test targeted execution pattern.
 - Absence of unreplaced placeholder tokens (`[TODO]`, `<your-...>`).
@@ -137,6 +141,7 @@ python skills/create-agents/scripts/migrate_agents.py . --bridge --archive
 ```
 
 The bridging workflow creates lightweight pointers:
+
 - `CLAUDE.md`: Contains `@AGENTS.md` (native Claude Code file import).
 - `.github/copilot-instructions.md`: Contains a clean instruction pointer to `AGENTS.md`.
 - `.cursor/rules/agents.mdc`: Provides a wildcard project rule synchronizing Cursor to `AGENTS.md`.
@@ -160,9 +165,9 @@ Every generated or edited `AGENTS.md` must uphold these non-negotiable principle
 
 ## 4. Automation Scripts Reference
 
-| Script | Purpose | Example Usage |
-| :--- | :--- | :--- |
-| `scripts/inspect_project.py` | Discovers project runtimes, package managers, test scripts, boundaries, and existing configs. | `python skills/create-agents/scripts/inspect_project.py . --json` |
-| `scripts/generate_agents.py` | Generates a tailored, token-optimized `AGENTS.md` based on archetype and inspection data. | `python skills/create-agents/scripts/generate_agents.py . --archetype webapp -o AGENTS.md` |
-| `scripts/audit_agents.py` | Evaluates an `AGENTS.md` against the 12-point rubric (0–100 score) and enforces the 80/100 gate. | `python skills/create-agents/scripts/audit_agents.py AGENTS.md --project-dir .` |
-| `scripts/migrate_agents.py` | Consolidates legacy `.cursorrules` / `CLAUDE.md` into `AGENTS.md` and creates bridge files. | `python skills/create-agents/scripts/migrate_agents.py . --bridge` |
+| Script                       | Purpose                                                                                          | Example Usage                                                                              |
+| :--------------------------- | :----------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
+| `scripts/inspect_project.py` | Discovers project runtimes, package managers, test scripts, boundaries, and existing configs.    | `python skills/create-agents/scripts/inspect_project.py . --json`                          |
+| `scripts/generate_agents.py` | Generates a tailored, token-optimized `AGENTS.md` based on archetype and inspection data.        | `python skills/create-agents/scripts/generate_agents.py . --archetype webapp -o AGENTS.md` |
+| `scripts/audit_agents.py`    | Evaluates an `AGENTS.md` against the 12-point rubric (0–100 score) and enforces the 80/100 gate. | `python skills/create-agents/scripts/audit_agents.py AGENTS.md --project-dir .`            |
+| `scripts/migrate_agents.py`  | Consolidates legacy `.cursorrules` / `CLAUDE.md` into `AGENTS.md` and creates bridge files.      | `python skills/create-agents/scripts/migrate_agents.py . --bridge`                         |

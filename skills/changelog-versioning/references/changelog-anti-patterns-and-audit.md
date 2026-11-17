@@ -13,6 +13,7 @@ Maintaining a clean changelog requires avoiding widespread industry anti-pattern
 - **The Defect**: Copy-pasting `git log` output with commit hashes, merge commit messages, and internal developer notes directly into the document.
 - **Why It Fails**: Users do not care about commit `a1b2c3d` or that a developer _"fixed a typo in line 44"_. They care about features and breaking changes.
 - **Example of Failure**:
+
   ```markdown
   ## 1.2.0
 

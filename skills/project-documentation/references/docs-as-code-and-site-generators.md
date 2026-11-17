@@ -24,7 +24,7 @@ By treating documentation as code, teams eliminate out-of-sync documentation, en
 
 A professional documentation repository standardizes its files in a root `docs/` folder:
 
-```
+```text
 docs/
 ├── .vitepress/              # Or .docusaurus/, .astro/
 │   └── config.mts           # Site navigation, theme, search configuration

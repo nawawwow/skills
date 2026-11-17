@@ -10,7 +10,7 @@ Software architecture documentation communicates the high-level design, boundari
 
 The **C4 Model** provides a hierarchical "Google Maps" approach to zooming in on software systems across four levels of detail:
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │                   THE 4 LEVELS OF C4                   │
 ├────────────────────────────────────────────────────────┤
@@ -25,7 +25,7 @@ The **C4 Model** provides a hierarchical "Google Maps" approach to zooming in on
 
 Shows the software system in the center, surrounded by the human users who interact with it and the external third-party software systems it integrates with.
 
-#### Mermaid Syntax Example:
+#### Mermaid Syntax Example
 
 ```mermaid
 flowchart TD
@@ -51,7 +51,7 @@ flowchart TD
 
 Zooms inside the system boundary to show the high-level deployable units (containers): web frontends, backend APIs, background workers, relational databases, cache clusters, and object stores.
 
-#### Mermaid Syntax Example:
+#### Mermaid Syntax Example
 
 ```mermaid
 flowchart TD
@@ -77,7 +77,7 @@ flowchart TD
 
 Zooms inside a single container (such as the API Gateway) to reveal its internal modular components, service interfaces, and data repositories.
 
-#### Mermaid Syntax Example:
+#### Mermaid Syntax Example
 
 ```mermaid
 flowchart LR
@@ -99,7 +99,7 @@ flowchart LR
 
 An **Architecture Decision Record (ADR)** captures a significant architectural choice along with its context, alternatives considered, and resulting trade-offs.
 
-### Standard MADR Template (`docs/architecture/adr-0001.md`):
+### Standard MADR Template (`docs/architecture/adr-0001.md`)
 
 ```markdown
 # ADR 0001: Adopt Event Sourcing for Financial Transaction Auditing

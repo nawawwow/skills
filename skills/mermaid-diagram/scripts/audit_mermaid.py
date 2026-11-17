@@ -27,7 +27,6 @@ import shutil
 import subprocess
 import sys
 from dataclasses import asdict, dataclass, field
-from typing import Dict, List, Optional, Tuple
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -39,7 +38,7 @@ if hasattr(sys.stderr, "reconfigure"):
 # Official 32 Diagram Type Registry & Tier Definitions
 # ---------------------------------------------------------------------------
 
-CANONICAL_DIAGRAM_MAP: Dict[str, str] = {
+CANONICAL_DIAGRAM_MAP: dict[str, str] = {
     "flowchart": "flowchart",
     "graph": "flowchart",
     "sequencediagram": "sequenceDiagram",
@@ -137,10 +136,10 @@ TIER_3_STRICT_SUPPORTED = {
     "xychart-beta",
 }
 
-TIER_FALLBACK_ADVICE: Dict[str, str] = {
-    "swimlane-beta": "Use `flowchart LR` or `flowchart TD` with `subgraph laneId [\"Lane Title\"] ... end` for Tier 2/3 compatibility.",
+TIER_FALLBACK_ADVICE: dict[str, str] = {
+    "swimlane-beta": 'Use `flowchart LR` or `flowchart TD` with `subgraph laneId ["Lane Title"] ... end` for Tier 2/3 compatibility.',
     "agentflow-beta": "Use `flowchart TB` with `subgraph` containers and semantic `classDef` roles for Tier 2/3 compatibility.",
-    "usecase-beta": "Use `flowchart LR` with `([\"Use Case\"])` stadium nodes and `subgraph` boundaries for Tier 2/3 compatibility.",
+    "usecase-beta": 'Use `flowchart LR` with `(["Use Case"])` stadium nodes and `subgraph` boundaries for Tier 2/3 compatibility.',
     "eventmodeling": "Use `sequenceDiagram` with `box` swimlanes or `flowchart LR` for Tier 2/3 compatibility.",
     "wardley-beta": "Use `quadrantChart` (Tier 2) or a `flowchart` grid for strategic positioning.",
     "cynefin-beta": "Use `quadrantChart` (Tier 2) or `flowchart` with 4 domain subgraphs.",
@@ -188,8 +187,8 @@ class DiagramAuditResult:
     has_acc_descr: bool
     score: int
     grade: str
-    dimension_scores: Dict[str, int] = field(default_factory=dict)
-    issues: List[Issue] = field(default_factory=list)
+    dimension_scores: dict[str, int] = field(default_factory=dict)
+    issues: list[Issue] = field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------
@@ -199,19 +198,19 @@ class DiagramAuditResult:
 FENCE_START_RE = re.compile(r"^(\s*)(`{3,}|~{3,})mermaid(?:-example)?\b.*$", re.IGNORECASE)
 
 
-def extract_mermaid_blocks(file_path: pathlib.Path) -> List[Tuple[int, str]]:
+def extract_mermaid_blocks(file_path: pathlib.Path) -> list[tuple[int, str]]:
     """Return list of (1-based start_line, diagram_source) from .mmd or .md file."""
     text = file_path.read_text(encoding="utf-8", errors="replace")
     suffix = file_path.suffix.lower()
     if suffix in {".mmd", ".mermaid"}:
         return [(1, text)]
 
-    blocks: List[Tuple[int, str]] = []
+    blocks: list[tuple[int, str]] = []
     lines = text.splitlines()
     in_fence = False
     fence_marker = ""
     fence_start_line = 1
-    current_lines: List[str] = []
+    current_lines: list[str] = []
 
     for idx, line in enumerate(lines, start=1):
         if not in_fence:
@@ -236,13 +235,14 @@ def extract_mermaid_blocks(file_path: pathlib.Path) -> List[Tuple[int, str]]:
 # Frontmatter & Declaration Parsing
 # ---------------------------------------------------------------------------
 
-def split_frontmatter(code: str) -> Tuple[Dict[str, str], List[Tuple[int, str]]]:
+
+def split_frontmatter(code: str) -> tuple[dict[str, str], list[tuple[int, str]]]:
     """
     Split optional leading YAML frontmatter (`--- ... ---`) from body lines.
     Returns (frontmatter_meta, list of (relative_line_num, line_text)).
     """
     lines = code.splitlines()
-    meta: Dict[str, str] = {}
+    meta: dict[str, str] = {}
     idx = 0
     while idx < len(lines) and not lines[idx].strip():
         idx += 1
@@ -280,6 +280,7 @@ def split_frontmatter(code: str) -> Tuple[Dict[str, str], List[Tuple[int, str]]]
 # Core Static Linter & Rubric Scorer
 # ---------------------------------------------------------------------------
 
+
 def audit_diagram(
     source_file: str,
     block_index: int,
@@ -288,7 +289,7 @@ def audit_diagram(
     target_tier: str = "modern",
     validate_cli: bool = False,
 ) -> DiagramAuditResult:
-    issues: List[Issue] = []
+    issues: list[Issue] = []
     fm_meta, body_lines = split_frontmatter(code)
     has_frontmatter = "_raw" in fm_meta
     has_title = bool(fm_meta.get("title"))
@@ -299,7 +300,7 @@ def audit_diagram(
     decl_line_num = base_line
     raw_decl = ""
     canonical_type = "unknown"
-    active_body: List[Tuple[int, str]] = []
+    active_body: list[tuple[int, str]] = []
 
     for rel_ln, text in body_lines:
         abs_ln = base_line + rel_ln - 1
@@ -350,10 +351,14 @@ def audit_diagram(
         )
 
     # Check frontmatter themeVariables without theme: base
-    if fm_meta.get("has_theme_variables") == "true" and fm_meta.get("theme", "base") not in {"base"}:
+    if fm_meta.get("has_theme_variables") == "true" and fm_meta.get("theme", "base") not in {
+        "base"
+    }:
         # Allow diagram-specific themeVariables like xyChart/radar
         fm_raw = fm_meta.get("_raw", "")
-        if any(k in fm_raw for k in ("primaryColor", "secondaryColor", "tertiaryColor", "lineColor")):
+        if any(
+            k in fm_raw for k in ("primaryColor", "secondaryColor", "tertiaryColor", "lineColor")
+        ):
             issues.append(
                 Issue(
                     severity="warning",
@@ -379,7 +384,9 @@ def audit_diagram(
     # Check Target Tier Compatibility
     if canonical_type != "unknown":
         if target_tier == "github" and canonical_type not in TIER_2_GITHUB_SUPPORTED:
-            fallback = TIER_FALLBACK_ADVICE.get(canonical_type, "Use `flowchart` or `sequenceDiagram` for GitHub compatibility.")
+            fallback = TIER_FALLBACK_ADVICE.get(
+                canonical_type, "Use `flowchart` or `sequenceDiagram` for GitHub compatibility."
+            )
             issues.append(
                 Issue(
                     severity="critical",
@@ -432,13 +439,12 @@ def audit_diagram(
     brace_balance = 0
     subgraph_count = 0
     has_explicit_direction = bool(re.search(r"\b(TD|TB|BT|RL|LR)\b", raw_decl))
-    has_custom_styling = bool(fm_meta.get("theme") or fm_meta.get("look"))
     node_ids: set[str] = set()
     declared_arch_groups: set[str] = set()
     declared_arch_services: set[str] = set()
-    mindmap_root_indent: Optional[int] = None
+    mindmap_root_indent: int | None = None
     mindmap_roots_count = 0
-    prev_seq_create_destroy: Optional[Tuple[int, str]] = None
+    prev_seq_create_destroy: tuple[int, str] | None = None
 
     BLOCK_OPEN_RE = re.compile(
         r"^(subgraph|box|loop|alt|opt|par|critical|break|rect|systemBoundary|flow|global|block)\b"
@@ -474,7 +480,11 @@ def audit_diagram(
             continue
 
         # Accessibility & Title detection
-        if s.lower().startswith("title ") or s.lower().startswith("title:") or " title " in raw_decl.lower():
+        if (
+            s.lower().startswith("title ")
+            or s.lower().startswith("title:")
+            or " title " in raw_decl.lower()
+        ):
             has_title = True
         if s.startswith("accTitle:") or s.startswith("accTitle "):
             has_acc_title = True
@@ -490,8 +500,9 @@ def audit_diagram(
             has_explicit_direction = True
 
         # Styling detection & Dual-Mode contrast check
-        if s.startswith(("classDef ", "style ", "linkStyle ", "UpdateElementStyle", "UpdateRelStyle")):
-            has_custom_styling = True
+        if s.startswith(
+            ("classDef ", "style ", "linkStyle ", "UpdateElementStyle", "UpdateRelStyle")
+        ):
             if s.startswith(("classDef ", "style ")):
                 if "fill:" in s and "color:" not in s:
                     issues.append(
@@ -546,7 +557,7 @@ def audit_diagram(
                         category="syntax",
                         line=abs_ln,
                         message="Bare lowercase `end` used as a node ID or label breaks flowchart parsing.",
-                        fix="Capitalize (`End` / `END`) or wrap the label in quotes (`endNode[\"end\"]`).",
+                        fix='Capitalize (`End` / `END`) or wrap the label in quotes (`endNode["end"]`).',
                     )
                 )
             # Accidental circle/cross edge A---oB or A---xB
@@ -570,7 +581,7 @@ def audit_diagram(
                             category="escaping",
                             line=abs_ln,
                             message=f"Unquoted special characters `()/{{}}` inside node label `[{lbl}]`.",
-                            fix=f"Wrap the label in double quotes: `{match.group(1)}[\"{lbl}\"]`.",
+                            fix=f'Wrap the label in double quotes: `{match.group(1)}["{lbl}"]`.',
                         )
                     )
             for match in re.finditer(r"\b([A-Za-z0-9_]+)\{([^\"\{\}\n]+)\}", s):
@@ -582,12 +593,23 @@ def audit_diagram(
                             category="escaping",
                             line=abs_ln,
                             message=f"Unquoted special characters `()/[]` inside diamond label `{{{lbl}}}`.",
-                            fix=f"Wrap the label in double quotes: `{match.group(1)}{{\"{lbl}\"}}`.",
+                            fix=f'Wrap the label in double quotes: `{match.group(1)}{{"{lbl}"}}`.',
                         )
                     )
             # Count nodes roughly
-            for nid in re.findall(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*(?:\[|\(|\{|@\{|-->|---|-\.->|==>)", s):
-                if nid not in {"subgraph", "direction", "style", "classDef", "class", "click", "linkStyle", "end"}:
+            for nid in re.findall(
+                r"\b([A-Za-z_][A-Za-z0-9_]*)\s*(?:\[|\(|\{|@\{|-->|---|-\.->|==>)", s
+            ):
+                if nid not in {
+                    "subgraph",
+                    "direction",
+                    "style",
+                    "classDef",
+                    "class",
+                    "click",
+                    "linkStyle",
+                    "end",
+                }:
                     node_ids.add(nid)
 
         # 2. SEQUENCE DIAGRAM
@@ -620,7 +642,10 @@ def audit_diagram(
             if m_cd:
                 prev_seq_create_destroy = (abs_ln, m_cd.group(1))
 
-            if ":" in s and any(arr in s.split(":", 1)[0] for arr in ("->>", "-->>", "->", "-->", "-x", "--x", "-)", "--)")):
+            if ":" in s and any(
+                arr in s.split(":", 1)[0]
+                for arr in ("->>", "-->>", "->", "-->", "-x", "--x", "-)", "--)")
+            ):
                 msg_part = s.split(":", 1)[1]
                 # Check unescaped semicolon (ignoring &#59; or #59;)
                 cleaned_msg = re.sub(r"&?#\d+;", "", msg_part)
@@ -649,7 +674,23 @@ def audit_diagram(
                         fix="Replace commas inside `~...~` with underscores (`~Key_Value~`).",
                     )
                 )
-            if ":::" in s and any(rel in s for rel in ("<|--", "--|>", "*--", "--*", "o--", "--o", "-->", "<--", "..>", "<..", "<|..", "..|>")):
+            if ":::" in s and any(
+                rel in s
+                for rel in (
+                    "<|--",
+                    "--|>",
+                    "*--",
+                    "--*",
+                    "o--",
+                    "--o",
+                    "-->",
+                    "<--",
+                    "..>",
+                    "<..",
+                    "<|..",
+                    "..|>",
+                )
+            ):
                 issues.append(
                     Issue(
                         severity="critical",
@@ -679,7 +720,10 @@ def audit_diagram(
 
         # 5. ER DIAGRAM
         elif canonical_type == "erDiagram":
-            m_er = re.match(r"^([A-Za-z0-9_\"-\[\]]+)\s+[|o}{]+(?:--|\.\.)[|o}{]+\s+([A-Za-z0-9_\"-\[\]]+)\s*:\s*(.+)$", s)
+            m_er = re.match(
+                r"^([A-Za-z0-9_\"-\[\]]+)\s+[|o}{]+(?:--|\.\.)[|o}{]+\s+([A-Za-z0-9_\"-\[\]]+)\s*:\s*(.+)$",
+                s,
+            )
             if m_er:
                 node_ids.add(m_er.group(1))
                 node_ids.add(m_er.group(2))
@@ -691,7 +735,7 @@ def audit_diagram(
                             category="escaping",
                             line=abs_ln,
                             message=f"Unquoted multi-word relationship label `: {rel_label}` in `erDiagram`.",
-                            fix=f"Wrap multi-word ER labels in double quotes: `: \"{rel_label}\"`.",
+                            fix=f'Wrap multi-word ER labels in double quotes: `: "{rel_label}"`.',
                         )
                     )
 
@@ -726,7 +770,9 @@ def audit_diagram(
                             fix="Specify exit and entry port sides on every edge: `serviceA:R --> L:serviceB`.",
                         )
                     )
-                for endpoint in re.findall(r"\b([A-Za-z0-9_]+)(?:\{group\})?:[LRTB]|[LRTB]:([A-Za-z0-9_]+)", s):
+                for endpoint in re.findall(
+                    r"\b([A-Za-z0-9_]+)(?:\{group\})?:[LRTB]|[LRTB]:([A-Za-z0-9_]+)", s
+                ):
                     ep = endpoint[0] or endpoint[1]
                     if ep in declared_arch_groups and ep not in declared_arch_services:
                         issues.append(
@@ -753,7 +799,9 @@ def audit_diagram(
                 )
             if s.startswith("tickInterval "):
                 interval_val = s.split(None, 1)[1].strip() if len(s.split(None, 1)) > 1 else ""
-                if not re.match(r"^([1-9][0-9]*)(millisecond|second|minute|hour|day|week|month)$", interval_val):
+                if not re.match(
+                    r"^([1-9][0-9]*)(millisecond|second|minute|hour|day|week|month)$", interval_val
+                ):
                     issues.append(
                         Issue(
                             severity="critical",
@@ -763,7 +811,20 @@ def audit_diagram(
                             fix="Use `<number><singular_unit>` matching `millisecond|second|minute|hour|day|week|month` (e.g., `1week`, `2day`).",
                         )
                     )
-            if ":" in s and not s.startswith(("title", "dateFormat", "axisFormat", "tickInterval", "excludes", "todayMarker", "section", "weekday", "weekend", "click")):
+            if ":" in s and not s.startswith(
+                (
+                    "title",
+                    "dateFormat",
+                    "axisFormat",
+                    "tickInterval",
+                    "excludes",
+                    "todayMarker",
+                    "section",
+                    "weekday",
+                    "weekend",
+                    "click",
+                )
+            ):
                 node_ids.add(f"task_{abs_ln}")
                 meta_part = s.split(":", 1)[1].strip()
                 tokens = [t.strip() for t in meta_part.split(",") if t.strip()]
@@ -797,7 +858,7 @@ def audit_diagram(
                             category="escaping",
                             line=abs_ln,
                             message=f"Unquoted pie slice label `{lhs}`.",
-                            fix=f"Wrap the slice label in double quotes: `\"{lhs}\" : {rhs}`.",
+                            fix=f'Wrap the slice label in double quotes: `"{lhs}" : {rhs}`.',
                         )
                     )
                 if "%" in rhs:
@@ -892,7 +953,7 @@ def audit_diagram(
                             category="escaping",
                             line=abs_ln,
                             message=f"Unquoted multi-word title `{title_arg}` in `xychart-beta`.",
-                            fix=f"Wrap multi-word strings in double quotes: `title \"{title_arg}\"`.",
+                            fix=f'Wrap multi-word strings in double quotes: `title "{title_arg}"`.',
                         )
                     )
             if s.startswith(("bar ", "line ")):
@@ -918,8 +979,8 @@ def audit_diagram(
                             severity="critical",
                             category="escaping",
                             line=abs_ln,
-                            message="Backslash-escaped quote `\\\"` violates RFC 4180 CSV rules in `sankey-beta`.",
-                            fix="Escape double quotes inside quoted CSV fields by doubling them (`\"\"`).",
+                            message='Backslash-escaped quote `\\"` violates RFC 4180 CSV rules in `sankey-beta`.',
+                            fix='Escape double quotes inside quoted CSV fields by doubling them (`""`).',
                         )
                     )
 
@@ -962,8 +1023,8 @@ def audit_diagram(
                         severity="critical",
                         category="syntax",
                         line=abs_ln,
-                        message="`cherry-pick` requires `id: \"<commit_id>\"`.",
-                        fix="Specify the source commit ID: `cherry-pick id: \"c1\"`.",
+                        message='`cherry-pick` requires `id: "<commit_id>"`.',
+                        fix='Specify the source commit ID: `cherry-pick id: "c1"`.',
                     )
                 )
             m_br = re.match(r"^(?:branch|checkout|switch|merge)\s+([^\s\"]+)", s)
@@ -974,7 +1035,7 @@ def audit_diagram(
                         category="escaping",
                         line=abs_ln,
                         message=f"Unquoted branch name `{m_br.group(1)}` contains hyphens or slashes.",
-                        fix=f"Wrap branch names with `-` or `/` in double quotes: `\"{m_br.group(1)}\"`.",
+                        fix=f'Wrap branch names with `-` or `/` in double quotes: `"{m_br.group(1)}"`.',
                     )
                 )
             if s.startswith("commit"):
@@ -1029,7 +1090,11 @@ def audit_diagram(
         # 16. REQUIREMENT DIAGRAM
         elif canonical_type == "requirementDiagram":
             m_risk = re.match(r"^risk\s*:\s*(.+)$", s, re.IGNORECASE)
-            if m_risk and m_risk.group(1).strip().strip("\"'").lower() not in {"low", "medium", "high"}:
+            if m_risk and m_risk.group(1).strip().strip("\"'").lower() not in {
+                "low",
+                "medium",
+                "high",
+            }:
                 issues.append(
                     Issue(
                         severity="critical",
@@ -1040,7 +1105,12 @@ def audit_diagram(
                     )
                 )
             m_vm = re.match(r"^verifymethod\s*:\s*(.+)$", s, re.IGNORECASE)
-            if m_vm and m_vm.group(1).strip().strip("\"'").lower() not in {"analysis", "inspection", "test", "demonstration"}:
+            if m_vm and m_vm.group(1).strip().strip("\"'").lower() not in {
+                "analysis",
+                "inspection",
+                "test",
+                "demonstration",
+            }:
                 issues.append(
                     Issue(
                         severity="critical",
@@ -1050,7 +1120,9 @@ def audit_diagram(
                         fix="Use `Analysis`, `Inspection`, `Test`, or `Demonstration`.",
                     )
                 )
-            if re.search(r"--\s*(contains|copies|derives|satisfies|verifies|refines|traces)\s*-->", s):
+            if re.search(
+                r"--\s*(contains|copies|derives|satisfies|verifies|refines|traces)\s*-->", s
+            ):
                 issues.append(
                     Issue(
                         severity="critical",
@@ -1062,7 +1134,16 @@ def audit_diagram(
                 )
 
     # Check unbalanced blocks
-    if canonical_type in {"flowchart", "sequenceDiagram", "erDiagram", "swimlane-beta", "usecase-beta", "agentflow-beta", "block", "block-beta"}:
+    if canonical_type in {
+        "flowchart",
+        "sequenceDiagram",
+        "erDiagram",
+        "swimlane-beta",
+        "usecase-beta",
+        "agentflow-beta",
+        "block",
+        "block-beta",
+    }:
         if block_open_count != block_close_count:
             issues.append(
                 Issue(
@@ -1074,7 +1155,17 @@ def audit_diagram(
                 )
             )
 
-    if brace_balance != 0 and canonical_type in {"classDiagram", "stateDiagram-v2", "erDiagram", "requirementDiagram", "C4Context", "C4Container", "C4Component", "C4Deployment", "zenuml"}:
+    if brace_balance != 0 and canonical_type in {
+        "classDiagram",
+        "stateDiagram-v2",
+        "erDiagram",
+        "requirementDiagram",
+        "C4Context",
+        "C4Container",
+        "C4Component",
+        "C4Deployment",
+        "zenuml",
+    }:
         issues.append(
             Issue(
                 severity="critical",
@@ -1104,7 +1195,7 @@ def audit_diagram(
                 category="compatibility",
                 line=decl_line_num,
                 message=f"Flowchart has {node_estimate} nodes without any `subgraph` grouping.",
-                fix="Group related nodes into 2-4 `subgraph id [\"Title\"] ... end` clusters for visual scanning.",
+                fix='Group related nodes into 2-4 `subgraph id ["Title"] ... end` clusters for visual scanning.',
             )
         )
     if canonical_type in DIRECTIONAL_DIAGRAMS and not has_explicit_direction:
@@ -1126,7 +1217,7 @@ def audit_diagram(
                 category="accessibility",
                 line=decl_line_num,
                 message="Diagram is missing a `title` (in YAML frontmatter or `title` directive).",
-                fix="Add `title: \"...\"` in YAML frontmatter or a `title ...` directive.",
+                fix='Add `title: "..."` in YAML frontmatter or a `title ...` directive.',
             )
         )
     if not (has_acc_title and has_acc_descr) and canonical_type in {
@@ -1168,7 +1259,11 @@ def audit_diagram(
                     timeout=20,
                 )
                 if proc.returncode != 0:
-                    err_line = (proc.stderr or proc.stdout).strip().splitlines()[0] if (proc.stderr or proc.stdout) else "CLI parse error"
+                    err_line = (
+                        (proc.stderr or proc.stdout).strip().splitlines()[0]
+                        if (proc.stderr or proc.stdout)
+                        else "CLI parse error"
+                    )
                     issues.append(
                         Issue(
                             severity="critical",
@@ -1203,15 +1298,25 @@ def audit_diagram(
     for iss in issues:
         penalty = 12 if iss.severity == "critical" else (5 if iss.severity == "warning" else 2)
         if iss.category == "syntax":
-            dim_scores["syntax_and_structure"] = max(0, dim_scores["syntax_and_structure"] - penalty)
+            dim_scores["syntax_and_structure"] = max(
+                0, dim_scores["syntax_and_structure"] - penalty
+            )
         elif iss.category == "escaping":
-            dim_scores["escaping_and_quoting"] = max(0, dim_scores["escaping_and_quoting"] - penalty)
+            dim_scores["escaping_and_quoting"] = max(
+                0, dim_scores["escaping_and_quoting"] - penalty
+            )
         elif iss.category == "compatibility":
-            dim_scores["compatibility_and_ergonomics"] = max(0, dim_scores["compatibility_and_ergonomics"] - penalty)
+            dim_scores["compatibility_and_ergonomics"] = max(
+                0, dim_scores["compatibility_and_ergonomics"] - penalty
+            )
         elif iss.category == "styling":
-            dim_scores["visual_hierarchy_and_styling"] = max(0, dim_scores["visual_hierarchy_and_styling"] - penalty)
+            dim_scores["visual_hierarchy_and_styling"] = max(
+                0, dim_scores["visual_hierarchy_and_styling"] - penalty
+            )
         elif iss.category == "accessibility":
-            dim_scores["accessibility_and_documentation"] = max(0, dim_scores["accessibility_and_documentation"] - penalty)
+            dim_scores["accessibility_and_documentation"] = max(
+                0, dim_scores["accessibility_and_documentation"] - penalty
+            )
 
     total_score = sum(dim_scores.values())
     if total_score >= 90:
@@ -1243,8 +1348,8 @@ def audit_diagram(
     )
 
 
-def format_report(results: List[DiagramAuditResult]) -> str:
-    lines: List[str] = []
+def format_report(results: list[DiagramAuditResult]) -> str:
+    lines: list[str] = []
     lines.append("=" * 76)
     lines.append("MERMAID DIAGRAM QUALITY AUDIT REPORT (100-POINT RUBRIC)")
     lines.append("=" * 76)
@@ -1254,9 +1359,7 @@ def format_report(results: List[DiagramAuditResult]) -> str:
         return "\n".join(lines)
 
     for res in results:
-        lines.append(
-            f"\n[{res.source_file} :: Diagram #{res.block_index} (Line {res.start_line})]"
-        )
+        lines.append(f"\n[{res.source_file} :: Diagram #{res.block_index} (Line {res.start_line})]")
         lines.append(
             f"  Type: {res.diagram_type} | Target Tier: {res.target_tier} | "
             f"Score: {res.score}/100 (Grade {res.grade})"
@@ -1293,7 +1396,9 @@ def main() -> int:
         description="Audit Mermaid (.mmd and Markdown) diagrams against the 100-Point Mermaid Quality Rubric."
     )
     parser.add_argument("--file", type=pathlib.Path, help="Path to a .mmd, .mermaid, or .md file")
-    parser.add_argument("--dir", type=pathlib.Path, help="Directory to recursively scan for .mmd and .md files")
+    parser.add_argument(
+        "--dir", type=pathlib.Path, help="Directory to recursively scan for .mmd and .md files"
+    )
     parser.add_argument(
         "--target",
         choices=["modern", "github", "strict"],
@@ -1316,7 +1421,7 @@ def main() -> int:
     if not args.file and not args.dir:
         parser.error("Provide either --file or --dir.")
 
-    files_to_scan: List[pathlib.Path] = []
+    files_to_scan: list[pathlib.Path] = []
     if args.file:
         if not args.file.exists():
             print(f"Error: File not found: {args.file}", file=sys.stderr)
@@ -1329,7 +1434,7 @@ def main() -> int:
         for ext in ("*.mmd", "*.mermaid", "*.md", "*.mdx"):
             files_to_scan.extend(sorted(args.dir.rglob(ext)))
 
-    all_results: List[DiagramAuditResult] = []
+    all_results: list[DiagramAuditResult] = []
     for fp in files_to_scan:
         blocks = extract_mermaid_blocks(fp)
         for idx, (start_ln, code) in enumerate(blocks, start=1):
@@ -1346,8 +1451,12 @@ def main() -> int:
     if args.json:
         payload = {
             "total_diagrams": len(all_results),
-            "average_score": round(sum(r.score for r in all_results) / len(all_results), 1) if all_results else 0,
-            "critical_issues": sum(1 for r in all_results for i in r.issues if i.severity == "critical"),
+            "average_score": round(sum(r.score for r in all_results) / len(all_results), 1)
+            if all_results
+            else 0,
+            "critical_issues": sum(
+                1 for r in all_results for i in r.issues if i.severity == "critical"
+            ),
             "results": [asdict(r) for r in all_results],
         }
         print(json.dumps(payload, indent=2))

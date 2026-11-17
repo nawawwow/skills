@@ -40,7 +40,7 @@ The single most common source of confusion in SemVer is versioning pre-release s
 
 > **SemVer 2.0.0 Rule 4**: _"Major version zero (0.y.z) is for initial development. Anything MAY change at any time. The public API SHOULD NOT be considered stable."_
 
-### Zero-Major Bumping Rules:
+### Zero-Major Bumping Rules
 
 1. **Breaking Changes in `0.y.z`**:
    - Because `0` represents unstable software, breaking changes **do NOT bump to 1.0.0**.

@@ -13,11 +13,11 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 WEIGHTS = {
-    "C": 0.0,    # Consistent (does not disprove, baseline)
-    "CC": 0.5,   # Strongly Consistent / Unique signature
-    "I": -1.0,   # Inconsistent / Disconfirming penalty
+    "C": 0.0,  # Consistent (does not disprove, baseline)
+    "CC": 0.5,  # Strongly Consistent / Unique signature
+    "I": -1.0,  # Inconsistent / Disconfirming penalty
     "II": -2.0,  # Strongly Inconsistent / Directly disproving penalty
-    "NA": 0.0,   # Neutral / Not applicable
+    "NA": 0.0,  # Neutral / Not applicable
     "N/A": 0.0,
 }
 
@@ -78,7 +78,9 @@ def compute_ach_matrix(data: dict) -> str:
     md_lines.append("")
 
     # Table Header
-    header = ["Evidence / Diagnostic Indicator", "Diagnosticity"] + [f"**{h['id']}**" for h in hypotheses]
+    header = ["Evidence / Diagnostic Indicator", "Diagnosticity"] + [
+        f"**{h['id']}**" for h in hypotheses
+    ]
     md_lines.append("| " + " | ".join(header) + " |")
     md_lines.append("| " + " | ".join([":---"] + [":---:"] * (len(hypotheses) + 1)) + " |")
 
@@ -86,7 +88,7 @@ def compute_ach_matrix(data: dict) -> str:
     for ev in evidence:
         ratings = ev.get("ratings", {})
         row = [f"**{ev['id']}**: {ev['text']}", ev.get("diagnosticity", "Moderate")]
-        
+
         # Check diagnosticity: if all ratings are identical, it is non-diagnostic
         unique_ratings = set(ratings.get(hid, "NA") for hid in hyp_ids)
         if len(unique_ratings) <= 1 and len(hyp_ids) > 1:
@@ -99,21 +101,25 @@ def compute_ach_matrix(data: dict) -> str:
             if r in ["I", "II"]:
                 inconsistency_counts[hid] += 1
             row.append(f"{r} ({w:+.1f})")
-        
+
         md_lines.append("| " + " | ".join(row) + " |")
 
     # Summary Rows
-    inconsistency_row = ["**Disconfirming Evidence Count**", "—"] + [f"**{inconsistency_counts[hid]}**" for hid in hyp_ids]
+    inconsistency_row = ["**Disconfirming Evidence Count**", "—"] + [
+        f"**{inconsistency_counts[hid]}**" for hid in hyp_ids
+    ]
     md_lines.append("| " + " | ".join(inconsistency_row) + " |")
 
-    score_row = ["**Total Inconsistency Score**", "—"] + [f"**{scores[hid]:+.1f}**" for hid in hyp_ids]
+    score_row = ["**Total Inconsistency Score**", "—"] + [
+        f"**{scores[hid]:+.1f}**" for hid in hyp_ids
+    ]
     md_lines.append("| " + " | ".join(score_row) + " |")
 
     # Diagnostic Ranking
     # Least negative score (or most positive) with lowest inconsistency count
     ranked_hyps = sorted(hyp_ids, key=lambda hid: (inconsistency_counts[hid], -scores[hid]))
     top_hyp = ranked_hyps[0]
-    
+
     ranking_row = ["**Diagnostic Status**", "—"]
     for hid in hyp_ids:
         if hid == top_hyp and inconsistency_counts[hid] == 0:
@@ -158,7 +164,7 @@ def main():
     if args.demo:
         data = DEMO_DATA
     elif args.input:
-        with open(args.input, "r", encoding="utf-8") as f:
+        with open(args.input, encoding="utf-8") as f:
             data = json.load(f)
     else:
         print("Please provide --input <file.json> or --demo.", file=sys.stderr)

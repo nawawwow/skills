@@ -337,7 +337,6 @@ def generate_api_readme(meta: dict) -> str:
     name = meta["project_name"]
     desc = meta["description"]
     badges = "\n".join(build_badges(meta))
-    pm = meta["package_manager"]
     env_sec = build_env_table(meta["env_vars"])
 
     return f"""# {name} API Service

@@ -16,32 +16,32 @@ Total: **24 Books** (in contrast to the 39 books of the Protestant Old Testament
 
 ### Canonical Order & Book Names
 
-| Section                                | Hebrew Name        | Transliteration | English Traditional Name | Notes                            |
-| :------------------------------------- | :----------------- | :-------------- | :----------------------- | :------------------------------- |
-| **Torah**                              | בְּרֵאשִׁית        | Bereshit        | Genesis                  | "In the beginning"               |
-|                                        | שְׁמוֹת            | Shemot          | Exodus                   | "Names"                          |
-|                                        | וַיִּקְרָא         | Vayikra         | Leviticus                | "And He called"                  |
+| Section                                | Hebrew Name | Transliteration | English Traditional Name | Notes                            |
+| :------------------------------------- | :---------- | :-------------- | :----------------------- | :------------------------------- |
+| **Torah**                              | בְּרֵאשִׁית      | Bereshit        | Genesis                  | "In the beginning"               |
+|                                        | שְׁמוֹת        | Shemot          | Exodus                   | "Names"                          |
+|                                        | וַיִּקְרָא       | Vayikra         | Leviticus                | "And He called"                  |
 |                                        | בַּמִּדְבָּר       | Bamidbar        | Numbers                  | "In the wilderness"              |
-|                                        | דְּבָרִים          | Devarim         | Deuteronomy              | "Words"                          |
-| **Nevi'im Rishonim** (Former Prophets) | יְהוֹשֻׁעַ         | Yehoshua        | Joshua                   |                                  |
-|                                        | שׁוֹפְטִים         | Shoftim         | Judges                   |                                  |
-|                                        | שְׁמוּאֵל          | Shmuel          | Samuel                   | Single book (I & II Samuel)      |
-|                                        | מְלָכִים           | Melakhim        | Kings                    | Single book (I & II Kings)       |
-| **Nevi'im Aharonim** (Latter Prophets) | יְשַׁעְיָהוּ       | Yeshayahu       | Isaiah                   |                                  |
-|                                        | יִרְמְיָהוּ        | Yirmeyahu       | Jeremiah                 |                                  |
-|                                        | יְחֶזְקֵאל         | Yechezkel       | Ezekiel                  |                                  |
-|                                        | תְּרֵי עֲשַׂר      | Trei Asar       | The Twelve               | Single book of 12 Minor Prophets |
-| **Ketuvim** (Writings)                 | תְּהִלִּים         | Tehillim        | Psalms                   | 150 psalms                       |
-|                                        | מִשְׁלֵי           | Mishlei         | Proverbs                 |                                  |
-|                                        | אִיּוֹב            | Iyov            | Job                      |                                  |
+|                                        | דְּבָרִים       | Devarim         | Deuteronomy              | "Words"                          |
+| **Nevi'im Rishonim** (Former Prophets) | יְהוֹשֻׁעַ       | Yehoshua        | Joshua                   |                                  |
+|                                        | שׁוֹפְטִים      | Shoftim         | Judges                   |                                  |
+|                                        | שְׁמוּאֵל       | Shmuel          | Samuel                   | Single book (I & II Samuel)      |
+|                                        | מְלָכִים       | Melakhim        | Kings                    | Single book (I & II Kings)       |
+| **Nevi'im Aharonim** (Latter Prophets) | יְשַׁעְיָהוּ      | Yeshayahu       | Isaiah                   |                                  |
+|                                        | יִרְמְיָהוּ      | Yirmeyahu       | Jeremiah                 |                                  |
+|                                        | יְחֶזְקֵאל      | Yechezkel       | Ezekiel                  |                                  |
+|                                        | תְּרֵי עֲשַׂר     | Trei Asar       | The Twelve               | Single book of 12 Minor Prophets |
+| **Ketuvim** (Writings)                 | תְּהִלִּים       | Tehillim        | Psalms                   | 150 psalms                       |
+|                                        | מִשְׁלֵי        | Mishlei         | Proverbs                 |                                  |
+|                                        | אִיּוֹב        | Iyov            | Job                      |                                  |
 | **Hamesh Megillot** (Five Scrolls)     | שִׁיר הַשִּׁירִים  | Shir HaShirim   | Song of Songs            | Read on Passover                 |
-|                                        | רוּת               | Rut             | Ruth                     | Read on Shavuot                  |
-|                                        | אֵיכָה             | Eikhah          | Lamentations             | Read on Tisha B'Av               |
-|                                        | קֹהֶלֶת            | Kohelet         | Ecclesiastes             | Read on Sukkot                   |
-|                                        | אֶסְתֵּר           | Esther          | Esther                   | Read on Purim                    |
-| **Remaining Ketuvim**                  | דָּנִיֵּאל         | Daniel          | Daniel                   | Included in Ketuvim, not Nevi'im |
+|                                        | רוּת         | Rut             | Ruth                     | Read on Shavuot                  |
+|                                        | אֵיכָה        | Eikhah          | Lamentations             | Read on Tisha B'Av               |
+|                                        | קֹהֶלֶת        | Kohelet         | Ecclesiastes             | Read on Sukkot                   |
+|                                        | אֶסְתֵּר        | Esther          | Esther                   | Read on Purim                    |
+| **Remaining Ketuvim**                  | דָּנִיֵּאל       | Daniel          | Daniel                   | Included in Ketuvim, not Nevi'im |
 |                                        | עֶזְרָא־נְחֶמְיָה  | Ezra-Nechemya   | Ezra-Nehemiah            | Single book                      |
-|                                        | דִּבְרֵי הַיָּמִים | Divrei HaYamim  | Chronicles               | Single book (I & II Chronicles)  |
+|                                        | דִּבְרֵי הַיָּמִים  | Divrei HaYamim  | Chronicles               | Single book (I & II Chronicles)  |
 
 > [!NOTE]
 > In the Christian Old Testament, the book of **Daniel** is placed among the Major Prophets following Ezekiel, whereas in the Hebrew canon it resides in **Ketuvim** (Writings). The Tanakh concludes with **Divrei HaYamim** (Chronicles), ending on the decree of Cyrus returning the exiles to Jerusalem (2 Chr 36:23), whereas the Christian Old Testament concludes with Malachi looking forward to the messenger Elijah.

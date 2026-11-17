@@ -8,7 +8,7 @@ A digital-first visual identity system must be responsive, systematically struct
 
 Modern digital brands do not have a single static logo; they possess an adaptive **logo hierarchy** that scales seamlessly from a 16px browser favicon to a large billboard or conference banner.
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ 1. PRIMARY HORIZONTAL LOCKUP (Default for Web Header & Marketing)       │
 │    [ Symbol Mark ]  [ Wordmark / Logotype ]                            │
@@ -34,7 +34,7 @@ Modern digital brands do not have a single static logo; they possess an adaptive
 - **The $X$-Rule**: The clear space zone around the logo must equal at least the height or width of a prominent element of the mark (typically the height of the symbol $X$, or the cap-height of the first letter).
 - No typography, borders, imagery, or UI dividers may encroach into this exclusion zone.
 
-```
+```text
            ┌──────────────────────────────────────────────┐
            │                     X                        │
            │        ┌────────────────────────────┐        │
@@ -111,7 +111,7 @@ Every color pairing must pass strict accessibility thresholds:
 
 Typography carries both semantic information and emotional weight. A resilient digital typography system pairs an expressive display face with a workhorse UI face:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │ 1. DISPLAY / HEADLINE FONT                                             │
 │    Role: Personality, character, editorial impact in heroes & h1/h2    │

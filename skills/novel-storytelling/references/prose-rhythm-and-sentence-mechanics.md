@@ -15,7 +15,7 @@ The human ear naturally fatigues when exposed to repetitive syntactic lengths. S
 
 ### The Three Sentence Velocity Classes
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │               THREE SENTENCE VELOCITY CLASSES          │
 ├────────────────────────────────────────────────────────┤
@@ -95,7 +95,7 @@ Sensory filter words are the single most pervasive amateur habit in novel manusc
 
 A **nominalization** occurs when a dynamic verb is smothered into a bloated abstract noun, requiring a weak auxiliary verb to operate:
 
-```
+```text
 [SMOTHERED / WEAK]  →  He came to the realization that the guard was asleep.
 [KINETIC / STRONG]  →  The guard was asleep.
 ```
@@ -119,7 +119,7 @@ A **nominalization** occurs when a dynamic verb is smothered into a bloated abst
 
 Continuous reliance on copular verbs (_was, were, is, are_) and passive progressives (_was running_, _were searching_) bleeds kinetic energy from action sequences:
 
-```
+```text
 [WEAK / PASSIVE PROGRESSIVE]
 The fire was spreading across the rafters, and sparks were falling into the dry hay.
 

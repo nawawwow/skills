@@ -141,9 +141,9 @@ def analyze_text(text: str, filename: str = "document") -> dict[str, Any]:
     std_dev = math.sqrt(variance)
 
     # Classify sentences
-    short_sentences = sum(1 for l in sentence_lengths if l <= 7)
-    medium_sentences = sum(1 for l in sentence_lengths if 8 <= l <= 18)
-    long_sentences = sum(1 for l in sentence_lengths if l >= 19)
+    short_sentences = sum(1 for length in sentence_lengths if length <= 7)
+    medium_sentences = sum(1 for length in sentence_lengths if 8 <= length <= 18)
+    long_sentences = sum(1 for length in sentence_lengths if length >= 19)
 
     short_pct = (short_sentences / len(sentence_lengths) * 100) if sentence_lengths else 0
     medium_pct = (medium_sentences / len(sentence_lengths) * 100) if sentence_lengths else 0
@@ -151,18 +151,18 @@ def analyze_text(text: str, filename: str = "document") -> dict[str, Any]:
 
     # Detect Gary Provost Monotone runs (3+ consecutive sentences with length diff <= 2)
     monotone_runs = []
-    current_run = []
-    for idx, l in enumerate(sentence_lengths):
+    current_run: list[tuple[int, int]] = []
+    for idx, length in enumerate(sentence_lengths):
         if not current_run:
-            current_run.append((idx, l))
+            current_run.append((idx, length))
         else:
-            prev_l = current_run[-1][1]
-            if abs(l - prev_l) <= 2:
-                current_run.append((idx, l))
+            prev_len = current_run[-1][1]
+            if abs(length - prev_len) <= 2:
+                current_run.append((idx, length))
             else:
                 if len(current_run) >= 3:
                     monotone_runs.append(current_run)
-                current_run = [(idx, l)]
+                current_run = [(idx, length)]
     if len(current_run) >= 3:
         monotone_runs.append(current_run)
 

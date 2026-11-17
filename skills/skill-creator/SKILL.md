@@ -72,7 +72,7 @@ Based on the user interview, fill in these components:
 
 #### Anatomy of a Skill
 
-```
+```text
 skill-name/
 ├── SKILL.md (required)
 │   ├── YAML frontmatter (name, description required)
@@ -101,7 +101,7 @@ These word counts are approximate and you can feel free to go longer if needed (
 
 **Domain organization**: When a skill supports multiple domains/frameworks, organize by variant:
 
-```
+```text
 cloud-deploy/
 ├── SKILL.md (workflow + selection)
 └── references/
@@ -184,7 +184,7 @@ For each test case, spawn two subagents in the same turn — one with the skill,
 
 **With-skill run:**
 
-```
+```text
 Execute this task:
 - Skill path: <path-to-skill>
 - Task: <eval prompt>
@@ -263,7 +263,7 @@ Once all runs are done:
 
    **Headless environments:** If `webbrowser.open()` is not available or the environment has no display, use `--static <output_path>` to write a standalone HTML file instead of starting a server. Feedback will be downloaded as a `feedback.json` file when the user clicks "Submit All Reviews". After download, copy `feedback.json` into the workspace directory for the next iteration to pick up.
 
-Note: please use generate_review.py to create the viewer; there's no need to write custom HTML.
+   Note: please use generate_review.py to create the viewer; there's no need to write custom HTML.
 
 5. **Tell the user** something like: "I've opened the results in your browser. There are two tabs — 'Outputs' lets you click through each test case and leave feedback, 'Benchmark' shows the quantitative comparison. When you're done, come back here and let me know."
 

@@ -12,11 +12,11 @@ Lajos Egri demonstrated that every great story is a proof of a single, well-defi
 
 A premise is composed of three interconnected elements:
 
-```
+```text
 [ CHARACTER TRAIT ] + [ CONFLICT ] leads to [ CLIMAX / OUTCOME ]
 ```
 
-### Examples of Classic Premises:
+### Examples of Classic Premises
 
 - _Othello_: **Jealousy** + **fueled by deceit** leads to **the destruction of the beloved**.
 - _Macbeth_: **Ruthless ambition** + **pursuit of tyranny** leads to **madness and violent downfall**.
@@ -29,7 +29,7 @@ A premise is composed of three interconnected elements:
 
 A story is not a lecture; it is an intellectual trial where two competing philosophies clash until a higher truth emerges:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        THE THEMATIC DIALECTIC                          │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -48,7 +48,7 @@ A story is not a lecture; it is an intellectual trial where two competing philos
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Rules of Thematic Tension:
+### Rules of Thematic Tension
 
 1. **Never Make the Antagonist a Strawman**: The antagonist's worldview must be seductive, coherent, and partially true from their traumatic perspective.
 2. **Pressure the Theme at the Midpoint**: At 50%, force the protagonist to realize that their original Thesis (the Lie) can no longer solve their problems.
@@ -66,7 +66,7 @@ On-the-nose dialogue (where characters state exactly what they think, feel, and 
 | **Vulnerability**  | _"This tea is much too sweet."_               | _"I'm terrified of getting close to you again."_   |
 | **Power Struggle** | _"Take whichever seat you prefer."_           | _"Notice that I sit at the head of the table."_    |
 
-### Writing Subtext:
+### Writing Subtext
 
 - **Action beats over speech tags**: Replace _"he said angrily"_ with physical micro-actions that betray tension (e.g. tightening a grip on a glass until the knuckles whiten).
 - **The Power of Silence / Pauses**: What characters deliberately omit or refuse to answer reveals more than their words.

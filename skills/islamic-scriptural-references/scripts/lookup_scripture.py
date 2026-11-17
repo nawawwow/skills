@@ -180,7 +180,9 @@ def _api_get(
     with urllib.request.urlopen(req, timeout=timeout) as response:
         payload = json.loads(response.read().decode("utf-8"))
         if isinstance(payload, dict) and payload.get("success") is False:
-            raise RuntimeError(payload.get("error") or payload.get("message") or "API request failed")
+            raise RuntimeError(
+                payload.get("error") or payload.get("message") or "API request failed"
+            )
         return payload
 
 
@@ -297,9 +299,7 @@ def fetch_quran_verse(
         data = payload.get("data", {})
         surah_info = data.get("surah", {})
         verses = [
-            v
-            for v in data.get("verses", [])
-            if start_ayah <= int(v.get("ayah", 0)) <= end_ayah
+            v for v in data.get("verses", []) if start_ayah <= int(v.get("ayah", 0)) <= end_ayah
         ]
         if not verses:
             raise ValueError(f"No verses found in range {surah_num}:{ayah_str}.")
@@ -398,9 +398,7 @@ def fetch_hadith(
 
     try:
         if num_str.lower() == "random":
-            payload = _api_get(
-                "/hadith/random", params={"collection": col_norm}, api_key=api_key
-            )
+            payload = _api_get("/hadith/random", params={"collection": col_norm}, api_key=api_key)
         else:
             payload = _api_get(f"/hadith/{col_norm}/{num_str}", api_key=api_key)
 
@@ -442,9 +440,7 @@ def fetch_tafsir(edition: str, reference: str, api_key: str | None = None) -> di
     if start_ayah != end_ayah:
         raise ValueError("--tafsir requires a single 'surah:ayah' reference (e.g. '2:255').")
 
-    payload = _api_get(
-        f"/tafsir/{ed_norm}/surah/{surah_num}/ayah/{start_ayah}", api_key=api_key
-    )
+    payload = _api_get(f"/tafsir/{ed_norm}/surah/{surah_num}/ayah/{start_ayah}", api_key=api_key)
     data = payload.get("data", {})
     if "tafasir" in data:
         return {
@@ -624,9 +620,7 @@ def main() -> int:
         "--api-key",
         help="Optional UmmahAPI key (defaults to UMMAH_API_KEY environment variable if set)",
     )
-    parser.add_argument(
-        "--json", action="store_true", help="Output results in JSON format"
-    )
+    parser.add_argument("--json", action="store_true", help="Output results in JSON format")
 
     args = parser.parse_args()
 
@@ -775,7 +769,9 @@ def main() -> int:
             for item in results:
                 print(f"\n[{item.get('verse_key')}] {item.get('surah_name')}:")
                 print(f"  Arabic: {item.get('arabic')}")
-                print(f'  Translation ({item.get("translation_source")}): "{item.get("translation")}"')
+                print(
+                    f'  Translation ({item.get("translation_source")}): "{item.get("translation")}"'
+                )
             print("=" * 64)
             return 0
 
@@ -815,13 +811,19 @@ def main() -> int:
                 print(f" DUA CATEGORIES ({res.get('total', len(res['categories']))})")
                 print("=" * 64)
                 for c in res["categories"]:
-                    print(f"  - {c.get('id')}: {c.get('name')} ({c.get('count')} duas) — {c.get('description')}")
+                    print(
+                        f"  - {c.get('id')}: {c.get('name')} ({c.get('count')} duas) — {c.get('description')}"
+                    )
             elif "duas" in res:
                 cat_info = res.get("category", {})
-                print(f" DUAS IN CATEGORY: {cat_info.get('name', args.dua)} ({res.get('total')} duas)")
+                print(
+                    f" DUAS IN CATEGORY: {cat_info.get('name', args.dua)} ({res.get('total')} duas)"
+                )
                 print("=" * 64)
                 for d in res["duas"]:
-                    print(f"\n[Dua #{d.get('id')}] {d.get('title')} (Source: {d.get('source')}, Repeat: {d.get('repeat')}x)")
+                    print(
+                        f"\n[Dua #{d.get('id')}] {d.get('title')} (Source: {d.get('source')}, Repeat: {d.get('repeat')}x)"
+                    )
                     print(f"  Arabic: {d.get('arabic')}")
                     print(f"  Transliteration: {d.get('transliteration')}")
                     print(f'  Translation: "{d.get("translation")}"')
@@ -886,7 +888,9 @@ def main() -> int:
                 return 0
             results = res.get("results", [])
             print("=" * 64)
-            print(f" ASMA UL HUSNA SEARCH: '{res.get('query')}' ({res.get('count', len(results))} found)")
+            print(
+                f" ASMA UL HUSNA SEARCH: '{res.get('query')}' ({res.get('count', len(results))} found)"
+            )
             print("=" * 64)
             for n in results:
                 print(

@@ -3,6 +3,7 @@
 Authoritative Mermaid.js (v11.x – v12.2.0) syntax, configuration options, and production templates for quantitative and analytical visualizations: XY Charts (`xychart-beta`), Sankey (`sankey-beta`), Quadrant (`quadrantChart`), Radar (`radar-beta`), Treemap (`treemap-beta`), Pie/Donut (`pie`), and Venn (`venn-beta`).
 
 ## Table of Contents
+
 1. [XY Bar & Line Charts (`xychart-beta`)](#1-xy-bar--line-charts-xychart-beta)
 2. [Sankey Flow Diagrams (`sankey-beta`)](#2-sankey-flow-diagrams-sankey-beta)
 3. [Quadrant Matrix Charts (`quadrantChart`)](#3-quadrant-matrix-charts-quadrantchart)
@@ -16,6 +17,7 @@ Authoritative Mermaid.js (v11.x – v12.2.0) syntax, configuration options, and 
 ## 1. XY Bar & Line Charts (`xychart-beta`)
 
 ### Syntax Rules (Tier 1, 2 & 3 Compatible)
+
 - **Declaration**: Prefer `xychart-beta` (or `xychart-beta horizontal` for horizontal bar charts) for maximum Tier 1–3 compatibility.
 - **Quoting Rule**: Any multi-word string in `title`, `x-axis`, `y-axis`, or series names **must** be enclosed in double quotes `"..."`.
 - **Axes**:
@@ -28,6 +30,7 @@ Authoritative Mermaid.js (v11.x – v12.2.0) syntax, configuration options, and 
   - Per-point labels on `line` (v11.16+): `line [4200 "v1.0", 5100, 8900 "v2.0 Launch", 10500]`
 
 ### Production XY Chart Template
+
 ```mermaid
 ---
 config:
@@ -52,6 +55,7 @@ xychart-beta
 ## 2. Sankey Flow Diagrams (`sankey-beta`)
 
 ### Syntax Rules (Strict RFC 4180 3-Column CSV)
+
 - **Declaration**: `sankey-beta` (or `sankey`).
 - **Format**: Every non-empty, non-comment line **must** have exactly 3 comma-separated columns:
   `<Source Node>,<Target Node>,<Positive Numeric Value>`
@@ -62,6 +66,7 @@ xychart-beta
   4. **Acyclic DAG**: Avoid cycles (`A -> B -> A`).
 
 ### Production Sankey Template
+
 ```mermaid
 ---
 config:
@@ -91,6 +96,7 @@ Activated Trial,Free Tier Retained,2450
 ## 3. Quadrant Matrix Charts (`quadrantChart`)
 
 ### Syntax Rules & Coordinate Mapping
+
 - **Declaration**: `quadrantChart`
 - **Axes**: Must use `-->` (two dashes and `>`):
   - `x-axis Low Effort --> High Effort`
@@ -104,6 +110,7 @@ Activated Trial,Free Tier Retained,2450
   - Both `x` and `y` **must be normalized floats in `[0.0, 1.0]`**.
 
 ### Production Quadrant Chart Template
+
 ```mermaid
 quadrantChart
     title Engineering Roadmap Prioritization Matrix
@@ -130,6 +137,7 @@ quadrantChart
 ## 4. Radar / Spider Charts (`radar-beta`, v11.6+)
 
 ### Syntax Rules
+
 - **Declaration**: `radar-beta`
 - **Axes**: `axis id1["Label 1"], id2["Label 2"], id3["Label 3"]`
 - **Curves**:
@@ -138,6 +146,7 @@ quadrantChart
 - **Options**: `max <num>`, `min <num>`, `ticks <num>`, `graticule <circle | polygon>`, `showLegend <true | false>`.
 
 ### Production Radar Template
+
 ```mermaid
 ---
 config:
@@ -161,6 +170,7 @@ radar-beta
 ## 5. Proportional Treemaps (`treemap-beta`)
 
 ### Syntax Rules
+
 - **Declaration**: `treemap-beta`
 - **Hierarchy**: Indentation-based (spaces).
   - **Parent / Section Node**: Quoted string without colon or value (`"Engineering"`).
@@ -198,6 +208,7 @@ classDef ops fill:#dcfce7,stroke:#15803d,color:#14532d
 ## 6. Pie & Donut Charts (`pie`)
 
 ### Syntax Rules & v11.16+ Donut Config
+
 - **Declaration**: `pie` or `pie showData` (displays raw numeric values inside `[value]` in the legend).
 - **Slices**: `"<Double-Quoted Label>" : <Positive Number > 0>`
   - Never use `0`, negative numbers, or `%` signs.
@@ -224,6 +235,7 @@ pie showData
 ## 7. Venn Set Overlap Diagrams (`venn-beta`, v11.12+)
 
 ### Syntax Rules
+
 - **Declaration**: `venn-beta`
 - **Sets**: `set <id>["Display Label"]:<size>`
 - **Intersections**: `union <id1>,<id2>[,<id3>]["Overlap Label"]:<size>`

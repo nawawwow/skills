@@ -129,7 +129,7 @@ def extract_markdown_links(content: str) -> list[tuple[str, str, int]]:
 
 def parse_frontmatter(content: str) -> dict[str, str]:
     """Extract YAML frontmatter keys from the top of the file."""
-    frontmatter = {}
+    frontmatter: dict[str, str] = {}
     lines = content.splitlines()
     if not lines or lines[0].strip() != "---":
         return frontmatter
@@ -251,8 +251,7 @@ def audit_docs(docs_dir: Path) -> dict[str, Any]:
             f"Add documentation for missing Diátaxis quadrant: {', '.join(missing)}."
         )
     elif quadrants_covered >= 1:
-        q_score = quadrants_covered * 3.5
-        q_score = int(round(q_score))
+        q_score = int(round(quadrants_covered * 3.5))
         q_status = "WARN"
         missing = [k.replace("_", "-") for k, v in quadrant_status.items() if not v]
         q_detail = f"Incomplete Diátaxis balance. Missing: {', '.join(missing)}."
@@ -428,11 +427,9 @@ def audit_docs(docs_dir: Path) -> dict[str, Any]:
     # 4. Zero Orphaned Files (10 pts)
     # -------------------------------------------------------------
     orphaned_files = []
-    root_index = None
     for mf in md_files:
         rel = mf.relative_to(docs_dir).as_posix()
         if rel in ("index.md", "README.md"):
-            root_index = mf
             continue
         # Check if file was referenced by any link
         if mf in referenced_files:

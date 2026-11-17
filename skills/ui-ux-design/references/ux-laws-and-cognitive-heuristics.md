@@ -34,6 +34,7 @@ Every design decision—from button padding to navigation depth—is governed by
    - **Desktop Pointer**: Minimum $24 \times 24\text{ px}$ click target with adequate surrounding negative space ($8\text{ px}$ minimum gap).
 2. **Infinite Edges**: Screen borders and corners have effectively infinite width because a mouse cursor cannot overshoot them. Pin critical actions (e.g., top menus, bottom floating bars, corner close buttons) to boundaries.
 3. **Thumb Zone Architecture**: On mobile devices, place high-frequency actions within the natural sweep of the user's thumb (bottom third of screen), keeping destructive or rare actions in the hard-to-reach top zones.
+4. **Secondary & Footer Target Parity**: Do not restrict Fitts's Law to primary hero CTAs. Stacked footer navigation links, legal links, and social media icon buttons on mobile must also maintain $\ge 44 \times 44\text{ px}$ hit regions (or vertical padding `py-2.5 inline-block`) to prevent accidental taps on adjacent links.
 
 ---
 

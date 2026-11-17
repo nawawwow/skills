@@ -3,6 +3,7 @@
 Authoritative Mermaid.js (v11.x – v12.2.0) syntax, layout tuning, and production templates for C4 models, Cloud Architecture (`architecture-beta`), AI Agentflow (`agentflow-beta`), Block (`block`), and Packet (`packet`) diagrams.
 
 ## Table of Contents
+
 1. [C4 Architecture Suite (`C4Context`, `C4Container`, `C4Component`, `C4Dynamic`, `C4Deployment`)](#1-c4-architecture-suite)
 2. [Cloud & Infrastructure Architecture (`architecture-beta`, v11.1+ / v11.16+)](#2-cloud--infrastructure-architecture-architecture-beta)
 3. [AI Agent Orchestration (`agentflow-beta`, v12.0+)](#3-ai-agent-orchestration-agentflow-beta-v120)
@@ -14,6 +15,7 @@ Authoritative Mermaid.js (v11.x – v12.2.0) syntax, layout tuning, and producti
 ## 1. C4 Architecture Suite
 
 ### 5 C4 Declaration Keywords
+
 1. `C4Context`: Level 1 — System Context (Actors, core system, external dependencies)
 2. `C4Container`: Level 2 — Containers (Web apps, APIs, databases, message queues)
 3. `C4Component`: Level 3 — Components (Internal controllers, repositories, domain services)
@@ -21,6 +23,7 @@ Authoritative Mermaid.js (v11.x – v12.2.0) syntax, layout tuning, and producti
 5. `C4Deployment`: Infrastructure deployment nodes (Cloud regions, VPCs, K8s pods)
 
 ### Element & Boundary Macros
+
 - **Context Elements**:
   - `Person(alias, "Label", "Optional Description")` / `Person_Ext(...)`
   - `System(alias, "Label", "Optional Description")` / `System_Ext(...)`
@@ -46,6 +49,7 @@ Authoritative Mermaid.js (v11.x – v12.2.0) syntax, layout tuning, and producti
   - `UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")`
 
 ### Production C4 Container Template
+
 ```mermaid
 C4Container
     accTitle: Payment Platform C4 Container Diagram
@@ -75,6 +79,7 @@ C4Container
 ```
 
 ### C4 Pitfalls
+
 1. **Never use PlantUML `Lay_U` / `Lay_L` or `AddElementTag`**: Mermaid C4 uses a deterministic grid layout controlled only by declaration order and `UpdateLayoutConfig($c4ShapeInRow="...", $c4BoundaryInRow="...")`.
 2. **Overlapping relationship labels**: Use `UpdateRelStyle(from, to, $offsetX="-40", $offsetY="20")` at the bottom of the diagram to nudge colliding text.
 
@@ -83,6 +88,7 @@ C4Container
 ## 2. Cloud & Infrastructure Architecture (`architecture-beta`)
 
 ### Core Building Blocks (v11.1.0+ / v11.16.0+)
+
 - **Declaration**: `architecture-beta`
 - **Built-in Icons**: `(cloud)`, `(database)`, `(disk)`, `(internet)`, `(server)`. (Custom Iconify packs like `(logos:aws-lambda)` work when registered).
 - **Groups**: `group <groupId>(<icon>)[<Title>]` or nested `group <childId>(<icon>)[<Title>] in <parentId>`
@@ -90,18 +96,23 @@ C4Container
 - **Junctions**: `junction <junctionId>` or `junction <junctionId> in <groupId>` (4-way routing hub)
 
 ### Mandatory Port Sides (`:L`, `:R`, `:T`, `:B`) & `{group}` Boundary Modifier
+
 Every edge endpoint **must** specify which side of the node it exits/enters (`:L` Left, `:R` Right, `:T` Top, `:B` Bottom) with **no spaces around `:`**:
+
 - Direct service-to-service: `gateway:R --> L:app_server`
 - Crossing group boundaries (`{group}` modifier):
   `app_server{group}:B --> T:replica_db{group}`
-  *(Never use a `groupId` directly in an edge; always reference a `serviceId` inside the group with `{group}` appended!)*
+  _(Never use a `groupId` directly in an edge; always reference a `serviceId` inside the group with `{group}` appended!)_
 
 ### Sibling Alignment (`align row` / `align column`, v11.16.0+)
+
 When multiple sibling services have identical port connections (e.g., two databases both connecting `L:db` from `app:R`), the `fcose` solver may stack them at the same coordinate. Prevent overlap with `align`:
+
 - `align column <service1> <service2> [<service3>...]` (stacks vertically along shared X)
 - `align row <service1> <service2> [<service3>...]` (spreads horizontally along shared Y)
 
 ### Production Cloud Architecture Template
+
 ```mermaid
 ---
 title: Multi-AZ Cloud Production Topology
@@ -141,6 +152,7 @@ architecture-beta
 ## 3. AI Agent Orchestration (`agentflow-beta`, v12.0+)
 
 ### Syntax Rules (Tier 1 — Fallback to `flowchart TB` for Tier 2/3)
+
 - **Declaration**: `agentflow-beta TB` (or `LR`)
 - **6 Semantic Agent Shapes (`@{ shape: <type> }`)**:
   - `task` (`roundedRect`): Agent reasoning or transformation step
@@ -155,6 +167,7 @@ architecture-beta
   - `A --x B`: Error/fallback transition on validation failure
 
 ### Production Agentflow Template
+
 ```mermaid
 agentflow-beta TB
     connector mcp_db["PostgreSQL MCP"]
@@ -186,6 +199,7 @@ agentflow-beta TB
 ## 4. Block Grid Diagrams (`block` / `block-beta`)
 
 ### Syntax Rules
+
 - **Declaration**: `block` (or `block-beta` for GitHub Tier 2 compatibility).
 - **Grid Columns**: `columns <N>` sets the exact column count per row.
 - **Spanning**: Append `:N` to any block or `space` token (`Header["System Bus"]:3`, `space:2`).
@@ -220,6 +234,7 @@ block-beta
 ## 5. Network Packet & Register Diagrams (`packet` / `packet-beta`)
 
 ### Syntax Rules (v11.0+ / v12.0+)
+
 - **Declaration**: `packet` (or `packet-beta` for GitHub Tier 2 compatibility).
 - **Bit Ranges**:
   - Explicit start-end: `0-15: "Source Port"`

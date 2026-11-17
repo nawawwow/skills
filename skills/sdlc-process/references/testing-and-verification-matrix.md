@@ -9,7 +9,7 @@ Test-Driven Development (TDD), implementing contract testing, or mitigating test
 
 Modern software engineering favors the **Testing Trophy** over the classic unit-heavy pyramid:
 
-```
+```text
           /  E2E  \       → Low quantity, high cost, high operational confidence
         /───────────\
        / Integration \    → GREATEST EMPHASIS: realistic component boundaries
@@ -34,7 +34,7 @@ Modern software engineering favors the **Testing Trophy** over the classic unit-
 When working with autonomous coding agents, TDD serves as a guardrail against hallucinated
 implementations and scope drift:
 
-```
+```text
 ┌──────────────┐       ┌──────────────┐       ┌──────────────┐
 │  RED PHASE   │ ────> │ GREEN PHASE  │ ────> │REFACTOR PHASE│
 │ Write failing│       │ Write minimal│       │Clean code,   │

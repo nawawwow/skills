@@ -289,7 +289,6 @@ def render_markdown(
     for group_name, ops in grouped.items():
         lines.append(f"- **[{group_name}](#{slugify(group_name)})**")
         for op in ops:
-            op_title = f"{op['method']} {op['path']}"
             op_anchor = slugify(f"{op['method']} {op['path']}")
             lines.append(f"  - [`{op['method']}` {op['path']}](#{op_anchor}) - *{op['summary']}*")
     lines.append("")

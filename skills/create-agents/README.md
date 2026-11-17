@@ -11,6 +11,7 @@ Modern engineering organizations increasingly rely on autonomous AI coding agent
 `AGENTS.md` is the universal, schema-free open standard acting as a **"README for AI agents"**.
 
 The `create-agents` skill provides an end-to-end engineering suite:
+
 1. **Automated Inspection**: Discovers package managers, manifests, test scripts, single-test patterns, and boundaries.
 2. **6 Production Archetypes**: Pre-calibrated templates for Fullstack Webapps, Backend APIs, Libraries, CLIs, Monorepos, and Agent Skills.
 3. **Token-Budget Optimization**: Enforces concise, high-signal density (<150 lines root, <80 lines nested) to prevent the 14–22% agent reasoning penalty.
@@ -21,7 +22,7 @@ The `create-agents` skill provides an end-to-end engineering suite:
 
 ## Directory Structure
 
-```
+```text
 create-agents/
 ├── SKILL.md                                        # Skill instructions & progressive disclosure
 ├── README.md                                       # Documentation & usage guide
@@ -47,11 +48,13 @@ create-agents/
 ## Quickstart
 
 ### 1. Inspect Your Codebase
+
 ```bash
 python skills/create-agents/scripts/inspect_project.py .
 ```
 
 ### 2. Generate an `AGENTS.md`
+
 ```bash
 # Auto-detect archetype
 python skills/create-agents/scripts/generate_agents.py .
@@ -61,11 +64,13 @@ python skills/create-agents/scripts/generate_agents.py . --archetype webapp -o A
 ```
 
 ### 3. Audit Quality Against the 12-Point Rubric
+
 ```bash
 python skills/create-agents/scripts/audit_agents.py AGENTS.md --project-dir .
 ```
 
 ### 4. Migrate Legacy Tool Configurations
+
 ```bash
 python skills/create-agents/scripts/migrate_agents.py . --bridge
 ```
@@ -74,21 +79,21 @@ python skills/create-agents/scripts/migrate_agents.py . --bridge
 
 ## The 12-Point Audit Rubric
 
-| # | Rubric Criterion | Weight | Minimum Target |
-| :-: | :--- | :-: | :--- |
-| 1 | Project Overview & Tech Stack | 8 pts | Clear runtime, framework, and package manager |
-| 2 | Runtime & Install Command | 8 pts | Verified install command (`pnpm install`, `uv sync`, etc.) |
-| 3 | Build / Compile Command | 6 pts | Build command or zero-build declaration |
-| 4 | Full Test Suite Command | 8 pts | Global test suite execution |
-| 5 | Targeted Single-Test Execution | 10 pts | Explicit single test file/function pattern |
-| 6 | Lint & Typecheck Commands | 8 pts | Static analysis commands |
-| 7 | Code Style & Architectural Conventions | 10 pts | >= 3 actionable architectural rules |
-| 8 | Boundaries & "Never Do" Rules | 10 pts | >= 2 negative operational boundaries |
-| 9 | PR & Commit Instructions | 8 pts | Conventional Commits & pre-completion gate |
-| 10 | Zero Unreplaced Placeholders | 8 pts | Zero `[TODO]`, `<your-...>`, or template tokens |
-| 11 | Token Budget Compliance | 8 pts | <= 150 lines (root) or <= 80 lines (nested) |
-| 12 | Script & Manifest Freshness | 8 pts | Documented commands match manifests |
-| **Total** | **12 Criteria** | **100 pts** | **Passing Gate: >= 80/100** |
+|     #     | Rubric Criterion                       |   Weight    | Minimum Target                                             |
+| :-------: | :------------------------------------- | :---------: | :--------------------------------------------------------- |
+|     1     | Project Overview & Tech Stack          |    8 pts    | Clear runtime, framework, and package manager              |
+|     2     | Runtime & Install Command              |    8 pts    | Verified install command (`pnpm install`, `uv sync`, etc.) |
+|     3     | Build / Compile Command                |    6 pts    | Build command or zero-build declaration                    |
+|     4     | Full Test Suite Command                |    8 pts    | Global test suite execution                                |
+|     5     | Targeted Single-Test Execution         |   10 pts    | Explicit single test file/function pattern                 |
+|     6     | Lint & Typecheck Commands              |    8 pts    | Static analysis commands                                   |
+|     7     | Code Style & Architectural Conventions |   10 pts    | >= 3 actionable architectural rules                        |
+|     8     | Boundaries & "Never Do" Rules          |   10 pts    | >= 2 negative operational boundaries                       |
+|     9     | PR & Commit Instructions               |    8 pts    | Conventional Commits & pre-completion gate                 |
+|    10     | Zero Unreplaced Placeholders           |    8 pts    | Zero `[TODO]`, `<your-...>`, or template tokens            |
+|    11     | Token Budget Compliance                |    8 pts    | <= 150 lines (root) or <= 80 lines (nested)                |
+|    12     | Script & Manifest Freshness            |    8 pts    | Documented commands match manifests                        |
+| **Total** | **12 Criteria**                        | **100 pts** | **Passing Gate: >= 80/100**                                |
 
 ---
 

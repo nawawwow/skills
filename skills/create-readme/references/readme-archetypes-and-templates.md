@@ -8,7 +8,7 @@ A comprehensive guide and reference templates for the six major software project
 
 Different software projects target different personas and usage paradigms. Structuring a README around its specific archetype drastically reduces friction:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        THE 6 README ARCHETYPES                         │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -28,7 +28,7 @@ Different software projects target different personas and usage paradigms. Struc
 **Audience**: Developers, DevOps engineers, terminal power-users.  
 **Key Requirements**: Instant install, terminal recording / ASCII banner, synopsis, options table, configuration, exit codes.
 
-### Template Skeleton:
+### Template Skeleton
 
 ````markdown
 # [Tool Name]
@@ -65,7 +65,6 @@ brew install user/tap/tool-name
 # Cargo (Rust)
 cargo install tool-name
 ```
-````
 
 ### Standalone Binary
 
@@ -110,7 +109,6 @@ tool-name completion zsh > "${fpath[1]}/_tool-name"
 ## License
 
 MIT © [Author Name](https://github.com/user)
-
 ````
 
 ---
@@ -120,8 +118,9 @@ MIT © [Author Name](https://github.com/user)
 **Audience**: Software engineers importing code into their applications.
 **Key Requirements**: Package manager install, 5-line quickstart snippet, TypeScript typings, peer dependencies, API surface, browser vs Node support.
 
-### Template Skeleton:
-```markdown
+### Template Skeleton
+
+````markdown
 # [Library Name]
 
 > [High-performance, type-safe [functionality] for TypeScript and Node.js.]
@@ -134,6 +133,7 @@ MIT © [Author Name](https://github.com/user)
 ---
 
 ## Highlights
+
 - 📦 **Tree-shakeable**: Zero bloat, only import what you execute (< 2kB gzipped).
 - 🛡️ **Fully Type-Safe**: Written in strict TypeScript with end-to-end generics.
 - 🌐 **Isomorphic**: Runs identically in Node.js, Bun, Deno, and modern browsers.
@@ -141,11 +141,12 @@ MIT © [Author Name](https://github.com/user)
 ---
 
 ## Installation
+
 ```bash
 npm install package-name
 # or pnpm / yarn / bun
 pnpm add package-name
-````
+```
 
 ---
 
@@ -193,7 +194,6 @@ pnpm test
 ## License
 
 MIT © [Author Name]
-
 ````
 
 ---
@@ -203,8 +203,9 @@ MIT © [Author Name]
 **Audience**: Users, product managers, developers setting up local environments.
 **Key Requirements**: Live demo link, UI screenshots, tech stack badges, prerequisites (Node, pnpm, DB), `.env` matrix, local dev commands, production build.
 
-### Template Skeleton:
-```markdown
+### Template Skeleton
+
+````markdown
 # [App Name]
 
 > [Modern, collaborative [domain] platform built with Next.js, Tailwind CSS, and PostgreSQL.]
@@ -219,6 +220,7 @@ MIT © [Author Name]
 ---
 
 ## Tech Stack
+
 - **Framework**: Next.js 15 (App Router, Server Actions)
 - **Styling**: Tailwind CSS & Radix UI
 - **Database & ORM**: PostgreSQL with Prisma / Drizzle
@@ -228,7 +230,9 @@ MIT © [Author Name]
 ---
 
 ## Prerequisites
+
 Ensure the following tools are installed locally:
+
 - **Node.js**: `>= 20.0.0`
 - **pnpm**: `>= 9.0.0`
 - **PostgreSQL**: `>= 15.0` (or Docker)
@@ -238,11 +242,12 @@ Ensure the following tools are installed locally:
 ## Getting Started
 
 ### 1. Clone & Install
+
 ```bash
 git clone https://github.com/user/repo.git
 cd repo
 pnpm install
-````
+```
 
 ### 2. Configure Environment Variables
 
@@ -286,7 +291,6 @@ pnpm build
 # Start production server
 pnpm start
 ```
-
 ````
 
 ---
@@ -296,8 +300,9 @@ pnpm start
 **Audience**: Backend engineers, frontend integrators, DevOps teams.
 **Key Requirements**: Architecture diagram, API specification, Docker Compose, authentication flow, health checks.
 
-### Template Skeleton:
-```markdown
+### Template Skeleton
+
+````markdown
 # [Service Name] API
 
 > [Resilient, distributed REST/gRPC backend service powering [platform domain].]
@@ -313,7 +318,7 @@ flowchart LR
     API --> DB[(PostgreSQL Main)]
     API --> Worker[Celery Async Workers]
     Worker --> S3[(Object Storage)]
-````
+```
 
 ---
 
@@ -355,7 +360,6 @@ uv pip install -r requirements.txt
 alembic upgrade head
 uvicorn app.main:app --reload --port 8000
 ```
-
 ````
 
 ---
@@ -365,8 +369,9 @@ uvicorn app.main:app --reload --port 8000
 **Audience**: Core contributors, fullstack engineers.
 **Key Requirements**: Monorepo tool (Turborepo, Nx, pnpm), package structure layout, cross-package scripts.
 
-### Template Skeleton:
-```markdown
+### Template Skeleton
+
+````markdown
 # [Organization Name] Monorepo
 
 > [Unified codebase for [Org Name] web apps, mobile apps, and shared UI/core libraries.]
@@ -375,20 +380,18 @@ uvicorn app.main:app --reload --port 8000
 
 ## Repository Structure
 
-````
-
+```text
 ├── apps/
-│ ├── web/ # Next.js customer portal
-│ ├── admin/ # React admin dashboard
-│ └── mobile/ # React Native / Expo mobile application
+│   ├── web/ # Next.js customer portal
+│   ├── admin/ # React admin dashboard
+│   └── mobile/ # React Native / Expo mobile application
 ├── packages/
-│ ├── ui/ # Shared Tailwind design system & components
-│ ├── core/ # Shared business logic and API SDKs
-│ ├── tsconfig/ # Shared TypeScript configurations
-│ └── eslint-config/ # Shared ESLint and Prettier rules
+│   ├── ui/ # Shared Tailwind design system & components
+│   ├── core/ # Shared business logic and API SDKs
+│   ├── tsconfig/ # Shared TypeScript configurations
+│   └── eslint-config/ # Shared ESLint and Prettier rules
 └── docker-compose.yml # Local services orchestrator
-
-````
+```
 
 ---
 
@@ -406,8 +409,7 @@ pnpm build
 
 # Run entire test suite
 pnpm test
-````
-
+```
 ````
 
 ---
@@ -417,7 +419,8 @@ pnpm test
 **Audience**: Autonomous AI agents, prompt engineers, agentic system architects.
 **Key Requirements**: Agent triggers, tools exposed, configuration/keys required, agent execution flow.
 
-### Template Skeleton:
+### Template Skeleton
+
 ```markdown
 # [Skill Name] Agent Skill
 
@@ -426,12 +429,15 @@ pnpm test
 ---
 
 ## Trigger Guidelines
+
 Activate this skill whenever the user asks to:
+
 - "Trigger phrase 1..."
 - "Trigger phrase 2..."
 - "Trigger phrase 3..."
 
 Do NOT activate this skill for:
+
 - "Negative case 1..."
 - "Negative case 2..."
 
@@ -439,14 +445,15 @@ Do NOT activate this skill for:
 
 ## Bundled Tools & Automation
 
-| Script | Purpose | Example Invocations |
-| :--- | :--- | :--- |
-| `scripts/run_task.py` | Executes primary domain action | `python scripts/run_task.py --flag` |
-| `scripts/verify.py` | Audits state and outputs report | `python scripts/verify.py` |
+| Script                | Purpose                         | Example Invocations                 |
+| :-------------------- | :------------------------------ | :---------------------------------- |
+| `scripts/run_task.py` | Executes primary domain action  | `python scripts/run_task.py --flag` |
+| `scripts/verify.py`   | Audits state and outputs report | `python scripts/verify.py`          |
 
 ---
 
 ## Evaluation Results
+
 - **Trigger Precision**: 98% (22/22 test cases passing)
 - **Output Correctness**: 100% (5/5 complex scenarios validated)
-````
+```

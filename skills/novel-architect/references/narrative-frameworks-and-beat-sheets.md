@@ -42,7 +42,7 @@ Adapted from Blake Snyder’s cinematic beat sheet, Jessica Brody’s framework 
 
 Common in literary fiction and classical screenwriting, this model divides a novel into four 25% quadrants, each containing two 10-15% sequences:
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        THE 8-SEQUENCE STRUCTURE                        │
 ├────────────────────────────────────────────────────────────────────────┤

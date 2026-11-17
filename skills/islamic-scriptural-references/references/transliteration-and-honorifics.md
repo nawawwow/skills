@@ -60,15 +60,15 @@ for unambiguous transliteration of Arabic into Latin script.
 
 Maintain reverent and courteous invocations after mentioning revered Islamic names:
 
-| Figure / Entity                | Arabic Invocation                 | Latin Symbol / Acronym | English Equivalent                                                         |
-| :----------------------------- | :-------------------------------- | :--------------------- | :------------------------------------------------------------------------- |
-| **Allah**                      | سُبْحَانَهُ وَتَعَالَى            | **SWT**                | _Subhanahu wa Ta'ala_ ("Glory be to Him, the Exalted")                     |
+| Figure / Entity                | Arabic Invocation  | Latin Symbol / Acronym | English Equivalent                                                         |
+| :----------------------------- | :----------------- | :--------------------- | :------------------------------------------------------------------------- |
+| **Allah**                      | سُبْحَانَهُ وَتَعَالَى      | **SWT**                | _Subhanahu wa Ta'ala_ ("Glory be to Him, the Exalted")                     |
 | **Prophet Muhammad**           | صَلَّى اللّٰهُ عَلَيْهِ وَسَلَّمَ | **ﷺ** / **SAW**        | _Sallallahu 'alayhi wa sallam_ ("May Allah bless him and grant him peace") |
-| **Other Prophets & Angels**    | عَلَيْهِ ٱلسَّلَامُ               | **AS**                 | _'Alayhis-Salam_ ("Peace be upon him")                                     |
-| **Male Companion (Single)**    | رَضِيَ اللّٰهُ عَنْهُ             | **RA**                 | _Radiyallahu 'anhu_ ("May Allah be pleased with him")                      |
-| **Female Companion (Single)**  | رَضِيَ اللّٰهُ عَنْهَا            | **RA**                 | _Radiyallahu 'anha_ ("May Allah be pleased with her")                      |
-| **Companions (Plural)**        | رَضِيَ اللّٰهُ عَنْهُمْ           | **RA**                 | _Radiyallahu 'anhum_ ("May Allah be pleased with them")                    |
-| **Deceased Classical Scholar** | رَحِمَهُ اللّٰهُ                  | **Rh.A**               | _Rahimahullah_ ("May Allah have mercy upon him")                           |
+| **Other Prophets & Angels**    | عَلَيْهِ ٱلسَّلَامُ        | **AS**                 | _'Alayhis-Salam_ ("Peace be upon him")                                     |
+| **Male Companion (Single)**    | رَضِيَ اللّٰهُ عَنْهُ       | **RA**                 | _Radiyallahu 'anhu_ ("May Allah be pleased with him")                      |
+| **Female Companion (Single)**  | رَضِيَ اللّٰهُ عَنْهَا      | **RA**                 | _Radiyallahu 'anha_ ("May Allah be pleased with her")                      |
+| **Companions (Plural)**        | رَضِيَ اللّٰهُ عَنْهُمْ      | **RA**                 | _Radiyallahu 'anhum_ ("May Allah be pleased with them")                    |
+| **Deceased Classical Scholar** | رَحِمَهُ اللّٰهُ          | **Rh.A**               | _Rahimahullah_ ("May Allah have mercy upon him")                           |
 
 ---
 

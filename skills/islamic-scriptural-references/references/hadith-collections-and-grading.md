@@ -34,12 +34,12 @@ UmmahAPI provides over **36,100+ Hadiths** across 10 primary Sunni collections v
 
 ### B. Foundational & Curated Compendiums on UmmahAPI
 
-| Collection Name                    | UmmahAPI Key | Compiler / Authority                        | Hadith Count | Status & Canonical Distinction                                                                              | Standard Reference Scheme           |
-| :--------------------------------- | :----------- | :------------------------------------------ | :----------: | :---------------------------------------------------------------------------------------------------------- | :---------------------------------- |
-| **Muwatta Malik**                  | `malik`      | Imam Malik ibn Anas (d. 179 AH)             |    1,829     | Earliest foundational compendium of Medinan prophetic practice and legal precedent.                         | `[Muwatta Malik 1]`                 |
-| **Nawawi's 40 Hadith**             | `nawawi`     | Imam Yahya ibn Sharaf an-Nawawi (d. 676 AH) |      42      | Core essential narrations (_Al-Arba'in al-Nawawiyyah_) encapsulating the foundations of Islam.              | `[Nawawi's 40 Hadith 1]`            |
-| **40 Hadith Qudsi**                | `qudsi`      | Curated from Kutub al-Sittah & Malik        |      40      | Sacred narrations where the Prophet (ﷺ) relates meanings directly attributed to Allah (SWT).                | `[40 Hadith Qudsi 1]`               |
-| **Shah Waliullah's 40 Hadith**     | `dehlawi`    | Shah Waliullah Dehlawi (d. 1176 AH)         |      40      | Concise prophetic maxims compiled with unbroken chains by the renowned Muhaddith of Delhi.                  | `[Shah Waliullah's 40 Hadith 1]`    |
+| Collection Name                | UmmahAPI Key | Compiler / Authority                        | Hadith Count | Status & Canonical Distinction                                                                 | Standard Reference Scheme        |
+| :----------------------------- | :----------- | :------------------------------------------ | :----------: | :--------------------------------------------------------------------------------------------- | :------------------------------- |
+| **Muwatta Malik**              | `malik`      | Imam Malik ibn Anas (d. 179 AH)             |    1,829     | Earliest foundational compendium of Medinan prophetic practice and legal precedent.            | `[Muwatta Malik 1]`              |
+| **Nawawi's 40 Hadith**         | `nawawi`     | Imam Yahya ibn Sharaf an-Nawawi (d. 676 AH) |      42      | Core essential narrations (_Al-Arba'in al-Nawawiyyah_) encapsulating the foundations of Islam. | `[Nawawi's 40 Hadith 1]`         |
+| **40 Hadith Qudsi**            | `qudsi`      | Curated from Kutub al-Sittah & Malik        |      40      | Sacred narrations where the Prophet (ﷺ) relates meanings directly attributed to Allah (SWT).   | `[40 Hadith Qudsi 1]`            |
+| **Shah Waliullah's 40 Hadith** | `dehlawi`    | Shah Waliullah Dehlawi (d. 1176 AH)         |      40      | Concise prophetic maxims compiled with unbroken chains by the renowned Muhaddith of Delhi.     | `[Shah Waliullah's 40 Hadith 1]` |
 
 ### Other Classical Compendiums (Non-UmmahAPI)
 
@@ -50,6 +50,7 @@ UmmahAPI provides over **36,100+ Hadiths** across 10 primary Sunni collections v
 
 - Some collections in UmmahAPI use decimal sub-numbering for variant chains (e.g., `tirmidhi 2787.2`). Both `lookup_scripture.py` and `format_islamic_citation.py` support decimal numbers natively.
 - When the exact Hadith number is unknown, search first via UmmahAPI before citing:
+
   ```bash
   python <skill_path>/scripts/lookup_scripture.py --search-hadith "intention" --collection bukhari --limit 5
   ```
@@ -68,7 +69,7 @@ Classical scholars developed five strict criteria for an authentic (_Sahih_) Had
 
 ### Classification Tiers
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │                   HADITH GRADING TIERS                 │
 ├─────────────────┬──────────────────┬───────────────────┤

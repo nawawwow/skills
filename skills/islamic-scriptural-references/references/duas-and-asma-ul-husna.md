@@ -42,35 +42,35 @@ python <skill_path>/scripts/lookup_scripture.py --search-dua "forgive" --limit 5
 
 ### C. The 27 UmmahAPI Dua Categories
 
-| Category Slug      | Category Title          | Scope & Occasion                                        | Count |
-| :----------------- | :---------------------- | :------------------------------------------------------ | :---: |
-| `morning`          | Morning Adhkar          | Supplications recited after Fajr (`Adhkar al-Sabah`)    |   7   |
-| `evening`          | Evening Adhkar          | Supplications recited after Asr (`Adhkar al-Masa'`)     |   5   |
-| `wudu`             | Wudu & Purification     | Before and after ablution                               |   5   |
-| `prayer`           | During Prayer           | Opening, ruku', sujud, and tashahhud supplications      |   8   |
-| `after_prayer`     | After Prayer            | Post-salah tasbih and istighfar                         |   8   |
-| `sleep`            | Sleep                   | Before sleeping and upon waking                         |   6   |
-| `food`             | Food & Drink            | Before and after meals and hospitality                  |   6   |
-| `travel`           | Travel                  | Mounting a vehicle, journeying, and returning           |   6   |
-| `home`             | Home                    | Entering and leaving the residence                      |   2   |
-| `masjid`           | Masjid                  | Walking to, entering, and exiting the mosque            |   4   |
-| `distress`         | Distress & Anxiety      | Relief from grief, debt, and hardship (_Kurb_)          |   7   |
-| `forgiveness`      | Forgiveness             | _Sayyid al-Istighfar_ and repentance formulas           |   5   |
-| `illness`          | Illness & Healing       | Prophetic _Ruqyah_ and visiting the sick                |   5   |
-| `weather`          | Weather                 | Rain, wind, and thunder                                 |   3   |
-| `knowledge`        | Knowledge               | Seeking beneficial knowledge (_'Ilman Nafi'an_)         |   3   |
-| `parents`          | Parents                 | Supplications for living and deceased parents           |   3   |
-| `guidance`         | Guidance                | Steadfastness of heart and _Istikharah_                 |   3   |
-| `gratitude`        | Gratitude               | Praising and thanking Allah (_Shukr_)                   |   3   |
-| `protection`       | Protection              | Seeking refuge (_Ta'awwudh_) from harm and evil         |   4   |
-| `dhikr`            | Dhikr                   | General daily remembrance of Allah                      |   6   |
-| `marriage`         | Marriage & Family       | Spousal blessing and righteous offspring                |   4   |
-| `hajj`             | Hajj & Umrah            | _Talbiyah_, Day of 'Arafah, and pilgrimage rites        |   4   |
-| `grief`            | Grief & Loss            | Condolences, _Janazah_ prayer, and visiting graves      |   4   |
-| `children`         | Children                | Protection and blessing for newborns and youth          |   4   |
-| `business`         | Business & Provision    | _Halal_ sustenance (_Rizq_), markets, and debt relief   |   4   |
-| `night_prayer`     | Night Prayer            | _Tahajjud_ and _Qunut al-Witr_                          |   4   |
-| `quran_recitation` | Quran Recitation        | Supplications before and upon completing recitation     |   3   |
+| Category Slug      | Category Title       | Scope & Occasion                                      | Count |
+| :----------------- | :------------------- | :---------------------------------------------------- | :---: |
+| `morning`          | Morning Adhkar       | Supplications recited after Fajr (`Adhkar al-Sabah`)  |   7   |
+| `evening`          | Evening Adhkar       | Supplications recited after Asr (`Adhkar al-Masa'`)   |   5   |
+| `wudu`             | Wudu & Purification  | Before and after ablution                             |   5   |
+| `prayer`           | During Prayer        | Opening, ruku', sujud, and tashahhud supplications    |   8   |
+| `after_prayer`     | After Prayer         | Post-salah tasbih and istighfar                       |   8   |
+| `sleep`            | Sleep                | Before sleeping and upon waking                       |   6   |
+| `food`             | Food & Drink         | Before and after meals and hospitality                |   6   |
+| `travel`           | Travel               | Mounting a vehicle, journeying, and returning         |   6   |
+| `home`             | Home                 | Entering and leaving the residence                    |   2   |
+| `masjid`           | Masjid               | Walking to, entering, and exiting the mosque          |   4   |
+| `distress`         | Distress & Anxiety   | Relief from grief, debt, and hardship (_Kurb_)        |   7   |
+| `forgiveness`      | Forgiveness          | _Sayyid al-Istighfar_ and repentance formulas         |   5   |
+| `illness`          | Illness & Healing    | Prophetic _Ruqyah_ and visiting the sick              |   5   |
+| `weather`          | Weather              | Rain, wind, and thunder                               |   3   |
+| `knowledge`        | Knowledge            | Seeking beneficial knowledge (_'Ilman Nafi'an_)       |   3   |
+| `parents`          | Parents              | Supplications for living and deceased parents         |   3   |
+| `guidance`         | Guidance             | Steadfastness of heart and _Istikharah_               |   3   |
+| `gratitude`        | Gratitude            | Praising and thanking Allah (_Shukr_)                 |   3   |
+| `protection`       | Protection           | Seeking refuge (_Ta'awwudh_) from harm and evil       |   4   |
+| `dhikr`            | Dhikr                | General daily remembrance of Allah                    |   6   |
+| `marriage`         | Marriage & Family    | Spousal blessing and righteous offspring              |   4   |
+| `hajj`             | Hajj & Umrah         | _Talbiyah_, Day of 'Arafah, and pilgrimage rites      |   4   |
+| `grief`            | Grief & Loss         | Condolences, _Janazah_ prayer, and visiting graves    |   4   |
+| `children`         | Children             | Protection and blessing for newborns and youth        |   4   |
+| `business`         | Business & Provision | _Halal_ sustenance (_Rizq_), markets, and debt relief |   4   |
+| `night_prayer`     | Night Prayer         | _Tahajjud_ and _Qunut al-Witr_                        |   4   |
+| `quran_recitation` | Quran Recitation     | Supplications before and upon completing recitation   |   3   |
 
 ---
 

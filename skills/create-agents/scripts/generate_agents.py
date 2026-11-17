@@ -7,16 +7,17 @@ standard across 6 distinct archetypes, with strict token-budget compliance.
 """
 
 import argparse
-import json
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 # Import inspect_repository from sibling script
 try:
     from inspect_project import inspect_repository
 except ImportError:
-    from scripts.inspect_project import inspect_repository
+    import importlib
+
+    inspect_repository = importlib.import_module("scripts.inspect_project").inspect_repository
 
 
 ARCHETYPE_TEMPLATES = {
@@ -108,11 +109,11 @@ ARCHETYPE_TEMPLATES = {
 
 
 def build_agents_md(
-    metadata: Dict[str, Any],
+    metadata: dict[str, Any],
     archetype: str,
     compact: bool = False,
     nested: bool = False,
-    package_name: Optional[str] = None
+    package_name: str | None = None,
 ) -> str:
     """Construct token-optimized, high-signal AGENTS.md content."""
     arch_config = ARCHETYPE_TEMPLATES.get(archetype, ARCHETYPE_TEMPLATES["library"])
@@ -120,19 +121,23 @@ def build_agents_md(
     cmds = metadata["commands"]
 
     lines = []
-    
+
     # Header
     if nested:
         pkg_display = package_name or metadata["project_name"]
         lines.append(f"# AGENTS.md - {pkg_display}")
         lines.append("")
         lines.append("> [!NOTE]")
-        lines.append("> This is a localized package configuration. For global workspace guidelines, refer to the root `AGENTS.md`.")
+        lines.append(
+            "> This is a localized package configuration. For global workspace guidelines, refer to the root `AGENTS.md`."
+        )
         lines.append("")
     else:
         lines.append(f"# AGENTS.md - {metadata['project_name']}")
         lines.append("")
-        lines.append(f"Machine-readable operating instructions for AI coding assistants working in `{metadata['project_name']}`.")
+        lines.append(
+            f"Machine-readable operating instructions for AI coding assistants working in `{metadata['project_name']}`."
+        )
         lines.append("")
 
     # Section 1: Overview
@@ -144,7 +149,9 @@ def build_agents_md(
     if metadata["manifests"]:
         lines.append(f"- **Manifests:** {', '.join(f'`{m}`' for m in metadata['manifests'])}.")
     if not nested:
-        lines.append("- **Human Documentation:** Refer to `README.md` for project architecture details.")
+        lines.append(
+            "- **Human Documentation:** Refer to `README.md` for project architecture details."
+        )
     lines.append("")
 
     # Section 2: Development Commands
@@ -195,7 +202,9 @@ def build_agents_md(
         lines.append(f"- **Run single test file:** `{cmds['single_test'][0]}`")
     else:
         if "Python" in metadata["languages_and_runtimes"]:
-            lines.append("- **Run single test file:** `pytest <path_to_test_file>::<test_function_name>`")
+            lines.append(
+                "- **Run single test file:** `pytest <path_to_test_file>::<test_function_name>`"
+            )
         elif "Rust" in metadata["languages_and_runtimes"]:
             lines.append("- **Run single test file:** `cargo test <test_name>`")
         elif "Go" in metadata["languages_and_runtimes"]:
@@ -217,7 +226,7 @@ def build_agents_md(
     lines.append("")
 
     # Section 4: Boundaries & "Never Do"
-    lines.append("## Boundaries & \"Never Do\" Rules")
+    lines.append('## Boundaries & "Never Do" Rules')
     for bound in arch_config["boundaries"]:
         lines.append(f"- {bound}")
 
@@ -236,8 +245,12 @@ def build_agents_md(
     # Section 5: PR & Git Guidelines (omitted in compact nested package files)
     if not nested and not compact:
         lines.append("## PR & Git Guidelines")
-        lines.append("- Format commit messages adhering to Conventional Commits: `<type>(<scope>): <subject>`.")
-        lines.append("- Ensure all tests, linter checks, and typechecks pass with zero errors before presenting changes.")
+        lines.append(
+            "- Format commit messages adhering to Conventional Commits: `<type>(<scope>): <subject>`."
+        )
+        lines.append(
+            "- Ensure all tests, linter checks, and typechecks pass with zero errors before presenting changes."
+        )
         lines.append("- Keep diffs focused and atomic; avoid bundling unrelated refactorings.")
         lines.append("")
 
@@ -245,14 +258,31 @@ def build_agents_md(
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate token-optimized AGENTS.md adhering to AAIF standards.")
-    parser.add_argument("project_dir", nargs="?", default=".", help="Project directory (default: .)")
-    parser.add_argument("--archetype", "-a", choices=list(ARCHETYPE_TEMPLATES.keys()), help="Target archetype (auto-detected if omitted)")
-    parser.add_argument("--output", "-o", help="Target output file path (default: <project_dir>/AGENTS.md)")
-    parser.add_argument("--compact", action="store_true", help="Generate ultra-compact instructions")
-    parser.add_argument("--nested", action="store_true", help="Generate localized subpackage AGENTS.md")
+    parser = argparse.ArgumentParser(
+        description="Generate token-optimized AGENTS.md adhering to AAIF standards."
+    )
+    parser.add_argument(
+        "project_dir", nargs="?", default=".", help="Project directory (default: .)"
+    )
+    parser.add_argument(
+        "--archetype",
+        "-a",
+        choices=list(ARCHETYPE_TEMPLATES.keys()),
+        help="Target archetype (auto-detected if omitted)",
+    )
+    parser.add_argument(
+        "--output", "-o", help="Target output file path (default: <project_dir>/AGENTS.md)"
+    )
+    parser.add_argument(
+        "--compact", action="store_true", help="Generate ultra-compact instructions"
+    )
+    parser.add_argument(
+        "--nested", action="store_true", help="Generate localized subpackage AGENTS.md"
+    )
     parser.add_argument("--package-name", help="Package name for nested configuration")
-    parser.add_argument("--dry-run", action="store_true", help="Print output to stdout without writing")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print output to stdout without writing"
+    )
 
     args = parser.parse_args()
 

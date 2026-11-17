@@ -8,7 +8,7 @@ In modern monorepo architectures (Turborepo, Nx, Lerna, Cargo workspaces, pnpm w
 
 ## 1. Monorepo Versioning Paradigms
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                   MONOREPO VERSIONING STRATEGIES                       │
 ├────────────────────────────────────────────────────────────────────────┤
@@ -55,13 +55,13 @@ In large teams, having developers edit a single `CHANGELOG.md` file in the `[Unr
 
 Instead of editing `CHANGELOG.md` directly, each feature branch creates a **transient markdown fragment** in a `.changeset/` directory:
 
-```
+```text
 .changeset/
 ├── brave-badgers-dance.md
 └── silver-hawks-fly.md
 ```
 
-#### Anatomy of a Changeset Fragment (`.changeset/brave-badgers-dance.md`):
+#### Anatomy of a Changeset Fragment (`.changeset/brave-badgers-dance.md`)
 
 ```markdown
 ---
@@ -72,7 +72,7 @@ Instead of editing `CHANGELOG.md` directly, each feature branch creates a **tran
 Added biometric authentication support via WebAuthn API.
 ```
 
-### The Release Lifecycle with Changesets:
+### The Release Lifecycle with Changesets
 
 1. **Developer creates PR**: Runs `changeset` CLI to select changed packages and bump type (`major`, `minor`, `patch`), writing a human-readable summary.
 2. **PR Merges**: The changeset markdown file is merged into `main` without touching any changelog (zero merge conflicts).

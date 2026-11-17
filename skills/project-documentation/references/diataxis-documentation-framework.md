@@ -5,7 +5,7 @@
 
 The Diátaxis framework organizes technical documentation into four distinct quadrants based on two fundamental axes: **Action vs. Knowledge** and **Study vs. Work**.
 
-```
+```text
                            ACTION
                              ▲
                              │
@@ -102,7 +102,7 @@ The Diátaxis framework organizes technical documentation into four distinct qua
 
 Content sprawl occurs when authors mix multiple quadrants into a single document:
 
-```
+```text
 [CONTENT SPRAWL DISASTER]
 Title: "Getting Started with Redis Caching"
 - Paragraph 1: What is in-memory caching? (Explanation)
@@ -117,7 +117,7 @@ Title: "Getting Started with Redis Caching"
 - The experienced engineer looking for the cluster troubleshooting step has to scroll through beginner installation guides.
 - The reference user scanning for a flag is frustrated by narrative explanations.
 
-### The Diátaxis Remedy:
+### The Diátaxis Remedy
 
 Split the document into four distinct files:
 

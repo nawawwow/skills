@@ -17,7 +17,7 @@ In an era of generative AI coding assistants, code generation is cheap, but unst
 **Spec-Driven Development** makes the human-reviewed specification the single source of truth.
 The specification acts as an executable contract between product intent and technical implementation.
 
-```
+```text
 ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐
 │ Business Intent │ ────> │ Verifiable Spec │ ────> │ Agent Execution │
 │   & User Need   │       │  (PRD / Gherkin)│       │   & TDD Tests   │

@@ -10,7 +10,7 @@ understanding translation philosophies, or explaining textual divergences.
 No translation is an exact 1:1 replica of ancient languages. Translators operate along a
 continuum between **Formal Equivalence** and **Dynamic Equivalence**:
 
-```
+```text
 Formal Equivalence                          Optimal Equivalence                     Dynamic Equivalence
 (Word-for-Word)                             (Balance / Mediating)                  (Thought-for-Thought)
       ◄──────────────────────────────────────────────┼──────────────────────────────────────────────►
