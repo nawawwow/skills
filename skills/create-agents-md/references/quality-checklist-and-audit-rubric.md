@@ -1,6 +1,6 @@
 # AGENTS.md 12-Point Quality Checklist & Audit Rubric
 
-This document defines the 12-point quality scoring rubric and automated gating criteria implemented in `audit_agents.py`.
+This document defines the 12-point quality scoring rubric and automated gating criteria implemented in `audit_agents_md.py`.
 
 ---
 
@@ -16,7 +16,7 @@ The quality audit evaluates an `AGENTS.md` file on a **100-point scale**.
 | **Substandard**             | **< 60**     | CRITICAL | Severe context bloat, broken commands, unreplaced placeholders, or invalid manifests. |
 
 > [!IMPORTANT]
-> The automated quality gate in `audit_agents.py` enforces a **minimum score of 80/100**. Any score below 80 returns exit code `1` and outputs actionable remediation recommendations.
+> The automated quality gate in `audit_agents_md.py` enforces a **minimum score of 80/100**. Any score below 80 returns exit code `1` and outputs actionable remediation recommendations.
 
 ---
 

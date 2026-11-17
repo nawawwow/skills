@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-audit_agents.py - 12-Point Quality Auditor and Linter for AGENTS.md.
+audit_agents_md.py - 12-Point Quality Auditor and Linter for AGENTS.md.
 
 Scores an AGENTS.md file (0-100) against the AAIF-aligned quality rubric,
 evaluating command precision, single-test instructions, token budget compliance,

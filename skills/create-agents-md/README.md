@@ -1,4 +1,4 @@
-# `create-agents` Antigravity Agent Skill
+# `create-agents-md` Antigravity Agent Skill
 
 > Engineer, structure, audit, and migrate production-grade `AGENTS.md` files adhering to the **Agentic AI Foundation (AAIF)** open standard under the Linux Foundation.
 
@@ -10,12 +10,12 @@ Modern engineering organizations increasingly rely on autonomous AI coding agent
 
 `AGENTS.md` is the universal, schema-free open standard acting as a **"README for AI agents"**.
 
-The `create-agents` skill provides an end-to-end engineering suite:
+The `create-agents-md` skill provides an end-to-end engineering suite:
 
 1. **Automated Inspection**: Discovers package managers, manifests, test scripts, single-test patterns, and boundaries.
 2. **6 Production Archetypes**: Pre-calibrated templates for Fullstack Webapps, Backend APIs, Libraries, CLIs, Monorepos, and Agent Skills.
 3. **Token-Budget Optimization**: Enforces concise, high-signal density (<150 lines root, <80 lines nested) to prevent the 14–22% agent reasoning penalty.
-4. **12-Point Quality Audit & CI Gate**: An automated scoring tool (`audit_agents.py`) enforcing an **80/100 threshold** on command freshness, single-test commands, and boundaries.
+4. **12-Point Quality Audit & CI Gate**: An automated scoring tool (`audit_agents_md.py`) enforcing an **80/100 threshold** on command freshness, single-test commands, and boundaries.
 5. **Multi-Tool Bridging & Migration**: Consolidates legacy `.cursorrules`, `CLAUDE.md`, and `.github/copilot-instructions.md` into `AGENTS.md` with zero-drift bridge files (`@AGENTS.md`).
 
 ---
@@ -23,14 +23,14 @@ The `create-agents` skill provides an end-to-end engineering suite:
 ## Directory Structure
 
 ```text
-create-agents/
+create-agents-md/
 ├── SKILL.md                                        # Skill instructions & progressive disclosure
 ├── README.md                                       # Documentation & usage guide
 ├── scripts/
 │   ├── inspect_project.py                          # Codebase static analysis & manifest discovery
-│   ├── generate_agents.py                          # Token-optimized AGENTS.md generator
-│   ├── audit_agents.py                             # 12-point quality rubric auditor & CI linter
-│   └── migrate_agents.py                           # Legacy rule consolidation & bridge generator
+│   ├── generate_agents_md.py                       # Token-optimized AGENTS.md generator
+│   ├── audit_agents_md.py                          # 12-point quality rubric auditor & CI linter
+│   └── migrate_agents_md.py                        # Legacy rule consolidation & bridge generator
 ├── references/
 │   ├── agents-md-spec-and-standards.md             # AAIF open standard specification
 │   ├── agents-archetypes-and-templates.md          # 6 production-grade templates
@@ -50,29 +50,29 @@ create-agents/
 ### 1. Inspect Your Codebase
 
 ```bash
-python skills/create-agents/scripts/inspect_project.py .
+python skills/create-agents-md/scripts/inspect_project.py .
 ```
 
 ### 2. Generate an `AGENTS.md`
 
 ```bash
 # Auto-detect archetype
-python skills/create-agents/scripts/generate_agents.py .
+python skills/create-agents-md/scripts/generate_agents_md.py .
 
 # Explicit archetype
-python skills/create-agents/scripts/generate_agents.py . --archetype webapp -o AGENTS.md
+python skills/create-agents-md/scripts/generate_agents_md.py . --archetype webapp -o AGENTS.md
 ```
 
 ### 3. Audit Quality Against the 12-Point Rubric
 
 ```bash
-python skills/create-agents/scripts/audit_agents.py AGENTS.md --project-dir .
+python skills/create-agents-md/scripts/audit_agents_md.py AGENTS.md --project-dir .
 ```
 
 ### 4. Migrate Legacy Tool Configurations
 
 ```bash
-python skills/create-agents/scripts/migrate_agents.py . --bridge
+python skills/create-agents-md/scripts/migrate_agents_md.py . --bridge
 ```
 
 ---

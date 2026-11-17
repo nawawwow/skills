@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-inspect_project.py - Static codebase inspection tool for create-agents.
+inspect_project.py - Static codebase inspection tool for create-agents-md.
 
 Discovers runtimes, package managers, manifests, test/build/lint commands,
 monorepo workspaces, boundary exclusions, and existing agent configuration files.

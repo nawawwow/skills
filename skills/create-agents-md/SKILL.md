@@ -1,5 +1,5 @@
 ---
-name: create-agents
+name: create-agents-md
 description: Inspect codebases, extract architecture and configuration, and generate, update, audit, or migrate production-grade AGENTS.md files for AI coding agents. Use when creating an AGENTS.md from scratch, updating or auditing an existing AGENTS.md, tailoring agent instructions to specific project archetypes (Webapp, API, Library, CLI, Monorepo, Agent Skill), optimizing instruction token budgets, auditing agent readiness against the 12-point rubric, or consolidating legacy tool rules (.cursorrules, CLAUDE.md, copilot-instructions.md). Do not use for human-facing README creation (use create-readme instead) or generic isolated code edits.
 compatibility: Python 3.10+, cross-platform (Windows, macOS, Linux).
 metadata:
@@ -38,10 +38,10 @@ Run the automated codebase inspector to identify runtimes, package managers, man
 
 ```bash
 # Inspect current directory and output human/agent-readable summary
-python skills/create-agents/scripts/inspect_project.py .
+python skills/create-agents-md/scripts/inspect_project.py .
 
 # Output detailed inspection metadata as JSON
-python skills/create-agents/scripts/inspect_project.py . --json
+python skills/create-agents-md/scripts/inspect_project.py . --json
 ```
 
 The inspector discovers:
@@ -72,13 +72,13 @@ Generate the baseline `AGENTS.md` adhering to the AAIF specification:
 
 ```bash
 # Auto-detect archetype and generate AGENTS.md
-python skills/create-agents/scripts/generate_agents.py .
+python skills/create-agents-md/scripts/generate_agents_md.py .
 
 # Generate with explicit archetype and custom output file
-python skills/create-agents/scripts/generate_agents.py . --archetype webapp --output AGENTS.md
+python skills/create-agents-md/scripts/generate_agents_md.py . --archetype webapp --output AGENTS.md
 
 # Generate a compact, localized subpackage AGENTS.md (<80 lines)
-python skills/create-agents/scripts/generate_agents.py packages/ui --nested --package-name @repo/ui
+python skills/create-agents-md/scripts/generate_agents_md.py packages/ui --nested --package-name @repo/ui
 ```
 
 The generator ensures:
@@ -104,13 +104,13 @@ Run the automated auditor to score the `AGENTS.md` against the 12-point rubric:
 
 ```bash
 # Audit AGENTS.md in the current project
-python skills/create-agents/scripts/audit_agents.py AGENTS.md --project-dir .
+python skills/create-agents-md/scripts/audit_agents_md.py AGENTS.md --project-dir .
 
 # Audit with JSON output for automated CI pipelines
-python skills/create-agents/scripts/audit_agents.py AGENTS.md --json
+python skills/create-agents-md/scripts/audit_agents_md.py AGENTS.md --json
 
 # Audit a nested subpackage configuration
-python skills/create-agents/scripts/audit_agents.py packages/ui/AGENTS.md --nested
+python skills/create-agents-md/scripts/audit_agents_md.py packages/ui/AGENTS.md --nested
 ```
 
 The auditor checks:
@@ -131,13 +131,13 @@ When working in an existing codebase that already uses tool-specific files (`.cu
 
 ```bash
 # Dry run: Preview extracted rules and proposed bridge pointers
-python skills/create-agents/scripts/migrate_agents.py . --dry-run --bridge
+python skills/create-agents-md/scripts/migrate_agents_md.py . --dry-run --bridge
 
 # Execute migration: Consolidate into AGENTS.md and generate bridges
-python skills/create-agents/scripts/migrate_agents.py . --bridge
+python skills/create-agents-md/scripts/migrate_agents_md.py . --bridge
 
 # Consolidate, generate bridges, and archive old legacy files to .agent-archive/
-python skills/create-agents/scripts/migrate_agents.py . --bridge --archive
+python skills/create-agents-md/scripts/migrate_agents_md.py . --bridge --archive
 ```
 
 The bridging workflow creates lightweight pointers:
@@ -165,9 +165,9 @@ Every generated or edited `AGENTS.md` must uphold these non-negotiable principle
 
 ## 4. Automation Scripts Reference
 
-| Script                       | Purpose                                                                                          | Example Usage                                                                              |
-| :--------------------------- | :----------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
-| `scripts/inspect_project.py` | Discovers project runtimes, package managers, test scripts, boundaries, and existing configs.    | `python skills/create-agents/scripts/inspect_project.py . --json`                          |
-| `scripts/generate_agents.py` | Generates a tailored, token-optimized `AGENTS.md` based on archetype and inspection data.        | `python skills/create-agents/scripts/generate_agents.py . --archetype webapp -o AGENTS.md` |
-| `scripts/audit_agents.py`    | Evaluates an `AGENTS.md` against the 12-point rubric (0–100 score) and enforces the 80/100 gate. | `python skills/create-agents/scripts/audit_agents.py AGENTS.md --project-dir .`            |
-| `scripts/migrate_agents.py`  | Consolidates legacy `.cursorrules` / `CLAUDE.md` into `AGENTS.md` and creates bridge files.      | `python skills/create-agents/scripts/migrate_agents.py . --bridge`                         |
+| Script                          | Purpose                                                                                          | Example Usage                                                                                    |
+| :------------------------------ | :----------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------- |
+| `scripts/inspect_project.py`    | Discovers project runtimes, package managers, test scripts, boundaries, and existing configs.    | `python skills/create-agents-md/scripts/inspect_project.py . --json`                             |
+| `scripts/generate_agents_md.py` | Generates a tailored, token-optimized `AGENTS.md` based on archetype and inspection data.        | `python skills/create-agents-md/scripts/generate_agents_md.py . --archetype webapp -o AGENTS.md` |
+| `scripts/audit_agents_md.py`    | Evaluates an `AGENTS.md` against the 12-point rubric (0–100 score) and enforces the 80/100 gate. | `python skills/create-agents-md/scripts/audit_agents_md.py AGENTS.md --project-dir .`            |
+| `scripts/migrate_agents_md.py`  | Consolidates legacy `.cursorrules` / `CLAUDE.md` into `AGENTS.md` and creates bridge files.      | `python skills/create-agents-md/scripts/migrate_agents_md.py . --bridge`                         |

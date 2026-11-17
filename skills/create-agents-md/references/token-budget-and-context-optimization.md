@@ -48,7 +48,7 @@ Never copy and paste markdown documentation that already exists in your reposito
 
 ### Rule 3: Tiered Line Limits
 
-`create-agents` enforces strict line and token budgets:
+`create-agents-md` enforces strict line and token budgets:
 
 - **Monorepo / Root `AGENTS.md`**: Target 50–150 lines (~500–1,500 tokens). Max threshold: 180 lines.
 - **Localized / Nested Subpackage `AGENTS.md`**: Target 30–80 lines (~300–800 tokens). Max threshold: 100 lines.
