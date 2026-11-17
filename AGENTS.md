@@ -1,51 +1,65 @@
-# AGENTS.md - Agent Skills Collection
+# AGENTS.md — Agent Skills Collection
 
-Machine-readable operating instructions for AI coding assistants working in the `skills` repository.
+Repository-specific operating instructions for AI coding agents working in the `skills` workspace. Inherits global rules from `~/.agents/AGENTS.md` (`Windows` / `PowerShell`), overriding or extending them for this repository where specified below.
 
 ## Project Overview & Tech Stack
 
-- **Archetype:** AI Agent Skills Collection
-- **Stack:** Python 3.10+, Antigravity Agent Skill Standard, PyYAML, JSON Schema, managed via `pyproject.toml` and `ruff`.
+- **Archetype:** AI Agent Skills Collection ([Agent Skills Standard](https://skills.sh))
+- **OS & Shell:** Windows (`PowerShell`). Always use PowerShell-compatible syntax and quote URLs containing `&`.
+- **Primary Stack:** Python 3.10+ (stdlib-first CLI utilities, PyYAML, JSON Schema), Node.js 18+ (`npx` tooling), Ruff, Mypy, Prettier, and Markdownlint.
 - **Manifests:** `pyproject.toml`, `.skill-lock.json`, `.prettierrc.json`, `.markdownlint.json`.
-- **Human Documentation:** Refer to `README.md` for architecture and individual skill docs in `skills/<skill-name>/SKILL.md`.
+- **Human Documentation:** Refer to `README.md` for architecture and `skills/<skill-name>/SKILL.md` for individual skill workflows.
+
+## Language & Communication Policy
+
+- **User Communication (Bahasa Indonesia):** Respond, explain, and summarize in **Bahasa Indonesia** (unless the user explicitly prompts in another language). Keep explanations concise, structured, and actionable.
+- **Technical Artifacts (English):** Write all code identifiers, inline comments, docstrings, schemas, skill docs, PR descriptions, and Git commit messages strictly in **English**.
 
 ## Operational Commands
 
-Always use these verified commands to build, test, format, and validate changes:
+### Setup & Build
 
 - **Install dependencies:** `pip install -e .`
 - **Build application:** No build required (zero-build Python package & documentation repository).
-- **Run unit tests:** `pytest`
-- **Run single test file:** `pytest <path_to_test>::<test_name>`
+
+### Testing & Skill Validation (Single-Test First Rule)
+
+Never execute full benchmark suites for isolated edits; validate targeted skills and single tests first:
+
+- **Run single test (Python):** `pytest <path_to_test>::<test_name>`
+- **Full test suite (pre-PR):** `pytest`
 - **Validate a skill:** `python skills/skill-creator/scripts/quick_validate.py skills/<skill-name>`
 - **Deep validate a skill:** `python skills/skill-creator/scripts/validate_skill.py skills/<skill-name>`
-- **Lint Python code:** `ruff check .`
-- **Format Python code:** `ruff format .`
-- **Type check Python code:** `mypy .`
-- **Check Markdown style:** `npx prettier --check "**/*.md"`
-- **Format Markdown files:** `npx prettier --write "**/*.md"`
-- **Audit commit for secrets:** `python skills/git-commit/scripts/prepare_commit.py --dry-run`
+
+### Lint, Typecheck & DocOps Gates
+
+- **Lint & format Python:** `ruff check .` and `ruff format --check .` (auto-format with `ruff format .`)
+- **Type check Python:** `python -m mypy skills/<skill-name>/scripts` (run per skill directory to avoid cross-skill script name collisions)
+- **Lint & format Markdown/JSON:** `npx markdownlint-cli2 "**/*.md"` and `npx prettier --end-of-line auto --check "**/*.md" "**/*.json"` (`--write` to format)
+- **Audit commit & message:** `python skills/git-commit/scripts/prepare_commit.py --dry-run` and `python skills/git-commit/scripts/verify_commit_msg.py "<header>"`
 
 ## Code Style & Architectural Conventions
 
-- **Progressive Disclosure:** Keep `SKILL.md` under 500 lines. Offload deep reference material to `references/`, executable utilities to `scripts/`, and templates to `assets/`.
-- **Description Constraint:** Skill frontmatter `description` is a classifier prompt that must be at most 1024 characters. Include what the skill does and proactive trigger contexts.
-- **Deterministic Scripts:** Implement deterministic Python scripts in `scripts/` for repetitive execution rather than leaving tasks to ad-hoc bash scripting.
-- **Reference Proximity:** Keep local markdown references one hop from `SKILL.md` where practical; avoid deep recursive reference chains.
-- **Single Test Pattern:** When verifying script changes, run isolated test cases rather than executing entire benchmark suites.
+- Enforce strict Python 3.10+ type hints (`dict`, `list`, `X | None`); avoid untyped dictionaries or implicit `Any`.
+- Handle errors explicitly with meaningful context; never swallow exceptions with empty or bare `except:` blocks.
+- Preserve existing comments, docstrings, and formatting conventions in untouched code regions.
+- **Progressive Disclosure:** Keep `SKILL.md` under 500 lines; offload deep reference material to `references/`, utilities to `scripts/`, and templates to `assets/` within one hop of `SKILL.md`.
+- **Description Constraint:** Keep `SKILL.md` frontmatter `description` at most 1024 characters with clear trigger contexts.
+- **Deterministic Scripts:** Write deterministic Python 3.10+ stdlib-first CLI scripts in `scripts/` with UTF-8 safe Windows console output (`sys.stdout.reconfigure(encoding="utf-8", errors="replace")`).
 
 ## Boundaries & "Never Do" Rules
 
-- Never commit `.env` files, API keys, credentials, or private tokens into the repository.
-- Never edit internal agent system directories (`.gemini/`, `.git/`, `.agent-archive/`).
+- Never push directly to `main`, `master`, `staging`, or `production` branches.
+- Never execute `git push`, `gh pr create`, `gh pr merge`, or delete remote branches without **explicit user permission** (local branching and local commits are permitted when requested).
+- Never run `git push --force` or rewrite history on shared or public branches.
+- Never commit `.env` files, API keys, credentials, or private tokens; audit staged diffs before every commit.
+- Never manually edit internal agent directories or generated outputs (`.gemini/`, `.git/`, `.agent-archive/`, `__pycache__/`, `.pytest_cache/`, `.mypy_cache/`, `.venv/`, `node_modules/`).
 - Never delete or rename existing skills without explicit user instruction.
-- Never exceed the 1024-character hard limit for skill descriptions in `SKILL.md` frontmatter.
-- Never create circular local reference links in markdown documentation.
-- Never leave unreplaced template markers or placeholder variables in production files.
+- Never exceed the 1024-character limit for skill descriptions, create circular reference links, or leave unreplaced placeholder tokens in production files.
+- Never bypass security checks, validation gates, or pre-commit hooks (`--no-verify`).
 
 ## PR & Git Guidelines
 
-- Format commits following Conventional Commits 1.0.0: `<type>(<scope>): <subject>`.
-  - Common scopes: `feat(skill-creator): ...`, `fix(git-commit): ...`, `docs(sdlc-process): ...`.
-- Run `ruff check .` and validate affected skills with `quick_validate.py` before presenting diffs.
-- Keep commits atomic and scoped to a single skill or capability.
+- **Branching & Syncing:** Branch short-lived work (`feat/`, `fix/`, `docs/`, `chore/`, `refactor/`, `test/`) from `dev` or an up-to-date `main`; keep release integration flowing `dev -> main` via Pull Request (`--merge` on `dev -> main` to keep both branches aligned).
+- **Atomic & Conventional Commits (1.0.0):** Use `<type>(<scope>): <imperative lowercase summary>` (max 72 chars), scoped atomically to a single skill or capability (e.g., `feat(skill-creator): ...`, `fix(git-commit): ...`).
+- **Pre-PR Quality Gates:** Run `ruff check .`, `ruff format --check .`, `python -m mypy skills/<skill-name>/scripts`, `npx markdownlint-cli2 "**/*.md"`, `npx prettier --end-of-line auto --check "**/*.md" "**/*.json"`, and `validate_skill.py` on affected skills before presenting diffs or opening a PR.
