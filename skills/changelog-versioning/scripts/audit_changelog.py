@@ -254,7 +254,7 @@ def audit_changelog_content(content: str, filename: str = "CHANGELOG.md") -> dic
         missing_links.append("Unreleased")
 
     for v in version_headers:
-        v_num = v["version"]
+        v_num = str(v["version"])
         if v_num.lower() not in compare_links and f"v{v_num.lower()}" not in compare_links:
             missing_links.append(v_num)
 

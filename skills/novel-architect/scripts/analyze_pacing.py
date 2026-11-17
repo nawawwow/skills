@@ -77,7 +77,7 @@ def parse_novel_source(path: str) -> dict[str, Any]:
 
 def scan_markdown_manuscript(dir_path: str) -> dict[str, Any]:
     """Scan markdown files in a directory to compute chapter/scene words and types."""
-    scenes = []
+    scenes: list[dict[str, Any]] = []
     total_words = 0
 
     manuscript_dir = os.path.join(dir_path, "03_MANUSCRIPT")
@@ -139,7 +139,7 @@ def parse_markdown_outline_file(file_path: str) -> dict[str, Any]:
     with open(file_path, encoding="utf-8") as f:
         content = f.read()
 
-    scenes = []
+    scenes: list[dict[str, Any]] = []
     current_act = "Act 1"
 
     lines = content.split("\n")

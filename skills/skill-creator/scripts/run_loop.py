@@ -81,7 +81,7 @@ def run_loop(
         train_set = eval_set
         test_set = []
 
-    history = []
+    history: list[dict] = []
     exit_reason = "unknown"
 
     for iteration in range(1, max_iterations + 1):
@@ -252,10 +252,10 @@ def run_loop(
 
     # Find the best iteration by TEST score (or train if no test set)
     if test_set:
-        best = max(history, key=lambda h: h["test_passed"] or 0)
+        best = max(history, key=lambda h: int(h["test_passed"] or 0))
         best_score = f"{best['test_passed']}/{best['test_total']}"
     else:
-        best = max(history, key=lambda h: h["train_passed"])
+        best = max(history, key=lambda h: int(h["train_passed"]))
         best_score = f"{best['train_passed']}/{best['train_total']}"
 
     if verbose:

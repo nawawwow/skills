@@ -40,6 +40,7 @@ import math
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 
 def calculate_stats(values: list[float]) -> dict:
@@ -181,7 +182,7 @@ def aggregate_results(results: dict) -> dict:
 
     Returns run_summary with stats for each configuration and delta.
     """
-    run_summary = {}
+    run_summary: dict[str, Any] = {}
     configs = list(results.keys())
 
     for config in configs:

@@ -16,7 +16,6 @@ import os
 
 def generate_primary_logo_svg(name: str, primary_color: str, neutral_color: str) -> str:
     """Generate horizontal brand mark and wordmark SVG."""
-    initial = name[0].upper() if name else "B"
     return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="100%" height="100%" fill="none" role="img" aria-label="{name} Logo">
   <defs>
     <linearGradient id="brand-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -111,7 +110,7 @@ def generate_og_card_svg(name: str, tagline: str, primary_color: str, neutral_co
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#og-bg)" />
   <rect width="1200" height="630" fill="url(#og-glow)" />
-  
+
   <!-- Subtle Grid Accent -->
   <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
     <line x1="80" y1="0" x2="80" y2="630" />

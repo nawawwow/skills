@@ -11,14 +11,13 @@ import argparse
 import datetime
 import os
 import re
-import sys
 
 TIER_1_TEMPLATE = """# Rapid Intelligence Brief: {title}
 
-**Date**: {date}  
-**Analytic Confidence**: [High | Moderate | Low]  
-**Depth Tier**: Tier 1 (Rapid Brief)  
-**Domain**: {domain}  
+**Date**: {date}\x20\x20
+**Analytic Confidence**: [High | Moderate | Low]\x20\x20
+**Depth Tier**: Tier 1 (Rapid Brief)\x20\x20
+**Domain**: {domain}\x20\x20
 
 ---
 
@@ -54,10 +53,10 @@ TIER_1_TEMPLATE = """# Rapid Intelligence Brief: {title}
 
 TIER_2_TEMPLATE = """# Deep Dive Dossier: {title}
 
-**Date**: {date}  
-**Analytic Confidence**: [High | Moderate | Low]  
-**Depth Tier**: Tier 2 (Standard Deep Dive)  
-**Domain**: {domain}  
+**Date**: {date}\x20\x20
+**Analytic Confidence**: [High | Moderate | Low]\x20\x20
+**Depth Tier**: Tier 2 (Standard Deep Dive)\x20\x20
+**Domain**: {domain}\x20\x20
 
 ---
 
@@ -117,10 +116,10 @@ TIER_2_TEMPLATE = """# Deep Dive Dossier: {title}
 
 TIER_3_TEMPLATE = """# Exhaustive Intelligence Dossier: {title}
 
-**Date**: {date}  
-**Analytic Confidence**: [High | Moderate | Low]  
-**Depth Tier**: Tier 3 (Exhaustive Intelligence Dossier)  
-**Domain**: {domain}  
+**Date**: {date}\x20\x20
+**Analytic Confidence**: [High | Moderate | Low]\x20\x20
+**Depth Tier**: Tier 3 (Exhaustive Intelligence Dossier)\x20\x20
+**Domain**: {domain}\x20\x20
 
 ---
 

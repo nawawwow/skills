@@ -26,7 +26,6 @@ import subprocess
 import sys
 import urllib.request
 import zlib
-from typing import Dict, List
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -61,7 +60,7 @@ def encode_kroki(code: str) -> str:
     return base64.urlsafe_b64encode(compressed).decode("ascii")
 
 
-def build_urls(code: str, theme: str = "default") -> Dict[str, str]:
+def build_urls(code: str, theme: str = "default") -> dict[str, str]:
     pako_token = encode_mermaid_pako(code, theme=theme)
     kroki_token = encode_kroki(code)
     return {
@@ -125,9 +124,16 @@ def main() -> int:
         default="auto",
         help="Rendering engine for svg/png/pdf exports (default: auto)",
     )
-    parser.add_argument("--output-dir", type=pathlib.Path, default=pathlib.Path("./diagrams-out"), help="Output directory")
+    parser.add_argument(
+        "--output-dir",
+        type=pathlib.Path,
+        default=pathlib.Path("./diagrams-out"),
+        help="Output directory",
+    )
     parser.add_argument("--theme", type=str, default="default", help="Theme name")
-    parser.add_argument("--scale", type=int, default=2, help="Scale factor for PNG rendering (default: 2)")
+    parser.add_argument(
+        "--scale", type=int, default=2, help="Scale factor for PNG rendering (default: 2)"
+    )
     parser.add_argument("--json", action="store_true", help="Output results as JSON")
 
     args = parser.parse_args()
@@ -140,14 +146,14 @@ def main() -> int:
         print(f"No Mermaid blocks found in {args.input}", file=sys.stderr)
         return 1
 
-    export_records: List[Dict[str, object]] = []
+    export_records: list[dict[str, object]] = []
     if args.format != "url":
         args.output_dir.mkdir(parents=True, exist_ok=True)
 
     stem = args.input.stem
     for idx, (start_ln, code) in enumerate(blocks, start=1):
         urls = build_urls(code, theme=args.theme)
-        record: Dict[str, object] = {
+        record: dict[str, object] = {
             "index": idx,
             "start_line": start_ln,
             "urls": urls,
@@ -163,14 +169,19 @@ def main() -> int:
                     rendered_ok = True
                     engine_used = "mmdc"
                 elif args.engine == "mmdc":
-                    print(f"Error: mmdc failed or is not installed for diagram #{idx}.", file=sys.stderr)
+                    print(
+                        f"Error: mmdc failed or is not installed for diagram #{idx}.",
+                        file=sys.stderr,
+                    )
                     return 1
 
             if not rendered_ok and args.format in {"svg", "png"}:
                 remote_url = (
                     urls["kroki_svg"]
                     if args.engine == "kroki" and args.format == "svg"
-                    else (urls["mermaid_ink_svg"] if args.format == "svg" else urls["mermaid_ink_png"])
+                    else (
+                        urls["mermaid_ink_svg"] if args.format == "svg" else urls["mermaid_ink_png"]
+                    )
                 )
                 engine_used = "kroki" if args.engine == "kroki" else "mermaid-ink"
                 try:
@@ -188,11 +199,11 @@ def main() -> int:
     else:
         for rec in export_records:
             print(f"=== Diagram #{rec['index']} (Line {rec['start_line']}) ===")
-            urls = rec["urls"]
-            assert isinstance(urls, dict)
-            print(f"  Mermaid Live Edit : {urls['mermaid_live_edit']}")
-            print(f"  Mermaid.ink SVG   : {urls['mermaid_ink_svg']}")
-            print(f"  Kroki.io SVG      : {urls['kroki_svg']}")
+            urls_obj = rec["urls"]
+            assert isinstance(urls_obj, dict)
+            print(f"  Mermaid Live Edit : {urls_obj['mermaid_live_edit']}")
+            print(f"  Mermaid.ink SVG   : {urls_obj['mermaid_ink_svg']}")
+            print(f"  Kroki.io SVG      : {urls_obj['kroki_svg']}")
             if rec.get("output_file"):
                 print(f"  Exported File     : {rec['output_file']} (via {rec['engine_used']})")
 

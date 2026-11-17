@@ -16,13 +16,12 @@ from __future__ import annotations
 import argparse
 import pathlib
 import sys
-from typing import Dict
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 
-TEMPLATES: Dict[str, str] = {
+TEMPLATES: dict[str, str] = {
     "flowchart": """---
 title: "{title}"
 config:
@@ -59,7 +58,6 @@ flowchart LR
     classDef storage fill:#dcfce7,stroke:#15803d,color:#14532d,stroke-width:2px
     class Client,Gateway,Service,Decision primary
     class DB,DLQ storage""",
-
     "sequence": """---
 title: "{title}"
 config:
@@ -86,7 +84,6 @@ sequenceDiagram
     DB-->>-Svc: Committed (id: 1042)
     Svc-->>-GW: 201 Created
     GW-->>-Client: 201 Order Confirmation""",
-
     "class": """---
 title: "{title}"
 config:
@@ -124,7 +121,6 @@ classDiagram
 
     OrderRepository <|.. PostgresOrderRepository : implements
     OrderRepository --> Order : manages""",
-
     "state": """---
 title: "{title}"
 config:
@@ -152,7 +148,6 @@ stateDiagram-v2
     Executing --> Completed : Ack
     Completed --> [*]
     Quarantined --> [*]""",
-
     "er": """---
 title: "{title}"
 config:
@@ -185,7 +180,6 @@ erDiagram
         int amount_cents
         string status "draft | paid | void"
     }""",
-
     "c4-context": """---
 title: "{title}"
 config:
@@ -206,7 +200,6 @@ C4Context
     Rel(platform, billing, "Syncs usage & invoices", "HTTPS / Webhooks")
 
     UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")""",
-
     "c4-container": """---
 title: "{title}"
 config:
@@ -229,7 +222,6 @@ C4Container
     Rel(api, db, "Reads & writes records", "SQL / TLS")
 
     UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")""",
-
     "c4-component": """---
 title: "{title}"
 config:
@@ -250,7 +242,6 @@ C4Component
     Rel(ctrl, svc, "Invokes", "In-process")
     Rel(svc, repo, "Persists via", "Interface")
     Rel(repo, db, "Executes queries", "TCP / SQL")""",
-
     "c4-dynamic": """---
 title: "{title}"
 config:
@@ -269,7 +260,6 @@ C4Dynamic
     Rel(spa, gw, "Submits credentials", "HTTPS")
     Rel(gw, auth, "Validates user", "gRPC")
     Rel(auth, redis, "Caches session claims", "RESP")""",
-
     "c4-deployment": """---
 title: "{title}"
 config:
@@ -290,7 +280,6 @@ C4Deployment
     }
 
     Rel(api_pod, pg, "Reads and writes", "TLS 1.3 / Port 5432")""",
-
     "architecture": """---
 title: "{title}"
 config:
@@ -314,7 +303,6 @@ architecture-beta
     app:R --> L:db
     app:B --> T:cache
     align column db cache""",
-
     "agentflow": """---
 title: "{title}"
 config:
@@ -342,7 +330,6 @@ agentflow-beta TB
         verify -- "Yes" --> publish
         verify -- "No" --> remediate --> publish
     end""",
-
     "block": """---
 title: "{title}"
 config:
@@ -363,7 +350,6 @@ block-beta
     classDef core fill:#dcfce7,stroke:#15803d,color:#14532d
     class Ingress edge
     class Web,API,Worker,DB,Cache core""",
-
     "packet": """---
 title: "{title}"
 config:
@@ -382,7 +368,6 @@ packet-beta
     +4: "Reserved"
     +8: "Control Flags"
     +16: "Window Size" """,
-
     "xychart": """---
 title: "{title}"
 config:
@@ -398,7 +383,6 @@ xychart-beta
     y-axis "Throughput (RPS)" 0 --> 10000
     bar [3200, 4800, 7100, 9400]
     line [3000, 4600, 6900, 9200]""",
-
     "sankey": """---
 title: "{title}"
 config:
@@ -417,7 +401,6 @@ API Gateway,Cache Hit,620
 API Gateway,Core Service,380
 Core Service,Primary DB,350
 Core Service,Error Fallback,30""",
-
     "quadrant": """---
 title: "{title}"
 config:
@@ -436,7 +419,6 @@ quadrantChart
     Zero-Downtime Migrations: [0.78, 0.90]
     Legacy Export Plugin: [0.25, 0.20]
     Custom Query DSL: [0.82, 0.30]""",
-
     "radar": """---
 title: "{title}"
 config:
@@ -452,7 +434,6 @@ radar-beta
     max 100
     min 0
     ticks 5""",
-
     "treemap": """---
 title: "{title}"
 config:
@@ -471,7 +452,6 @@ treemap-beta
 
 classDef compute fill:#dbeafe,stroke:#1d4ed8,color:#1e3a8a
 classDef storage fill:#dcfce7,stroke:#15803d,color:#14532d""",
-
     "pie": """---
 title: "{title}"
 config:
@@ -486,7 +466,6 @@ pie showData
     "Data & Storage" : 30
     "Async Workers" : 15
     "Observability" : 10""",
-
     "venn": """---
 title: "{title}"
 config:
@@ -501,7 +480,6 @@ venn-beta
         text t2["Write-Ahead Log"]
     union Fast,Durable["Target Storage Engine"]:8
         text t3["Group-Commit WAL"]""",
-
     "gantt": """---
 title: "{title}"
 config:
@@ -526,7 +504,6 @@ gantt
         Automated Test Harness     :dev2, after m1, 6d
     section Release
         Production Rollout         :crit, rel1, after dev1 dev2, 3d""",
-
     "swimlane": """---
 title: "{title}"
 config:
@@ -553,7 +530,6 @@ swimlane-beta LR
 
     req --> val
     val -->|"Valid"| chg --> prov --> done""",
-
     "kanban": """---
 title: "{title}"
 config:
@@ -568,7 +544,6 @@ kanban
         t3["Add integration test coverage"]@{ assigned: "sam", ticket: "ENG-102", priority: "High" }
     done["Done"]
         t4["Provision staging cluster"]@{ assigned: "jordan", ticket: "ENG-099", priority: "Very Low" }""",
-
     "timeline": """---
 title: "{title}"
 config:
@@ -584,7 +559,6 @@ timeline
                 : Edge Caching Layer
     section Phase 3 Intelligence
         Q3 2026 : Autonomous Triage Workflows""",
-
     "gitgraph": """---
 title: "{title}"
 config:
@@ -601,7 +575,6 @@ gitGraph LR:
     commit id: "add-tests" type: HIGHLIGHT
     checkout "main"
     merge "feat/core-engine" id: "release-1.1" tag: "v1.1.0" """,
-
     "mindmap": """---
 title: "{title}"
 config:
@@ -620,7 +593,6 @@ mindmap
     Operations
       Distributed Tracing
       Automated Rollbacks""",
-
     "treeview": """---
 title: "{title}"
 config:
@@ -637,7 +609,6 @@ treeView-beta
 ├── tests/
 │   └── engine.test.ts ## Unit test suite
 └── package.json ## Project manifest""",
-
     "journey": """---
 title: "{title}"
 config:
@@ -651,7 +622,6 @@ journey
     section Daily Workflow
         Scaffold Architecture Diagram: 5: Developer, AI Agent
         Run Automated Quality Gate: 4: Developer, CI Pipeline""",
-
     "requirement": """---
 title: "{title}"
 config:
@@ -683,7 +653,6 @@ requirementDiagram
 
     gateway_svc - satisfies -> perf_req
     load_test - verifies -> perf_req""",
-
     "usecase": """---
 title: "{title}"
 config:
@@ -708,7 +677,6 @@ usecase-beta
     Customer --> SubmitOrder
     SubmitOrder ..> : include ValidatePayment
     Operator --> AuditLogs""",
-
     "zenuml": """---
 title: "{title}"
 config:
@@ -730,7 +698,6 @@ zenuml
         }
         return result
     }""",
-
     "eventmodeling": """---
 title: "{title}"
 config:
@@ -746,7 +713,6 @@ eventmodeling
         sku: "item-100",
         quantity: 2
     }""",
-
     "wardley": """---
 title: "{title}"
 config:
@@ -765,7 +731,6 @@ wardley-beta
     "AI Workflow Engine" -> "Managed Database"
     "Managed Database" -> "Cloud Compute"
     evolve "AI Workflow Engine" 0.70""",
-
     "cynefin": """---
 title: "{title}"
 config:
@@ -785,7 +750,6 @@ cynefin-beta
         "Triage unknown alert correlation"
     chaotic --> complex : "Stabilize"
     complex --> complicated : "Codify" """,
-
     "ishikawa": """---
 title: "{title}"
 config:
@@ -803,7 +767,7 @@ ishikawa-beta
         Delayed alert threshold""",
 }
 
-TYPE_ALIASES: Dict[str, str] = {
+TYPE_ALIASES: dict[str, str] = {
     "graph": "flowchart",
     "sequencediagram": "sequence",
     "classdiagram": "class",
@@ -854,13 +818,29 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Scaffold a verified 100/100 Mermaid v11/v12 diagram template for any of the 32 official types."
     )
-    parser.add_argument("--list-types", action="store_true", help="List all 32 supported diagram template types")
-    parser.add_argument("--type", type=str, help="Diagram type to scaffold (e.g. flowchart, sequence, architecture, er)")
-    parser.add_argument("--title", type=str, default="System Architecture Overview", help="Diagram title")
-    parser.add_argument("--theme", type=str, default="redux-color", help="Mermaid theme (default: redux-color)")
-    parser.add_argument("--look", choices=["neo", "classic", "handDrawn"], default="neo", help="Visual look mode")
-    parser.add_argument("--layout", choices=["elk", "dagre", "tidy-tree"], default="elk", help="Layout engine")
-    parser.add_argument("--markdown", action="store_true", help="Wrap output in a ```mermaid markdown code fence")
+    parser.add_argument(
+        "--list-types", action="store_true", help="List all 32 supported diagram template types"
+    )
+    parser.add_argument(
+        "--type",
+        type=str,
+        help="Diagram type to scaffold (e.g. flowchart, sequence, architecture, er)",
+    )
+    parser.add_argument(
+        "--title", type=str, default="System Architecture Overview", help="Diagram title"
+    )
+    parser.add_argument(
+        "--theme", type=str, default="redux-color", help="Mermaid theme (default: redux-color)"
+    )
+    parser.add_argument(
+        "--look", choices=["neo", "classic", "handDrawn"], default="neo", help="Visual look mode"
+    )
+    parser.add_argument(
+        "--layout", choices=["elk", "dagre", "tidy-tree"], default="elk", help="Layout engine"
+    )
+    parser.add_argument(
+        "--markdown", action="store_true", help="Wrap output in a ```mermaid markdown code fence"
+    )
     parser.add_argument("--output", type=pathlib.Path, help="Optional file path to write output")
 
     args = parser.parse_args()
@@ -877,7 +857,10 @@ def main() -> int:
     key = args.type.strip().lower()
     key = TYPE_ALIASES.get(key, key)
     if key not in TEMPLATES:
-        print(f"Error: Unknown diagram type '{args.type}'. Run with --list-types to see valid keys.", file=sys.stderr)
+        print(
+            f"Error: Unknown diagram type '{args.type}'. Run with --list-types to see valid keys.",
+            file=sys.stderr,
+        )
         return 2
 
     rendered = render_template(
@@ -905,4 +888,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

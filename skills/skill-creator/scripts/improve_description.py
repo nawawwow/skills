@@ -49,9 +49,9 @@ def _call_llm(
                 timeout=timeout,
             )
         else:
-            cmd = shlex.split(runner_cmd)
+            cmd_args = shlex.split(runner_cmd)
             result = subprocess.run(
-                cmd,
+                cmd_args,
                 input=prompt,
                 capture_output=True,
                 text=True,
@@ -116,11 +116,11 @@ def _call_llm(
                 if k not in ("CLAUDECODE", "OPENCODE_SUBPROCESS")
             }
             if cli_name == "claude":
-                cmd = ["claude", "-p", "--output-format", "text"]
+                cli_cmd = ["claude", "-p", "--output-format", "text"]
                 if model:
-                    cmd.extend(["--model", model])
+                    cli_cmd.extend(["--model", model])
                 result = subprocess.run(
-                    cmd,
+                    cli_cmd,
                     input=prompt,
                     capture_output=True,
                     text=True,

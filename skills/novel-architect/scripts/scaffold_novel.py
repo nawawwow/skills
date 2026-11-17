@@ -62,9 +62,9 @@ def scaffold_novel(
     (base_dir / "00_BIBLE" / "premise.md").write_text(
         f"""# Dramatic Premise & Thematic Thesis
 
-**Project Title**: {title}  
-**Genre**: {genre}  
-**Target Word Count**: {word_count:,} words  
+**Project Title**: {title}{"  "}
+**Genre**: {genre}{"  "}
+**Target Word Count**: {word_count:,} words{"  "}
 
 ---
 
@@ -168,7 +168,7 @@ When [INCITING EVENT OCCURS], a [FLAWED PROTAGONIST] must [PURSUITE EXTERNAL GOA
     (base_dir / "02_OUTLINE" / "beat_sheet.md").write_text(
         f"""# Master Beat Sheet ({framework.upper()})
 
-**Target Word Count**: {word_count:,} words  
+**Target Word Count**: {word_count:,} words{"  "}
 *Run `python skills/novel-architect/scripts/generate_beat_sheet.py --word-count {word_count} --framework {framework}` to populate calibrated milestones.*
 """,
         encoding="utf-8",

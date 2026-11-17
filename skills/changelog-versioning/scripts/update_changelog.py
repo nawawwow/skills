@@ -103,7 +103,6 @@ def extract_commits_to_categories(
             continue
         parts = entry.strip().split("\x1f")
         msg = parts[0].strip()
-        sha = parts[1].strip() if len(parts) > 1 else ""
 
         subparts = msg.split("\x1e")
         subject = subparts[0].strip()
