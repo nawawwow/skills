@@ -13,7 +13,7 @@ Repository-specific operating instructions for AI coding agents working in the `
 ## Language & Communication Policy
 
 - **User Communication (Bahasa Indonesia):** Respond, explain, and summarize in **Bahasa Indonesia** (unless the user explicitly prompts in another language). Keep explanations concise, structured, and actionable.
-- **Technical Artifacts (English):** Write all code identifiers, inline comments, docstrings, schemas, skill docs, PR descriptions, and Git commit messages strictly in **English**.
+- **Technical Artifacts (English):** Write all code identifiers, inline comments, docstrings, schemas, skill docs, Issue titles/descriptions/comments, Pull Request descriptions, and Git commit messages strictly in **English**.
 
 ## Operational Commands
 
@@ -50,16 +50,18 @@ Never execute full benchmark suites for isolated edits; validate targeted skills
 ## Boundaries & "Never Do" Rules
 
 - Never push directly to `main`, `master`, `staging`, or `production` branches.
-- Never execute `git push`, `gh pr create`, `gh pr merge`, or delete remote branches without **explicit user permission** (local branching and local commits are permitted when requested).
-- Never run `git push --force` or rewrite history on shared or public branches.
-- Never commit `.env` files, API keys, credentials, or private tokens; audit staged diffs before every commit.
-- Never manually edit internal agent directories or generated outputs (`.gemini/`, `.git/`, `.agent-archive/`, `__pycache__/`, `.pytest_cache/`, `.mypy_cache/`, `.venv/`, `node_modules/`).
+- Never execute remote write or release operations—including `git push`, `git push --force-with-lease`, `git tag`, `gh release`, `gh pr create`, `gh pr merge`, `gh issue create`, `gh issue edit`, `gh issue comment`, `gh issue close`, or deleting remote branches—without **explicit user permission** (read-only queries like `gh issue list`/`view`, local branching, local commits, and local interactive rebases are permitted when requested).
+- Never run raw `git push --force`, and never rewrite history on shared/public branches (`main`, `master`, `staging`, `production`, `dev`); on short-lived feature branches, use `git push --force-with-lease` (with explicit user permission) after a local rebase or fixup.
+- Never stage or commit secrets, `.env` files, API keys, credentials, or private tokens; audit `git diff --cached` and run `prepare_commit.py --dry-run` before every commit.
+- Never manually edit internal agent directories, generated outputs, or lockfiles (`.gemini/`, `.git/`, `.agent-archive/`, `__pycache__/`, `.pytest_cache/`, `.mypy_cache/`, `.venv/`, `node_modules/`, `package-lock.json`, `pnpm-lock.yaml`, `uv.lock`).
 - Never delete or rename existing skills without explicit user instruction.
 - Never exceed the 1024-character limit for skill descriptions, create circular reference links, or leave unreplaced placeholder tokens in production files.
 - Never bypass security checks, validation gates, or pre-commit hooks (`--no-verify`).
 
 ## PR & Git Guidelines
 
-- **Branching & Syncing:** Branch short-lived work (`feat/`, `fix/`, `docs/`, `chore/`, `refactor/`, `test/`) from `dev` or an up-to-date `main`; keep release integration flowing `dev -> main` via Pull Request (`--merge` on `dev -> main` to keep both branches aligned).
-- **Atomic & Conventional Commits (1.0.0):** Use `<type>(<scope>): <imperative lowercase summary>` (max 72 chars), scoped atomically to a single skill or capability (e.g., `feat(skill-creator): ...`, `fix(git-commit): ...`).
+- **Issue Tracking (Pragmatic Issue-First):** Require a GitHub Issue (written in English with Problem/Context and Acceptance Criteria or Steps to Reproduce) for new features, bug fixes, and architectural changes before implementation; trivial changes (typos, minor docs, routine config updates) do not require an issue.
+- **Branching & Syncing:** Branch short-lived work from `dev` or an up-to-date `main` using `<prefix>/<issue-number>-<short-slug>` when an issue exists (or `<prefix>/<short-slug>` for issue-less trivial changes; prefixes: `feat`, `fix`, `chore`, `refactor`, `docs`, `test`), syncing locally via `git fetch origin` and `git rebase` before merging.
+- **Atomic & Conventional Commits (1.0.0):** Use `<type>(<scope>): <imperative lowercase summary>` (max 72 chars), scoped atomically without repeating the issue number in every commit; absorb minor fixes or review revisions via `git commit --amend` or `--fixup` + `git rebase -i --autosquash` rather than stacking noisy fixup commits.
+- **Pull Request & Merge Strategy:** Target small reviewable PRs (under 300–400 changed lines) with a clear summary, linked closing issue (`Closes #42`) when applicable, and verification output; merge using **Semi-linear Merge** (`--merge` after rebase, preserving every atomic commit—never squash-merge multi-commit branches), keeping `dev -> main` aligned.
 - **Pre-PR Quality Gates:** Run `ruff check .`, `ruff format --check .`, `python -m mypy skills/<skill-name>/scripts`, `npx markdownlint-cli2 "**/*.md"`, `npx prettier --end-of-line auto --check "**/*.md" "**/*.json"`, and `validate_skill.py` on affected skills before presenting diffs or opening a PR.
