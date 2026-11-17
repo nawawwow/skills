@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning 2.0.0](https://semver.org/spec/
 
 ## [Unreleased]
 
+### Changed
+
+- **AI Coding Agent Engineering**:
+  - Renamed skill `create-agents` to `create-agents-md` (and updated bundled scripts `generate_agents_md.py`, `audit_agents_md.py`, `migrate_agents_md.py`) across documentation, evaluation metadata, and license notices.
+
 ## [0.3.0] - 2026-11-17
 
 ### Added

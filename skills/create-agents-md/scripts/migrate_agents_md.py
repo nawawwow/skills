@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-migrate_agents.py - Legacy rule consolidation and multi-tool bridge generator.
+migrate_agents_md.py - Legacy rule consolidation and multi-tool bridge generator.
 
 Extracts rules from .cursorrules, .cursor/rules/*.mdc, CLAUDE.md,
 .github/copilot-instructions.md, and .windsurfrules into a unified AGENTS.md,

@@ -39,22 +39,22 @@ To eliminate drift while ensuring 100% compatibility across all tools, the indus
 
 ---
 
-## 3. Automated Migration with `migrate_agents.py`
+## 3. Automated Migration with `migrate_agents_md.py`
 
-The `create-agents` skill provides an automated migration script:
+The `create-agents-md` skill provides an automated migration script:
 
 ```bash
 # Preview extracted rules and proposed bridges without writing files
-python skills/create-agents/scripts/migrate_agents.py . --dry-run --bridge
+python skills/create-agents-md/scripts/migrate_agents_md.py . --dry-run --bridge
 
 # Consolidate rules and generate bridge files
-python skills/create-agents/scripts/migrate_agents.py . --bridge
+python skills/create-agents-md/scripts/migrate_agents_md.py . --bridge
 
 # Consolidate rules, generate bridges, and archive old legacy files to .agent-archive/
-python skills/create-agents/scripts/migrate_agents.py . --bridge --archive
+python skills/create-agents-md/scripts/migrate_agents_md.py . --bridge --archive
 ```
 
-### What `migrate_agents.py` Does
+### What `migrate_agents_md.py` Does
 
 1. **Scans & Parses:** Automatically finds `.cursorrules`, `.cursor/rules/*.mdc`, `CLAUDE.md`, `.github/copilot-instructions.md`, and `.windsurfrules`.
 2. **Extracts High-Signal Content:** Isolates verified CLI commands, architectural bullet points, and negative boundary rules ("Never do...").

@@ -19,7 +19,7 @@ flowchart LR
     A["Developer / Agent"] -->|npx skills add| B["skills.sh Registry"]
     B -->|Fetch Repository| C["ahmadmcer/skills"]
     C --> D{"Skills Domain Catalog"}
-    D -->|AI Agent Engineering| E["create-agents / skill-creator"]
+    D -->|AI Agent Engineering| E["create-agents-md / skill-creator"]
     D -->|DevOps & SDLC| F["sdlc-process / git-commit / changelog / project-docs / create-readme"]
     D -->|Diagrams & Visuals| G["mermaid-diagram"]
     D -->|Deep Research| H["researching-protocol"]
@@ -43,7 +43,7 @@ npx skills add ahmadmcer/skills
 # Or install a specific individual skill
 npx skills add ahmadmcer/skills --skill project-documentation
 npx skills add ahmadmcer/skills --skill git-commit
-npx skills add ahmadmcer/skills --skill create-agents
+npx skills add ahmadmcer/skills --skill create-agents-md
 ```
 
 ### 2. Manual Git Clone
@@ -67,10 +67,10 @@ git clone https://github.com/ahmadmcer/skills.git .agents
 
 ### 🤖 AI Agent Engineering & Tooling
 
-| Skill                                        | Focus                                                                                                                             | Documentation                             | Tools Included                                                                     |
-| :------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------- | :--------------------------------------------------------------------------------- |
-| **[`create-agents`](skills/create-agents/)** | AI coding agent `AGENTS.md` engineering conforming to Linux Foundation / AAIF standards with multi-tool bridges.                  | [SKILL.md](skills/create-agents/SKILL.md) | `inspect_project.py`, `generate_agents.py`, `audit_agents.py`, `migrate_agents.py` |
-| **[`skill-creator`](skills/skill-creator/)** | Benchmarking, evaluation, and iteration toolchain for agent skill development with strict 1024-character description enforcement. | [SKILL.md](skills/skill-creator/SKILL.md) | `quick_validate.py`, `validate_skill.py`, `improve_description.py`, `run_loop.py`  |
+| Skill                                              | Focus                                                                                                                             | Documentation                                | Tools Included                                                                              |
+| :------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------- | :------------------------------------------------------------------------------------------ |
+| **[`create-agents-md`](skills/create-agents-md/)** | AI coding agent `AGENTS.md` engineering conforming to Linux Foundation / AAIF standards with multi-tool bridges.                  | [SKILL.md](skills/create-agents-md/SKILL.md) | `inspect_project.py`, `generate_agents_md.py`, `audit_agents_md.py`, `migrate_agents_md.py` |
+| **[`skill-creator`](skills/skill-creator/)**       | Benchmarking, evaluation, and iteration toolchain for agent skill development with strict 1024-character description enforcement. | [SKILL.md](skills/skill-creator/SKILL.md)    | `quick_validate.py`, `validate_skill.py`, `improve_description.py`, `run_loop.py`           |
 
 ### 🛠 Software Engineering & Release Lifecycle
 
@@ -142,9 +142,9 @@ python skills/changelog-versioning/scripts/determine_version.py
 python skills/changelog-versioning/scripts/audit_changelog.py --file CHANGELOG.md
 
 # 3. Scaffold an AAIF-compliant AGENTS.md with tool bridges
-python skills/create-agents/scripts/inspect_project.py .
-python skills/create-agents/scripts/generate_agents.py . --archetype skill
-python skills/create-agents/scripts/audit_agents.py AGENTS.md --project-dir .
+python skills/create-agents-md/scripts/inspect_project.py .
+python skills/create-agents-md/scripts/generate_agents_md.py . --archetype skill
+python skills/create-agents-md/scripts/audit_agents_md.py AGENTS.md --project-dir .
 
 # 4. Scaffold a Diátaxis documentation portal (VitePress, Docusaurus, MkDocs, Starlight)
 python skills/project-documentation/scripts/scaffold_docs.py --generator vitepress --target-dir ./docs
@@ -164,7 +164,7 @@ All skills, scripts, and evaluation suites are continuously validated against st
 # Run skill structural validation on any skill
 python skills/skill-creator/scripts/validate_skill.py skills/project-documentation
 python skills/skill-creator/scripts/validate_skill.py skills/create-readme
-python skills/skill-creator/scripts/validate_skill.py skills/create-agents
+python skills/skill-creator/scripts/validate_skill.py skills/create-agents-md
 
 # Run Python linting and formatting checks
 ruff check .
@@ -188,7 +188,7 @@ npx markdownlint-cli2 "**/*.md"
 │   ├── branding-process/             # Brand strategy & design tokens
 │   ├── changelog-versioning/         # SemVer 2.0.0 & Keep a Changelog 1.1.0
 │   ├── christianity-scriptural-references/ # Biblical exegesis & SBL citations
-│   ├── create-agents/                # AI coding agent AGENTS.md engineering & bridges
+│   ├── create-agents-md/             # AI coding agent AGENTS.md engineering & bridges
 │   ├── create-readme/                # Codebase inspection & README generation
 │   ├── figcraft-workflows/           # FigCraft MCP & CLI design workflows
 │   ├── git-commit/                   # Conventional Commits 1.0.0 engine

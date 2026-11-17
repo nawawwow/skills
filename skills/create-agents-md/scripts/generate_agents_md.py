@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_agents.py - Token-optimized AGENTS.md generator for create-agents.
+generate_agents_md.py - Token-optimized AGENTS.md generator for create-agents-md.
 
 Generates a machine-facing AGENTS.md adhering to the Agentic AI Foundation (AAIF)
 standard across 6 distinct archetypes, with strict token-budget compliance.
